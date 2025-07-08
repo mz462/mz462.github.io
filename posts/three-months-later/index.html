@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Three Months Later: From Prompt Engineering to Context Engineering (And Why I&#39;ve Been Doing It With Humans All Along) | MJ&#39;s Blog</title>
+<meta name="keywords" content="AI, product management, communication, context engineering, reflection, personal growth">
+<meta name="description" content="A three-month reflection on AI developments, the shift from prompt to context engineering, and how Product Management taught me to debug human communication.">
+<meta name="author" content="">
+<link rel="canonical" href="https://mz462.github.io/posts/three-months-later/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.f49d66caae9ea0fd43f21f29e71a8d3e284517ed770f2aa86fa012953ad3c9ef.css" integrity="sha256-9J1myq6eoP1D8h8p5xqNPihFF&#43;13Dyqob6ASlTrTye8=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://mz462.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://mz462.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://mz462.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://mz462.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://mz462.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://mz462.github.io/posts/three-months-later/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:url" content="https://mz462.github.io/posts/three-months-later/">
+  <meta property="og:site_name" content="MJ&#39;s Blog">
+  <meta property="og:title" content="Three Months Later: From Prompt Engineering to Context Engineering (And Why I&#39;ve Been Doing It With Humans All Along)">
+  <meta property="og:description" content="A three-month reflection on AI developments, the shift from prompt to context engineering, and how Product Management taught me to debug human communication.">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-07-08T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-07-08T00:00:00+00:00">
+    <meta property="article:tag" content="AI">
+    <meta property="article:tag" content="Product Management">
+    <meta property="article:tag" content="Communication">
+    <meta property="article:tag" content="Context Engineering">
+    <meta property="article:tag" content="Reflection">
+    <meta property="article:tag" content="Personal Growth">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Three Months Later: From Prompt Engineering to Context Engineering (And Why I&#39;ve Been Doing It With Humans All Along)">
+<meta name="twitter:description" content="A three-month reflection on AI developments, the shift from prompt to context engineering, and how Product Management taught me to debug human communication.">
+      <meta name="twitter:site" content="@emjayzo">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://mz462.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Three Months Later: From Prompt Engineering to Context Engineering (And Why I've Been Doing It With Humans All Along)",
+      "item": "https://mz462.github.io/posts/three-months-later/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Three Months Later: From Prompt Engineering to Context Engineering (And Why I've Been Doing It With Humans All Along)",
+  "name": "Three Months Later: From Prompt Engineering to Context Engineering (And Why I\u0027ve Been Doing It With Humans All Along)",
+  "description": "A three-month reflection on AI developments, the shift from prompt to context engineering, and how Product Management taught me to debug human communication.",
+  "keywords": [
+    "AI", "product management", "communication", "context engineering", "reflection", "personal growth"
+  ],
+  "articleBody": "The Fear Was Right, But Not For The Reason I Expected Three months ago, I wrote about my fear of losing the ability to think independently in an age of AI automation. I was worried about the urge to just hit “tab, tab, tab” and accept every autocompletion without conscious thought. Looking back now, that fear was prophetic—but not in the way I expected.\nThe past three months have been a whirlwind of AI developments. GPT-5 was announced for summer 2025, Google released Imagen 4, Claude got integrations, and the AI market is projected to grow from $189 billion to $4.8 trillion by 2033. The acceleration is real, and it’s happening faster than anyone predicted.\nBut here’s what I discovered: the bottleneck was never where I thought it was.\nThe Real Bottleneck: Context, Not Code A blog post that resonated deeply with me during this period was “Writing Code Was Never The Bottleneck”. The author argues that software development’s true constraints have always been human-centric: code reviews, knowledge transfer, testing, debugging, and coordination. While AI tools make code generation faster, they don’t solve the fundamental challenges of understanding, reviewing, and maintaining code.\nThis insight extends far beyond software development. It’s about where value actually lives in knowledge work.\nThink about consulting firms. They don’t charge $500/hour because they can analyze data faster than their clients. They get paid because they can translate complex problems into executive-digestible insights. The bottleneck isn’t the analysis—it’s the communication, stakeholder management, and organizational change.\nMy Accidental Discovery: Context Engineering For Humans As a Senior Product Manager, my role involves constant context management. Surprisingly, AI didn’t replace my thinking—it taught me to get better at “prompting humans.”\nI’ve developed a habit of holding off 3-6 seconds before I speak. During that pause, I:\nLine up my ask against their previous conversation Check if I’m missing any facts that could cause confusion Ensure I have enough context to make my request clear I realized I was applying LLM principles to human communication. In LLMs, missing context causes hallucination. In humans, it causes misunderstanding, frustration, and decision paralysis.\nThat 3-6 second pause became my “context validation layer” before human interaction.\nThe Industry Catches Up: Context Engineering is The New Trend Just as I was discovering this personally, the AI industry began shifting from “prompt engineering” to “context engineering.” According to recent trends in 2025:\nContext engineering is being defined as “building dynamic systems to provide the right information and tools in the right format such that the LLM can plausibly accomplish the task”1 Andrej Karpathy describes it as: “Context engineering is the delicate art and science of filling the context window with just the right information for the next step”2 Shopify CEO Tobi Lutke calls it “the art of providing all the context for the task to be plausibly solvable by the LLM”3 The insight that’s driving this shift? Most agent performance issues stem from inadequate context, not model limitations. Context engineering addresses failures when agents are missing critical contextual information, have poorly formatted context, or lack appropriate tools.1\nThe Pattern Recognition The parallels are striking:\nSoftware development: The bottleneck isn’t writing code, it’s context—understanding, reviewing, coordinating Consulting: The bottleneck isn’t analysis, it’s context—translating insights for decision-makers AI systems: The bottleneck isn’t the model, it’s context—providing the right information at the right time Product management: The bottleneck isn’t having ideas, it’s context—aligning stakeholders and managing information flow What This Means Going Forward My original fear about “tab, tab, tab” automation was valid, but I was worried about the wrong thing. The real risk isn’t that AI will make me lazy at the easy parts—it’s that by automating the “easy” parts, the human parts become exponentially more valuable.\nThe 3-6 second rule isn’t just a communication technique; it’s a form of conscious effort applied where it actually matters. Instead of fighting AI tools, I’m learning to be more deliberate about context management—whether that’s with humans, systems, or AI agents.\nAs the industry moves toward context engineering, I realize I’ve been inadvertently training for this shift. Product managers are natural context engineers. We spend our days managing information flow, translating between stakeholders, and ensuring everyone has the right context to make good decisions.\nThe Irony Here’s the beautiful irony: I feared AI would make me think less. Instead, it taught me to think more deliberately about the parts that actually matter. The conscious effort I committed to isn’t about resisting automation—it’s about focusing human intelligence where it creates the most value.\nThe flying wheel I wrote about three months ago—providing context to get better answers, then asking for clarification to provide better context—isn’t just how you prompt AI effectively. It’s how you build successful products, lead teams, and create value in an automated world.\nThe bottleneck was never the code. It was never the analysis. It was never the prompt.\nThe bottleneck is context. It always has been.\nAnd that’s exactly where humans excel—if we choose to think consciously about it.\nReferences LangChain. (2025, June). “The Rise of Context Engineering.” https://blog.langchain.com/the-rise-of-context-engineering/ ↩︎ ↩︎\nKarpathy, A. (2025). Referenced in Simon Willison. “Context Engineering.” https://simonwillison.net/2025/Jun/27/context-engineering/ ↩︎\nLutke, T. (2025). Referenced in Philipp Schmid. “The New Skill in AI is Not Prompting, It’s Context Engineering.” https://www.philschmid.de/context-engineering ↩︎\n",
+  "wordCount" : "870",
+  "inLanguage": "en",
+  "datePublished": "2025-07-08T00:00:00Z",
+  "dateModified": "2025-07-08T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://mz462.github.io/posts/three-months-later/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "MJ's Blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://mz462.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://mz462.github.io/" accesskey="h" title="MJ&#39;s Blog (Alt + H)">MJ&#39;s Blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://mz462.github.io/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://mz462.github.io/search/" title="Search">
+                    <span>Search</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://mz462.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://mz462.github.io/posts/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Three Months Later: From Prompt Engineering to Context Engineering (And Why I&#39;ve Been Doing It With Humans All Along)
+    </h1>
+    <div class="post-description">
+      A three-month reflection on AI developments, the shift from prompt to context engineering, and how Product Management taught me to debug human communication.
+    </div>
+    <div class="post-meta"><span title='2025-07-08 00:00:00 +0000 UTC'>July 8, 2025</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;870 words
+
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#the-fear-was-right-but-not-for-the-reason-i-expected" aria-label="The Fear Was Right, But Not For The Reason I Expected">The Fear Was Right, But Not For The Reason I Expected</a></li>
+                <li>
+                    <a href="#the-real-bottleneck-context-not-code" aria-label="The Real Bottleneck: Context, Not Code">The Real Bottleneck: Context, Not Code</a></li>
+                <li>
+                    <a href="#my-accidental-discovery-context-engineering-for-humans" aria-label="My Accidental Discovery: Context Engineering For Humans">My Accidental Discovery: Context Engineering For Humans</a></li>
+                <li>
+                    <a href="#the-industry-catches-up-context-engineering-is-the-new-trend" aria-label="The Industry Catches Up: Context Engineering is The New Trend">The Industry Catches Up: Context Engineering is The New Trend</a></li>
+                <li>
+                    <a href="#the-pattern-recognition" aria-label="The Pattern Recognition">The Pattern Recognition</a></li>
+                <li>
+                    <a href="#what-this-means-going-forward" aria-label="What This Means Going Forward">What This Means Going Forward</a></li>
+                <li>
+                    <a href="#the-irony" aria-label="The Irony">The Irony</a></li>
+                <li>
+                    <a href="#references" aria-label="References">References</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h2 id="the-fear-was-right-but-not-for-the-reason-i-expected">The Fear Was Right, But Not For The Reason I Expected<a hidden class="anchor" aria-hidden="true" href="#the-fear-was-right-but-not-for-the-reason-i-expected">#</a></h2>
+<p>Three months ago, I wrote about my fear of losing the ability to think independently in an age of AI automation. I was worried about the urge to just hit &ldquo;tab, tab, tab&rdquo; and accept every autocompletion without conscious thought. Looking back now, that fear was prophetic—but not in the way I expected.</p>
+<p>The past three months have been a whirlwind of AI developments. GPT-5 was announced for summer 2025, Google released Imagen 4, Claude got integrations, and the AI market is projected to grow from $189 billion to $4.8 trillion by 2033. The acceleration is real, and it&rsquo;s happening faster than anyone predicted.</p>
+<p>But here&rsquo;s what I discovered: <strong>the bottleneck was never where I thought it was.</strong></p>
+<h2 id="the-real-bottleneck-context-not-code">The Real Bottleneck: Context, Not Code<a hidden class="anchor" aria-hidden="true" href="#the-real-bottleneck-context-not-code">#</a></h2>
+<p>A blog post that resonated deeply with me during this period was <a href="https://ordep.dev/posts/writing-code-was-never-the-bottleneck">&ldquo;Writing Code Was Never The Bottleneck&rdquo;</a>. The author argues that software development&rsquo;s true constraints have always been human-centric: code reviews, knowledge transfer, testing, debugging, and coordination. While AI tools make code generation faster, they don&rsquo;t solve the fundamental challenges of understanding, reviewing, and maintaining code.</p>
+<p>This insight extends far beyond software development. It&rsquo;s about where value actually lives in knowledge work.</p>
+<p>Think about consulting firms. They don&rsquo;t charge $500/hour because they can analyze data faster than their clients. They get paid because they can <strong>translate complex problems into executive-digestible insights.</strong> The bottleneck isn&rsquo;t the analysis—it&rsquo;s the communication, stakeholder management, and organizational change.</p>
+<h2 id="my-accidental-discovery-context-engineering-for-humans">My Accidental Discovery: Context Engineering For Humans<a hidden class="anchor" aria-hidden="true" href="#my-accidental-discovery-context-engineering-for-humans">#</a></h2>
+<p>As a Senior Product Manager, my role involves constant context management. Surprisingly, AI didn&rsquo;t replace my thinking—it taught me to get better at &ldquo;prompting humans.&rdquo;</p>
+<p>I&rsquo;ve developed a habit of holding off 3-6 seconds before I speak. During that pause, I:</p>
+<ul>
+<li>Line up my ask against their previous conversation</li>
+<li>Check if I&rsquo;m missing any facts that could cause confusion</li>
+<li>Ensure I have enough context to make my request clear</li>
+</ul>
+<p>I realized I was applying LLM principles to human communication. In LLMs, missing context causes hallucination. In humans, it causes misunderstanding, frustration, and decision paralysis.</p>
+<p>That 3-6 second pause became my &ldquo;context validation layer&rdquo; before human interaction.</p>
+<h2 id="the-industry-catches-up-context-engineering-is-the-new-trend">The Industry Catches Up: Context Engineering is The New Trend<a hidden class="anchor" aria-hidden="true" href="#the-industry-catches-up-context-engineering-is-the-new-trend">#</a></h2>
+<p>Just as I was discovering this personally, the AI industry began shifting from &ldquo;prompt engineering&rdquo; to &ldquo;context engineering.&rdquo; According to recent trends in 2025:</p>
+<ul>
+<li><strong>Context engineering</strong> is being defined as &ldquo;building dynamic systems to provide the right information and tools in the right format such that the LLM can plausibly accomplish the task&rdquo;<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></li>
+<li>Andrej Karpathy describes it as: &ldquo;Context engineering is the delicate art and science of filling the context window with just the right information for the next step&rdquo;<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></li>
+<li>Shopify CEO Tobi Lutke calls it &ldquo;the art of providing all the context for the task to be plausibly solvable by the LLM&rdquo;<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup></li>
+</ul>
+<p>The insight that&rsquo;s driving this shift? Most agent performance issues stem from inadequate context, not model limitations. Context engineering addresses failures when agents are missing critical contextual information, have poorly formatted context, or lack appropriate tools.<sup id="fnref1:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
+<h2 id="the-pattern-recognition">The Pattern Recognition<a hidden class="anchor" aria-hidden="true" href="#the-pattern-recognition">#</a></h2>
+<p>The parallels are striking:</p>
+<ul>
+<li><strong>Software development</strong>: The bottleneck isn&rsquo;t writing code, it&rsquo;s context—understanding, reviewing, coordinating</li>
+<li><strong>Consulting</strong>: The bottleneck isn&rsquo;t analysis, it&rsquo;s context—translating insights for decision-makers</li>
+<li><strong>AI systems</strong>: The bottleneck isn&rsquo;t the model, it&rsquo;s context—providing the right information at the right time</li>
+<li><strong>Product management</strong>: The bottleneck isn&rsquo;t having ideas, it&rsquo;s context—aligning stakeholders and managing information flow</li>
+</ul>
+<h2 id="what-this-means-going-forward">What This Means Going Forward<a hidden class="anchor" aria-hidden="true" href="#what-this-means-going-forward">#</a></h2>
+<p>My original fear about &ldquo;tab, tab, tab&rdquo; automation was valid, but I was worried about the wrong thing. The real risk isn&rsquo;t that AI will make me lazy at the easy parts—it&rsquo;s that by automating the &ldquo;easy&rdquo; parts, the human parts become exponentially more valuable.</p>
+<p>The 3-6 second rule isn&rsquo;t just a communication technique; it&rsquo;s a form of conscious effort applied where it actually matters. Instead of fighting AI tools, I&rsquo;m learning to be more deliberate about context management—whether that&rsquo;s with humans, systems, or AI agents.</p>
+<p>As the industry moves toward context engineering, I realize I&rsquo;ve been inadvertently training for this shift. Product managers are natural context engineers. We spend our days managing information flow, translating between stakeholders, and ensuring everyone has the right context to make good decisions.</p>
+<h2 id="the-irony">The Irony<a hidden class="anchor" aria-hidden="true" href="#the-irony">#</a></h2>
+<p>Here&rsquo;s the beautiful irony: I feared AI would make me think less. Instead, it taught me to think more deliberately about the parts that actually matter. The conscious effort I committed to isn&rsquo;t about resisting automation—it&rsquo;s about focusing human intelligence where it creates the most value.</p>
+<p>The flying wheel I wrote about three months ago—providing context to get better answers, then asking for clarification to provide better context—isn&rsquo;t just how you prompt AI effectively. It&rsquo;s how you build successful products, lead teams, and create value in an automated world.</p>
+<p>The bottleneck was never the code. It was never the analysis. It was never the prompt.</p>
+<p><strong>The bottleneck is context. It always has been.</strong></p>
+<p>And that&rsquo;s exactly where humans excel—if we choose to think consciously about it.</p>
+<hr>
+<h2 id="references">References<a hidden class="anchor" aria-hidden="true" href="#references">#</a></h2>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>LangChain. (2025, June). &ldquo;The Rise of Context Engineering.&rdquo; <a href="https://blog.langchain.com/the-rise-of-context-engineering/">https://blog.langchain.com/the-rise-of-context-engineering/</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>Karpathy, A. (2025). Referenced in Simon Willison. &ldquo;Context Engineering.&rdquo; <a href="https://simonwillison.net/2025/Jun/27/context-engineering/">https://simonwillison.net/2025/Jun/27/context-engineering/</a>&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p>Lutke, T. (2025). Referenced in Philipp Schmid. &ldquo;The New Skill in AI is Not Prompting, It&rsquo;s Context Engineering.&rdquo; <a href="https://www.philschmid.de/context-engineering">https://www.philschmid.de/context-engineering</a>&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://mz462.github.io/tags/ai/">AI</a></li>
+      <li><a href="https://mz462.github.io/tags/product-management/">Product Management</a></li>
+      <li><a href="https://mz462.github.io/tags/communication/">Communication</a></li>
+      <li><a href="https://mz462.github.io/tags/context-engineering/">Context Engineering</a></li>
+      <li><a href="https://mz462.github.io/tags/reflection/">Reflection</a></li>
+      <li><a href="https://mz462.github.io/tags/personal-growth/">Personal Growth</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="next" href="https://mz462.github.io/posts/my-first-post/">
+    <span class="title">Next »</span>
+    <br>
+    <span>Starting This Blog: Musings on AI, Learning, and Conscious Effort</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2025 <a href="https://mz462.github.io/">MJ&#39;s Blog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>
