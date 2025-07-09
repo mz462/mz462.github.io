@@ -1,26 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Product Management on MJ&#39;s Blog</title>
-    <link>https://mz462.github.io/tags/product-management/</link>
-    <description>Recent content in Product Management on MJ&#39;s Blog</description>
+    <title>Enterprise AI on MJ&#39;s Blog</title>
+    <link>https://mz462.github.io/tags/enterprise-ai/</link>
+    <description>Recent content in Enterprise AI on MJ&#39;s Blog</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 09 Jul 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://mz462.github.io/tags/product-management/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://mz462.github.io/tags/enterprise-ai/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Why Can&#39;t LLMs Say &#39;I Don&#39;t Know&#39;?</title>
       <link>https://mz462.github.io/posts/why-cant-llms-say-i-dont-know/</link>
       <pubDate>Wed, 09 Jul 2025 00:00:00 +0000</pubDate>
       <guid>https://mz462.github.io/posts/why-cant-llms-say-i-dont-know/</guid>
       <description>A deep dive into why AI models struggle with uncertainty, what Anthropic discovered about hallucination mechanisms, and practical strategies for reducing AI hallucinations in both personal and enterprise contexts.</description>
-    </item>
-    <item>
-      <title>Three Months Later: From Prompt Engineering to Context Engineering (And Why I&#39;ve Been Doing It With Humans All Along)</title>
-      <link>https://mz462.github.io/posts/three-months-later/</link>
-      <pubDate>Tue, 08 Jul 2025 00:00:00 +0000</pubDate>
-      <guid>https://mz462.github.io/posts/three-months-later/</guid>
-      <description>A three-month reflection on AI developments, the shift from prompt to context engineering, and how Product Management taught me to debug human communication.</description>
     </item>
   </channel>
 </rss>

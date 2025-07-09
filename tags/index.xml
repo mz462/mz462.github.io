@@ -6,13 +6,55 @@
     <description>Recent content in Tags on MJ&#39;s Blog</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 08 Jul 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 09 Jul 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://mz462.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>AI</title>
       <link>https://mz462.github.io/tags/ai/</link>
-      <pubDate>Tue, 08 Jul 2025 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 09 Jul 2025 00:00:00 +0000</pubDate>
       <guid>https://mz462.github.io/tags/ai/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Context Engineering</title>
+      <link>https://mz462.github.io/tags/context-engineering/</link>
+      <pubDate>Wed, 09 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>https://mz462.github.io/tags/context-engineering/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Enterprise AI</title>
+      <link>https://mz462.github.io/tags/enterprise-ai/</link>
+      <pubDate>Wed, 09 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>https://mz462.github.io/tags/enterprise-ai/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Hallucination</title>
+      <link>https://mz462.github.io/tags/hallucination/</link>
+      <pubDate>Wed, 09 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>https://mz462.github.io/tags/hallucination/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Human Cognition</title>
+      <link>https://mz462.github.io/tags/human-cognition/</link>
+      <pubDate>Wed, 09 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>https://mz462.github.io/tags/human-cognition/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>LLM</title>
+      <link>https://mz462.github.io/tags/llm/</link>
+      <pubDate>Wed, 09 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>https://mz462.github.io/tags/llm/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Product Management</title>
+      <link>https://mz462.github.io/tags/product-management/</link>
+      <pubDate>Wed, 09 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>https://mz462.github.io/tags/product-management/</guid>
       <description></description>
     </item>
     <item>
@@ -23,24 +65,10 @@
       <description></description>
     </item>
     <item>
-      <title>Context Engineering</title>
-      <link>https://mz462.github.io/tags/context-engineering/</link>
-      <pubDate>Tue, 08 Jul 2025 00:00:00 +0000</pubDate>
-      <guid>https://mz462.github.io/tags/context-engineering/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Personal Growth</title>
       <link>https://mz462.github.io/tags/personal-growth/</link>
       <pubDate>Tue, 08 Jul 2025 00:00:00 +0000</pubDate>
       <guid>https://mz462.github.io/tags/personal-growth/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Product Management</title>
-      <link>https://mz462.github.io/tags/product-management/</link>
-      <pubDate>Tue, 08 Jul 2025 00:00:00 +0000</pubDate>
-      <guid>https://mz462.github.io/tags/product-management/</guid>
       <description></description>
     </item>
     <item>

@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Why Can&#39;t LLMs Say &#39;I Don&#39;t Know&#39;? | MJ&#39;s Blog</title>
+<meta name="keywords" content="AI, LLM, hallucination, product management, context engineering, human cognition, enterprise AI">
+<meta name="description" content="A deep dive into why AI models struggle with uncertainty, what Anthropic discovered about hallucination mechanisms, and practical strategies for reducing AI hallucinations in both personal and enterprise contexts.">
+<meta name="author" content="">
+<link rel="canonical" href="https://mz462.github.io/posts/why-cant-llms-say-i-dont-know/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.f49d66caae9ea0fd43f21f29e71a8d3e284517ed770f2aa86fa012953ad3c9ef.css" integrity="sha256-9J1myq6eoP1D8h8p5xqNPihFF&#43;13Dyqob6ASlTrTye8=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://mz462.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://mz462.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://mz462.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://mz462.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://mz462.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://mz462.github.io/posts/why-cant-llms-say-i-dont-know/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:url" content="https://mz462.github.io/posts/why-cant-llms-say-i-dont-know/">
+  <meta property="og:site_name" content="MJ&#39;s Blog">
+  <meta property="og:title" content="Why Can&#39;t LLMs Say &#39;I Don&#39;t Know&#39;?">
+  <meta property="og:description" content="A deep dive into why AI models struggle with uncertainty, what Anthropic discovered about hallucination mechanisms, and practical strategies for reducing AI hallucinations in both personal and enterprise contexts.">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-07-09T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-07-09T00:00:00+00:00">
+    <meta property="article:tag" content="AI">
+    <meta property="article:tag" content="LLM">
+    <meta property="article:tag" content="Hallucination">
+    <meta property="article:tag" content="Product Management">
+    <meta property="article:tag" content="Context Engineering">
+    <meta property="article:tag" content="Human Cognition">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Why Can&#39;t LLMs Say &#39;I Don&#39;t Know&#39;?">
+<meta name="twitter:description" content="A deep dive into why AI models struggle with uncertainty, what Anthropic discovered about hallucination mechanisms, and practical strategies for reducing AI hallucinations in both personal and enterprise contexts.">
+      <meta name="twitter:site" content="@emjayzo">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://mz462.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Why Can't LLMs Say 'I Don't Know'?",
+      "item": "https://mz462.github.io/posts/why-cant-llms-say-i-dont-know/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Why Can't LLMs Say 'I Don't Know'?",
+  "name": "Why Can\u0027t LLMs Say \u0027I Don\u0027t Know\u0027?",
+  "description": "A deep dive into why AI models struggle with uncertainty, what Anthropic discovered about hallucination mechanisms, and practical strategies for reducing AI hallucinations in both personal and enterprise contexts.",
+  "keywords": [
+    "AI", "LLM", "hallucination", "product management", "context engineering", "human cognition", "enterprise AI"
+  ],
+  "articleBody": "Opening “The downside of using deep research is that we can’t control the credibility of the sources, and it could lead to heavy hallucination.”\nMy tech lead paused after saying this during our POC discussion. We were debating whether to integrate OpenAI’s new deep research models—o3-deep-research and o4-mini-deep-research—into our product, and the conversation had taken that familiar turn—the one where everyone nods knowingly about “hallucinations” without really understanding what’s happening under the hood.\nAfter some back-and-forth, we agreed the solution was “setting expectations with users.” Classic product management: when you can’t solve the technical problem, manage the human problem.\nBut as I walked away from that meeting, I remembered reading something from Anthropic about hallucinations that challenged my assumptions. That evening, I fell into a rabbit hole of research papers and blog posts, chasing a simple question that had been nagging at me:\nIf LLMs work like humans, why can humans confidently say “I don’t know” but LLMs seem to struggle with it?\nWhat I discovered was both more fascinating and more practical than I expected.\nWhat Anthropic Actually Found Here’s where things get interesting. I expected to find research about making LLMs smarter or more cautious. Instead, Anthropic’s 2025 research revealed something counter-intuitive: Claude’s default behavior is actually to decline answering questions.1\nLet me repeat that: the model’s natural inclination is to not answer.\nAccording to their paper “Tracing the thoughts of a large language model,” Claude has internal neural circuits that act like a decision-making system. Think of it as an internal debate: “Do I know enough about this to respond, or should I stay quiet?”\nThe researchers found that Claude only answers questions when something actively inhibits this default reluctance. It’s like having a naturally shy person who only speaks up when they’re really confident about something.\nSo if that’s the case, why do we still get hallucinations?\nThe circuit misfires.\nThrough intervention experiments, Anthropic could artificially activate the “known answer” features in Claude’s neural network. When they did this, they could make the model consistently hallucinate that “Michael Batkin plays chess” (a fictional fact). Sometimes, this sort of “misfire” happens naturally, without any intervention—and that’s when we get hallucinations.\nIt’s not that the model is trying to be helpful by making things up. It’s that the internal system responsible for saying “I don’t know” occasionally gets it wrong and thinks it knows something it doesn’t.\nThis discovery flipped my understanding completely. The problem isn’t that LLMs are too eager to answer—it’s that their internal “should I answer this?” mechanism sometimes malfunctions.\nThe Fundamental Difference: Human vs. LLM “Hallucination” But this raised an even bigger question for me: if LLMs have mechanisms similar to humans for deciding when to speak, why do humans seem so much better at saying “I don’t know”?\nThe answer lies in a fundamental misunderstanding of what’s actually happening when LLMs “hallucinate.”\nIt’s Not Really Hallucination Cognitive scientists have been pushing back on the term “hallucination” for LLMs. In humans, hallucination involves perceiving things that aren’t there—seeing, hearing, or feeling something that doesn’t exist in reality. But LLMs don’t perceive anything. They don’t have sensory experiences.\nA more accurate term might be “confabulation”—when someone fills in gaps in their memory with plausible but false information.2 This happens to humans too, but the underlying mechanisms are completely different.\nSystem 1 vs. System 2 Thinking Remember Daniel Kahneman’s “Thinking, Fast and Slow”? He describes two modes of human cognition:\nSystem 1: Fast, automatic, intuitive responses System 2: Slow, deliberate, analytical thinking When humans say “I don’t know,” we’re often engaging System 2—we pause, reflect on our knowledge, and make a conscious decision about our certainty level.\nLLMs, on the other hand, are essentially stuck in System 1. They generate responses by predicting the most likely next word based on patterns in their training data. There’s no deliberate reflection, no stepping back to assess confidence levels.\nBut Wait—What About Reasoning Models? Here’s where things get really interesting, and frankly, concerning. You’d think that reasoning models like OpenAI’s o1 and o3—the ones that can engage in “System 2” thinking—would be better at saying “I don’t know,” right?\nThey’re actually worse.\nAccording to OpenAI’s own internal testing, their newer reasoning models hallucinate more frequently than their predecessors:3\no1: 16% hallucination rate on PersonQA benchmark o3: 33% hallucination rate (roughly double) o4-mini: 48% hallucination rate For comparison, the non-reasoning GPT-4o had a 30% hallucination rate, while GPT-4.5 achieved 19%.\nThis completely breaks the historical trend where each new model incrementally hallucinated less than the previous one. OpenAI admits they don’t really know why this is happening, writing in their technical report that “more research is needed” to understand why hallucinations are getting worse as they scale up reasoning models.\nThe working theory? The reinforcement learning used for reasoning models may amplify issues that are usually mitigated by standard training pipelines. Because these models generate more detailed responses, they make “more accurate claims as well as more inaccurate/hallucinated claims.”\nIt’s like giving someone more time to think makes them more confident in both their correct and incorrect answers.\nThe Training Data Problem Here’s where it gets really interesting. LLMs struggle with “I don’t know” partly because of how they’re trained. Think about it: when you’re browsing the internet (where most training data comes from), you either find information about a topic or you don’t. People rarely write “I don’t know” about things they don’t know—they just don’t write about them at all.\nSo LLMs rarely see examples of confident uncertainty in their training data. They’re optimized to always generate something, because that’s what their training taught them to do.\nThe Business Pressure Factor There’s also a more pragmatic reason: user expectations. Companies deploying AI want their models to be helpful. A chatbot that frequently says “I don’t know” might be seen as ineffective. Users often prefer a model that tries to help, even if it occasionally gets things wrong, over one that regularly admits ignorance.\nAs one researcher put it: “Users will say your model is lazy and doesn’t even try, whereas if you train it to be more likely to produce something that looks like a solution more often, people will think ‘wow, the AI solved this problem I couldn’t solve.’”4\nThe Metacognitive Gap (And Why Humans Aren’t Perfect Either) But here’s the key difference: humans have metacognitive awareness. We can think about our own thinking. When you ask me about quantum physics, I can reflect on my knowledge and confidently say “I don’t know much about that.” I have a sense of the boundaries of my knowledge.\nBut let’s be honest—humans make plenty of mistakes too.\nResearch shows that human error rates are often surprisingly high. In medical diagnosis, primary care doctors misdiagnose about 5% of patients. In journalism, American newspapers had factual errors in 61% of stories. When humans claimed to be 100% certain in knowledge tasks, they were still wrong 20% of the time.5\nBy comparison, ChatGPT hallucinates about 27% of the time according to 2023 estimates—not dramatically different from human error rates in many domains.\nThe crucial difference isn’t accuracy—it’s uncertainty acknowledgment.\nWhen Columbia Journalism Review tested ChatGPT on 200 quotes, it falsely attributed 76% of them but only indicated uncertainty in 7 out of 153 cases where it was wrong.6 Humans, despite our overconfidence bias, still retain the capacity to say “I don’t know” when we recognize we’re at the limits of our knowledge.\nLLMs don’t have this self-awareness. They can’t step back and assess their own knowledge state. They’re pattern-matching machines that generate the most statistically likely next word based on their training, without any real understanding of what they do or don’t “know.”\nThe goal isn’t perfection—it’s building AI systems that can acknowledge their limitations as humans naturally do, even if imperfectly.\nWhat Can We Muggles Do About It? So here we are: reasoning models that hallucinate more than their predecessors, training data that rarely includes “I don’t know,” and business pressures that reward confident responses over cautious ones.\nSounds hopeless? It’s not. While we can’t fix the underlying architecture, we can dramatically improve our interactions with these systems through better prompting techniques. Think of it as context engineering for uncertainty management.\n1. “According to…” Prompting This is probably the easiest and most effective technique. Instead of asking “What causes climate change?” try “According to scientific consensus, what causes climate change?”\nThis guides the model to ground its response in specific sources rather than generating from general training patterns. It’s like giving the model a specific knowledge base to draw from rather than asking it to freestyle.\nExample:\n❌ “How do vaccines work?” ✅ “According to medical literature, how do vaccines work?” 2. Progressive Prompting Start broad, then narrow down. This helps you identify when the model is moving from confident territory into speculation.7\nExample:\nFirst: “What do you know about renewable energy policy?” Then: “What specific policies were implemented in Germany in 2023?” Finally: “What was the exact impact on household electricity costs?” Watch for the point where responses become vague or overly general—that’s often where hallucination risk increases.\n3. Role-Based Prompting Ask the AI to respond as a specific expert who would naturally acknowledge limitations.\nExample:\n❌ “Explain this medical condition.” ✅ “As a medical researcher, explain this condition, including what aspects are well-understood and what remains uncertain.” 4. Set Output Constraints Shorter, more focused answers reduce the chances of drift into hallucination territory.\nExample:\n❌ “Tell me everything about artificial intelligence.” ✅ “In 100 words, explain the main types of machine learning.” 5. The 3-6 Second Rule (Applied to AI) Remember that 3-6 second pause I developed for human communication? It works for AI too. Before hitting send, pause and ask yourself:\nAm I providing enough context for this request? Could this question be interpreted in multiple ways? Am I asking for information that might not exist or be verifiable? This connects directly to the context engineering insights from my previous post—better context leads to better responses, whether you’re “prompting” humans or machines.\nEnterprise Implications: When Stakes Are Higher While these prompting techniques help individual users, enterprises dealing with customer support, financial research, or technical documentation need more systematic approaches. This is where architectural solutions become crucial.\nRetrieval-Augmented Generation (RAG): The Double-Edged Sword I’ll admit, I’m usually skeptical when people immediately jump to RAG as the solution for everything. But for hallucination reduction, it’s actually one of the most effective approaches we have.\nRAG works by giving the model access to specific, verified information sources before it generates a response. Instead of relying purely on training data, the model can “look up” relevant information and ground its responses in those sources.\nThe results are significant: A 2024 Stanford study found that combining RAG with other techniques led to a 96% reduction in hallucinations compared to baseline models. In healthcare, RAG-powered tools reduced diagnostic errors by 15%.8\nBut there’s a catch: “hallucination with citations.” Models can still confidently generate incorrect responses while citing real sources that don’t actually support their claims. It’s like having a research assistant who finds the right papers but misunderstands what they say.\nGrounding and Attribution Technologies This is where newer approaches like Contextual AI’s “groundedness” technology become interesting. Instead of just retrieving information, these systems are designed to “stick to the knowledge sources you give them.”9\nKey features include:\nInline attributions: Source citations integrated directly into responses Faithfulness prioritization: Prioritizing retrieved knowledge over training data Controllable groundedness: Settings to manage how strictly the model adheres to sources Think of it as the difference between a research assistant who paraphrases everything in their own words versus one who quotes directly from sources and tells you exactly where each piece of information came from.\nThe Enterprise Trade-off For enterprises, the calculation is different than for individual users. When a hallucination could mean misrepresenting company policy to customers or providing incorrect financial advice, the cost of verification becomes worth it.\nBut these solutions aren’t magic bullets. They require:\nHigh-quality data sources (garbage in, garbage out) Robust data governance (who maintains the knowledge base?) Clear attribution chains (can we trace claims back to sources?) Regular auditing (are our sources current and accurate?) The enterprise lesson? Reducing hallucinations isn’t just about better prompting—it’s about building systems that can reliably distinguish between what they know and what they’re guessing.\nThe Bigger Picture Understanding hallucination mechanisms doesn’t just make us better at using AI—it makes us better at recognizing our own cognitive limitations. When I catch myself confidently stating something I’m not sure about, I think of Claude’s misfiring circuits. When I see a colleague jumping to conclusions without enough context, I think about System 1 vs. System 2 thinking.\nThe goal isn’t to eliminate uncertainty—it’s to become more conscious about when we’re operating in uncertain territory, whether we’re human or machine.\nSo why can’t LLMs say “I don’t know”? Because they’re designed to always generate something, trained on data that rarely models uncertainty, and rewarded for helpfulness over accuracy. But more importantly, they lack the metacognitive awareness that allows humans to recognize the boundaries of their knowledge.\nThe solution isn’t waiting for perfect AI. It’s becoming better context engineers—for both humans and machines.\nBack in that POC meeting, when my tech lead mentioned hallucination concerns, we were right to take them seriously. But now I understand that “setting expectations with users” isn’t just about disclaimers—it’s about building systems and processes that acknowledge uncertainty as a feature, not a bug.\nWhether we’re implementing RAG systems, training users on better prompting techniques, or just having more honest conversations about AI limitations, the path forward requires the same conscious effort I committed to in my first blog post.\nThe conscious effort to think deliberately about where the boundaries of knowledge lie—and to say “I don’t know” when we’re crossing them.\nReferences Anthropic. (2025). “Tracing the thoughts of a large language model.” https://www.anthropic.com/research/tracing-thoughts-language-model ↩︎\nIntegrative Psychology. (2025). “Hallucination vs. Confabulation: Rethinking AI Error Terminology.” https://www.integrative-psych.org/resources/confabulation-not-hallucination-ai-errors ↩︎\nTechCrunch. (2025). “OpenAI’s new reasoning AI models hallucinate more.” https://techcrunch.com/2025/04/18/openais-new-reasoning-ai-models-hallucinate-more/ ↩︎\nHacker News. (2023). “Why isn’t it possible to design LLMs that say ‘I don’t know’?” https://news.ycombinator.com/item?id=37126823 ↩︎\nCSIRO. (2023). “Both humans and AI hallucinate — but not in the same way.” https://www.csiro.au/en/news/all/articles/2023/june/humans-and-ai-hallucinate ↩︎\nColumbia Journalism Review. (2024). Referenced in various studies on AI accuracy in journalism. ↩︎\nGod of Prompt AI. (2024). “9 Prompt Engineering Methods to Reduce Hallucinations.” https://www.godofprompt.ai/blog/9-prompt-engineering-methods-to-reduce-hallucinations-proven-tips ↩︎\nVellum AI. (2024). “3 Recommended Strategies to Reduce LLM Hallucinations.” https://www.vellum.ai/blog/how-to-reduce-llm-hallucinations ↩︎\nContextual AI. (2024). “Introducing Grounded Language Model.” https://contextual.ai/blog/introducing-grounded-language-model/ ↩︎\n",
+  "wordCount" : "2415",
+  "inLanguage": "en",
+  "datePublished": "2025-07-09T00:00:00Z",
+  "dateModified": "2025-07-09T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://mz462.github.io/posts/why-cant-llms-say-i-dont-know/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "MJ's Blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://mz462.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://mz462.github.io/" accesskey="h" title="MJ&#39;s Blog (Alt + H)">MJ&#39;s Blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://mz462.github.io/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://mz462.github.io/search/" title="Search">
+                    <span>Search</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://mz462.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://mz462.github.io/posts/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Why Can&#39;t LLMs Say &#39;I Don&#39;t Know&#39;?
+    </h1>
+    <div class="post-description">
+      A deep dive into why AI models struggle with uncertainty, what Anthropic discovered about hallucination mechanisms, and practical strategies for reducing AI hallucinations in both personal and enterprise contexts.
+    </div>
+    <div class="post-meta"><span title='2025-07-09 00:00:00 +0000 UTC'>July 9, 2025</span>&nbsp;·&nbsp;12 min&nbsp;·&nbsp;2415 words
+
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#opening" aria-label="Opening">Opening</a></li>
+                <li>
+                    <a href="#what-anthropic-actually-found" aria-label="What Anthropic Actually Found">What Anthropic Actually Found</a></li>
+                <li>
+                    <a href="#the-fundamental-difference-human-vs-llm-hallucination" aria-label="The Fundamental Difference: Human vs. LLM &ldquo;Hallucination&rdquo;">The Fundamental Difference: Human vs. LLM &ldquo;Hallucination&rdquo;</a><ul>
+                        
+                <li>
+                    <a href="#its-not-really-hallucination" aria-label="It&rsquo;s Not Really Hallucination">It&rsquo;s Not Really Hallucination</a></li>
+                <li>
+                    <a href="#system-1-vs-system-2-thinking" aria-label="System 1 vs. System 2 Thinking">System 1 vs. System 2 Thinking</a></li>
+                <li>
+                    <a href="#but-waitwhat-about-reasoning-models" aria-label="But Wait—What About Reasoning Models?">But Wait—What About Reasoning Models?</a></li>
+                <li>
+                    <a href="#the-training-data-problem" aria-label="The Training Data Problem">The Training Data Problem</a></li>
+                <li>
+                    <a href="#the-business-pressure-factor" aria-label="The Business Pressure Factor">The Business Pressure Factor</a></li>
+                <li>
+                    <a href="#the-metacognitive-gap-and-why-humans-arent-perfect-either" aria-label="The Metacognitive Gap (And Why Humans Aren&rsquo;t Perfect Either)">The Metacognitive Gap (And Why Humans Aren&rsquo;t Perfect Either)</a></li></ul>
+                </li>
+                <li>
+                    <a href="#what-can-we-muggles-do-about-it" aria-label="What Can We Muggles Do About It?">What Can We Muggles Do About It?</a><ul>
+                        
+                <li>
+                    <a href="#1-" aria-label="1. &ldquo;According to&hellip;&rdquo; Prompting">1. &ldquo;According to&hellip;&rdquo; Prompting</a></li>
+                <li>
+                    <a href="#2-progressive-prompting" aria-label="2. Progressive Prompting">2. Progressive Prompting</a></li>
+                <li>
+                    <a href="#3-role-based-prompting" aria-label="3. Role-Based Prompting">3. Role-Based Prompting</a></li>
+                <li>
+                    <a href="#4-set-output-constraints" aria-label="4. Set Output Constraints">4. Set Output Constraints</a></li>
+                <li>
+                    <a href="#5-the-3-6-second-rule-applied-to-ai" aria-label="5. The 3-6 Second Rule (Applied to AI)">5. The 3-6 Second Rule (Applied to AI)</a></li></ul>
+                </li>
+                <li>
+                    <a href="#enterprise-implications-when-stakes-are-higher" aria-label="Enterprise Implications: When Stakes Are Higher">Enterprise Implications: When Stakes Are Higher</a><ul>
+                        
+                <li>
+                    <a href="#retrieval-augmented-generation-rag-the-double-edged-sword" aria-label="Retrieval-Augmented Generation (RAG): The Double-Edged Sword">Retrieval-Augmented Generation (RAG): The Double-Edged Sword</a></li>
+                <li>
+                    <a href="#grounding-and-attribution-technologies" aria-label="Grounding and Attribution Technologies">Grounding and Attribution Technologies</a></li>
+                <li>
+                    <a href="#the-enterprise-trade-off" aria-label="The Enterprise Trade-off">The Enterprise Trade-off</a></li></ul>
+                </li>
+                <li>
+                    <a href="#the-bigger-picture" aria-label="The Bigger Picture">The Bigger Picture</a></li>
+                <li>
+                    <a href="#references" aria-label="References">References</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h2 id="opening">Opening<a hidden class="anchor" aria-hidden="true" href="#opening">#</a></h2>
+<p>&ldquo;The downside of using deep research is that we can&rsquo;t control the credibility of the sources, and it could lead to heavy hallucination.&rdquo;</p>
+<p>My tech lead paused after saying this during our POC discussion. We were debating whether to integrate OpenAI&rsquo;s new deep research models—o3-deep-research and o4-mini-deep-research—into our product, and the conversation had taken that familiar turn—the one where everyone nods knowingly about &ldquo;hallucinations&rdquo; without really understanding what&rsquo;s happening under the hood.</p>
+<p>After some back-and-forth, we agreed the solution was &ldquo;setting expectations with users.&rdquo; Classic product management: when you can&rsquo;t solve the technical problem, manage the human problem.</p>
+<p>But as I walked away from that meeting, I remembered reading something from Anthropic about hallucinations that challenged my assumptions. That evening, I fell into a rabbit hole of research papers and blog posts, chasing a simple question that had been nagging at me:</p>
+<p><strong>If LLMs work like humans, why can humans confidently say &ldquo;I don&rsquo;t know&rdquo; but LLMs seem to struggle with it?</strong></p>
+<p>What I discovered was both more fascinating and more practical than I expected.</p>
+<h2 id="what-anthropic-actually-found">What Anthropic Actually Found<a hidden class="anchor" aria-hidden="true" href="#what-anthropic-actually-found">#</a></h2>
+<p>Here&rsquo;s where things get interesting. I expected to find research about making LLMs smarter or more cautious. Instead, Anthropic&rsquo;s 2025 research revealed something counter-intuitive: <strong>Claude&rsquo;s default behavior is actually to decline answering questions.</strong><sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
+<p>Let me repeat that: the model&rsquo;s natural inclination is to <em>not</em> answer.</p>
+<p>According to their paper &ldquo;Tracing the thoughts of a large language model,&rdquo; Claude has internal neural circuits that act like a decision-making system. Think of it as an internal debate: &ldquo;Do I know enough about this to respond, or should I stay quiet?&rdquo;</p>
+<p>The researchers found that Claude only answers questions when something actively <em>inhibits</em> this default reluctance. It&rsquo;s like having a naturally shy person who only speaks up when they&rsquo;re really confident about something.</p>
+<p>So if that&rsquo;s the case, why do we still get hallucinations?</p>
+<p><strong>The circuit misfires.</strong></p>
+<p>Through intervention experiments, Anthropic could artificially activate the &ldquo;known answer&rdquo; features in Claude&rsquo;s neural network. When they did this, they could make the model consistently hallucinate that &ldquo;Michael Batkin plays chess&rdquo; (a fictional fact). Sometimes, this sort of &ldquo;misfire&rdquo; happens naturally, without any intervention—and that&rsquo;s when we get hallucinations.</p>
+<p>It&rsquo;s not that the model is trying to be helpful by making things up. It&rsquo;s that the internal system responsible for saying &ldquo;I don&rsquo;t know&rdquo; occasionally gets it wrong and thinks it knows something it doesn&rsquo;t.</p>
+<p>This discovery flipped my understanding completely. The problem isn&rsquo;t that LLMs are too eager to answer—it&rsquo;s that their internal &ldquo;should I answer this?&rdquo; mechanism sometimes malfunctions.</p>
+<h2 id="the-fundamental-difference-human-vs-llm-hallucination">The Fundamental Difference: Human vs. LLM &ldquo;Hallucination&rdquo;<a hidden class="anchor" aria-hidden="true" href="#the-fundamental-difference-human-vs-llm-hallucination">#</a></h2>
+<p>But this raised an even bigger question for me: if LLMs have mechanisms similar to humans for deciding when to speak, why do humans seem so much better at saying &ldquo;I don&rsquo;t know&rdquo;?</p>
+<p>The answer lies in a fundamental misunderstanding of what&rsquo;s actually happening when LLMs &ldquo;hallucinate.&rdquo;</p>
+<h3 id="its-not-really-hallucination">It&rsquo;s Not Really Hallucination<a hidden class="anchor" aria-hidden="true" href="#its-not-really-hallucination">#</a></h3>
+<p>Cognitive scientists have been pushing back on the term &ldquo;hallucination&rdquo; for LLMs. In humans, hallucination involves perceiving things that aren&rsquo;t there—seeing, hearing, or feeling something that doesn&rsquo;t exist in reality. But LLMs don&rsquo;t perceive anything. They don&rsquo;t have sensory experiences.</p>
+<p>A more accurate term might be &ldquo;confabulation&rdquo;—when someone fills in gaps in their memory with plausible but false information.<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> This happens to humans too, but the underlying mechanisms are completely different.</p>
+<h3 id="system-1-vs-system-2-thinking">System 1 vs. System 2 Thinking<a hidden class="anchor" aria-hidden="true" href="#system-1-vs-system-2-thinking">#</a></h3>
+<p>Remember Daniel Kahneman&rsquo;s &ldquo;Thinking, Fast and Slow&rdquo;? He describes two modes of human cognition:</p>
+<ul>
+<li><strong>System 1</strong>: Fast, automatic, intuitive responses</li>
+<li><strong>System 2</strong>: Slow, deliberate, analytical thinking</li>
+</ul>
+<p>When humans say &ldquo;I don&rsquo;t know,&rdquo; we&rsquo;re often engaging System 2—we pause, reflect on our knowledge, and make a conscious decision about our certainty level.</p>
+<p>LLMs, on the other hand, are essentially stuck in System 1. They generate responses by predicting the most likely next word based on patterns in their training data. There&rsquo;s no deliberate reflection, no stepping back to assess confidence levels.</p>
+<h3 id="but-waitwhat-about-reasoning-models">But Wait—What About Reasoning Models?<a hidden class="anchor" aria-hidden="true" href="#but-waitwhat-about-reasoning-models">#</a></h3>
+<p>Here&rsquo;s where things get really interesting, and frankly, concerning. You&rsquo;d think that reasoning models like OpenAI&rsquo;s o1 and o3—the ones that can engage in &ldquo;System 2&rdquo; thinking—would be better at saying &ldquo;I don&rsquo;t know,&rdquo; right?</p>
+<p><strong>They&rsquo;re actually worse.</strong></p>
+<p>According to OpenAI&rsquo;s own internal testing, their newer reasoning models hallucinate <em>more</em> frequently than their predecessors:<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup></p>
+<ul>
+<li><strong>o1</strong>: 16% hallucination rate on PersonQA benchmark</li>
+<li><strong>o3</strong>: 33% hallucination rate (roughly double)</li>
+<li><strong>o4-mini</strong>: 48% hallucination rate</li>
+</ul>
+<p>For comparison, the non-reasoning GPT-4o had a 30% hallucination rate, while GPT-4.5 achieved 19%.</p>
+<p>This completely breaks the historical trend where each new model incrementally hallucinated less than the previous one. OpenAI admits they don&rsquo;t really know why this is happening, writing in their technical report that &ldquo;more research is needed&rdquo; to understand why hallucinations are getting worse as they scale up reasoning models.</p>
+<p>The working theory? The reinforcement learning used for reasoning models may amplify issues that are usually mitigated by standard training pipelines. Because these models generate more detailed responses, they make &ldquo;more accurate claims as well as more inaccurate/hallucinated claims.&rdquo;</p>
+<p>It&rsquo;s like giving someone more time to think makes them more confident in both their correct <em>and</em> incorrect answers.</p>
+<h3 id="the-training-data-problem">The Training Data Problem<a hidden class="anchor" aria-hidden="true" href="#the-training-data-problem">#</a></h3>
+<p>Here&rsquo;s where it gets really interesting. LLMs struggle with &ldquo;I don&rsquo;t know&rdquo; partly because of how they&rsquo;re trained. Think about it: when you&rsquo;re browsing the internet (where most training data comes from), you either find information about a topic or you don&rsquo;t. People rarely write &ldquo;I don&rsquo;t know&rdquo; about things they don&rsquo;t know—they just don&rsquo;t write about them at all.</p>
+<p>So LLMs rarely see examples of confident uncertainty in their training data. They&rsquo;re optimized to always generate something, because that&rsquo;s what their training taught them to do.</p>
+<h3 id="the-business-pressure-factor">The Business Pressure Factor<a hidden class="anchor" aria-hidden="true" href="#the-business-pressure-factor">#</a></h3>
+<p>There&rsquo;s also a more pragmatic reason: user expectations. Companies deploying AI want their models to be helpful. A chatbot that frequently says &ldquo;I don&rsquo;t know&rdquo; might be seen as ineffective. Users often prefer a model that tries to help, even if it occasionally gets things wrong, over one that regularly admits ignorance.</p>
+<p>As one researcher put it: &ldquo;Users will say your model is lazy and doesn&rsquo;t even try, whereas if you train it to be more likely to produce something that looks like a solution more often, people will think &lsquo;wow, the AI solved this problem I couldn&rsquo;t solve.&rsquo;&rdquo;<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup></p>
+<h3 id="the-metacognitive-gap-and-why-humans-arent-perfect-either">The Metacognitive Gap (And Why Humans Aren&rsquo;t Perfect Either)<a hidden class="anchor" aria-hidden="true" href="#the-metacognitive-gap-and-why-humans-arent-perfect-either">#</a></h3>
+<p>But here&rsquo;s the key difference: humans have metacognitive awareness. We can think about our own thinking. When you ask me about quantum physics, I can reflect on my knowledge and confidently say &ldquo;I don&rsquo;t know much about that.&rdquo; I have a sense of the boundaries of my knowledge.</p>
+<p><strong>But let&rsquo;s be honest—humans make plenty of mistakes too.</strong></p>
+<p>Research shows that human error rates are often surprisingly high. In medical diagnosis, primary care doctors misdiagnose about 5% of patients. In journalism, American newspapers had factual errors in 61% of stories. When humans claimed to be 100% certain in knowledge tasks, they were still wrong 20% of the time.<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup></p>
+<p>By comparison, ChatGPT hallucinates about 27% of the time according to 2023 estimates—not dramatically different from human error rates in many domains.</p>
+<p><strong>The crucial difference isn&rsquo;t accuracy—it&rsquo;s uncertainty acknowledgment.</strong></p>
+<p>When Columbia Journalism Review tested ChatGPT on 200 quotes, it falsely attributed 76% of them but only indicated uncertainty in 7 out of 153 cases where it was wrong.<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup> Humans, despite our overconfidence bias, still retain the capacity to say &ldquo;I don&rsquo;t know&rdquo; when we recognize we&rsquo;re at the limits of our knowledge.</p>
+<p>LLMs don&rsquo;t have this self-awareness. They can&rsquo;t step back and assess their own knowledge state. They&rsquo;re pattern-matching machines that generate the most statistically likely next word based on their training, without any real understanding of what they do or don&rsquo;t &ldquo;know.&rdquo;</p>
+<p>The goal isn&rsquo;t perfection—it&rsquo;s building AI systems that can acknowledge their limitations as humans naturally do, even if imperfectly.</p>
+<h2 id="what-can-we-muggles-do-about-it">What Can We Muggles Do About It?<a hidden class="anchor" aria-hidden="true" href="#what-can-we-muggles-do-about-it">#</a></h2>
+<p>So here we are: reasoning models that hallucinate more than their predecessors, training data that rarely includes &ldquo;I don&rsquo;t know,&rdquo; and business pressures that reward confident responses over cautious ones.</p>
+<p>Sounds hopeless? It&rsquo;s not. While we can&rsquo;t fix the underlying architecture, we can dramatically improve our interactions with these systems through better prompting techniques. Think of it as context engineering for uncertainty management.</p>
+<h3 id="1-">1. <strong>&ldquo;According to&hellip;&rdquo; Prompting</strong><a hidden class="anchor" aria-hidden="true" href="#1-">#</a></h3>
+<p>This is probably the easiest and most effective technique. Instead of asking &ldquo;What causes climate change?&rdquo; try &ldquo;According to scientific consensus, what causes climate change?&rdquo;</p>
+<p>This guides the model to ground its response in specific sources rather than generating from general training patterns. It&rsquo;s like giving the model a specific knowledge base to draw from rather than asking it to freestyle.</p>
+<p><strong>Example:</strong></p>
+<ul>
+<li>❌ &ldquo;How do vaccines work?&rdquo;</li>
+<li>✅ &ldquo;According to medical literature, how do vaccines work?&rdquo;</li>
+</ul>
+<h3 id="2-progressive-prompting">2. <strong>Progressive Prompting</strong><a hidden class="anchor" aria-hidden="true" href="#2-progressive-prompting">#</a></h3>
+<p>Start broad, then narrow down. This helps you identify when the model is moving from confident territory into speculation.<sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup></p>
+<p><strong>Example:</strong></p>
+<ul>
+<li>First: &ldquo;What do you know about renewable energy policy?&rdquo;</li>
+<li>Then: &ldquo;What specific policies were implemented in Germany in 2023?&rdquo;</li>
+<li>Finally: &ldquo;What was the exact impact on household electricity costs?&rdquo;</li>
+</ul>
+<p>Watch for the point where responses become vague or overly general—that&rsquo;s often where hallucination risk increases.</p>
+<h3 id="3-role-based-prompting">3. <strong>Role-Based Prompting</strong><a hidden class="anchor" aria-hidden="true" href="#3-role-based-prompting">#</a></h3>
+<p>Ask the AI to respond as a specific expert who would naturally acknowledge limitations.</p>
+<p><strong>Example:</strong></p>
+<ul>
+<li>❌ &ldquo;Explain this medical condition.&rdquo;</li>
+<li>✅ &ldquo;As a medical researcher, explain this condition, including what aspects are well-understood and what remains uncertain.&rdquo;</li>
+</ul>
+<h3 id="4-set-output-constraints">4. <strong>Set Output Constraints</strong><a hidden class="anchor" aria-hidden="true" href="#4-set-output-constraints">#</a></h3>
+<p>Shorter, more focused answers reduce the chances of drift into hallucination territory.</p>
+<p><strong>Example:</strong></p>
+<ul>
+<li>❌ &ldquo;Tell me everything about artificial intelligence.&rdquo;</li>
+<li>✅ &ldquo;In 100 words, explain the main types of machine learning.&rdquo;</li>
+</ul>
+<h3 id="5-the-3-6-second-rule-applied-to-ai">5. <strong>The 3-6 Second Rule (Applied to AI)</strong><a hidden class="anchor" aria-hidden="true" href="#5-the-3-6-second-rule-applied-to-ai">#</a></h3>
+<p>Remember that 3-6 second pause I developed for human communication? It works for AI too. Before hitting send, pause and ask yourself:</p>
+<ul>
+<li>Am I providing enough context for this request?</li>
+<li>Could this question be interpreted in multiple ways?</li>
+<li>Am I asking for information that might not exist or be verifiable?</li>
+</ul>
+<p>This connects directly to the context engineering insights from my previous post—better context leads to better responses, whether you&rsquo;re &ldquo;prompting&rdquo; humans or machines.</p>
+<h2 id="enterprise-implications-when-stakes-are-higher">Enterprise Implications: When Stakes Are Higher<a hidden class="anchor" aria-hidden="true" href="#enterprise-implications-when-stakes-are-higher">#</a></h2>
+<p>While these prompting techniques help individual users, enterprises dealing with customer support, financial research, or technical documentation need more systematic approaches. This is where architectural solutions become crucial.</p>
+<h3 id="retrieval-augmented-generation-rag-the-double-edged-sword">Retrieval-Augmented Generation (RAG): The Double-Edged Sword<a hidden class="anchor" aria-hidden="true" href="#retrieval-augmented-generation-rag-the-double-edged-sword">#</a></h3>
+<p>I&rsquo;ll admit, I&rsquo;m usually skeptical when people immediately jump to RAG as the solution for everything. But for hallucination reduction, it&rsquo;s actually one of the most effective approaches we have.</p>
+<p>RAG works by giving the model access to specific, verified information sources before it generates a response. Instead of relying purely on training data, the model can &ldquo;look up&rdquo; relevant information and ground its responses in those sources.</p>
+<p><strong>The results are significant</strong>: A 2024 Stanford study found that combining RAG with other techniques led to a 96% reduction in hallucinations compared to baseline models. In healthcare, RAG-powered tools reduced diagnostic errors by 15%.<sup id="fnref:8"><a href="#fn:8" class="footnote-ref" role="doc-noteref">8</a></sup></p>
+<p><strong>But there&rsquo;s a catch</strong>: &ldquo;hallucination with citations.&rdquo; Models can still confidently generate incorrect responses while citing real sources that don&rsquo;t actually support their claims. It&rsquo;s like having a research assistant who finds the right papers but misunderstands what they say.</p>
+<h3 id="grounding-and-attribution-technologies">Grounding and Attribution Technologies<a hidden class="anchor" aria-hidden="true" href="#grounding-and-attribution-technologies">#</a></h3>
+<p>This is where newer approaches like Contextual AI&rsquo;s &ldquo;groundedness&rdquo; technology become interesting. Instead of just retrieving information, these systems are designed to &ldquo;stick to the knowledge sources you give them.&rdquo;<sup id="fnref:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup></p>
+<p>Key features include:</p>
+<ul>
+<li><strong>Inline attributions</strong>: Source citations integrated directly into responses</li>
+<li><strong>Faithfulness prioritization</strong>: Prioritizing retrieved knowledge over training data</li>
+<li><strong>Controllable groundedness</strong>: Settings to manage how strictly the model adheres to sources</li>
+</ul>
+<p>Think of it as the difference between a research assistant who paraphrases everything in their own words versus one who quotes directly from sources and tells you exactly where each piece of information came from.</p>
+<h3 id="the-enterprise-trade-off">The Enterprise Trade-off<a hidden class="anchor" aria-hidden="true" href="#the-enterprise-trade-off">#</a></h3>
+<p>For enterprises, the calculation is different than for individual users. When a hallucination could mean misrepresenting company policy to customers or providing incorrect financial advice, the cost of verification becomes worth it.</p>
+<p>But these solutions aren&rsquo;t magic bullets. They require:</p>
+<ul>
+<li><strong>High-quality data sources</strong> (garbage in, garbage out)</li>
+<li><strong>Robust data governance</strong> (who maintains the knowledge base?)</li>
+<li><strong>Clear attribution chains</strong> (can we trace claims back to sources?)</li>
+<li><strong>Regular auditing</strong> (are our sources current and accurate?)</li>
+</ul>
+<p>The enterprise lesson? Reducing hallucinations isn&rsquo;t just about better prompting—it&rsquo;s about building systems that can reliably distinguish between what they know and what they&rsquo;re guessing.</p>
+<h2 id="the-bigger-picture">The Bigger Picture<a hidden class="anchor" aria-hidden="true" href="#the-bigger-picture">#</a></h2>
+<p>Understanding hallucination mechanisms doesn&rsquo;t just make us better at using AI—it makes us better at recognizing our own cognitive limitations. When I catch myself confidently stating something I&rsquo;m not sure about, I think of Claude&rsquo;s misfiring circuits. When I see a colleague jumping to conclusions without enough context, I think about System 1 vs. System 2 thinking.</p>
+<p>The goal isn&rsquo;t to eliminate uncertainty—it&rsquo;s to become more conscious about when we&rsquo;re operating in uncertain territory, whether we&rsquo;re human or machine.</p>
+<hr>
+<p><strong>So why can&rsquo;t LLMs say &ldquo;I don&rsquo;t know&rdquo;?</strong> Because they&rsquo;re designed to always generate something, trained on data that rarely models uncertainty, and rewarded for helpfulness over accuracy. But more importantly, they lack the metacognitive awareness that allows humans to recognize the boundaries of their knowledge.</p>
+<p>The solution isn&rsquo;t waiting for perfect AI. It&rsquo;s becoming better context engineers—for both humans and machines.</p>
+<p>Back in that POC meeting, when my tech lead mentioned hallucination concerns, we were right to take them seriously. But now I understand that &ldquo;setting expectations with users&rdquo; isn&rsquo;t just about disclaimers—it&rsquo;s about building systems and processes that acknowledge uncertainty as a feature, not a bug.</p>
+<p>Whether we&rsquo;re implementing RAG systems, training users on better prompting techniques, or just having more honest conversations about AI limitations, the path forward requires the same conscious effort I committed to in my first blog post.</p>
+<p>The conscious effort to think deliberately about where the boundaries of knowledge lie—and to say &ldquo;I don&rsquo;t know&rdquo; when we&rsquo;re crossing them.</p>
+<hr>
+<h2 id="references">References<a hidden class="anchor" aria-hidden="true" href="#references">#</a></h2>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>Anthropic. (2025). &ldquo;Tracing the thoughts of a large language model.&rdquo; <a href="https://www.anthropic.com/research/tracing-thoughts-language-model">https://www.anthropic.com/research/tracing-thoughts-language-model</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>Integrative Psychology. (2025). &ldquo;Hallucination vs. Confabulation: Rethinking AI Error Terminology.&rdquo; <a href="https://www.integrative-psych.org/resources/confabulation-not-hallucination-ai-errors">https://www.integrative-psych.org/resources/confabulation-not-hallucination-ai-errors</a>&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p>TechCrunch. (2025). &ldquo;OpenAI&rsquo;s new reasoning AI models hallucinate more.&rdquo; <a href="https://techcrunch.com/2025/04/18/openais-new-reasoning-ai-models-hallucinate-more/">https://techcrunch.com/2025/04/18/openais-new-reasoning-ai-models-hallucinate-more/</a>&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4">
+<p>Hacker News. (2023). &ldquo;Why isn&rsquo;t it possible to design LLMs that say &lsquo;I don&rsquo;t know&rsquo;?&rdquo; <a href="https://news.ycombinator.com/item?id=37126823">https://news.ycombinator.com/item?id=37126823</a>&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:5">
+<p>CSIRO. (2023). &ldquo;Both humans and AI hallucinate — but not in the same way.&rdquo; <a href="https://www.csiro.au/en/news/all/articles/2023/june/humans-and-ai-hallucinate">https://www.csiro.au/en/news/all/articles/2023/june/humans-and-ai-hallucinate</a>&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:6">
+<p>Columbia Journalism Review. (2024). Referenced in various studies on AI accuracy in journalism.&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:7">
+<p>God of Prompt AI. (2024). &ldquo;9 Prompt Engineering Methods to Reduce Hallucinations.&rdquo; <a href="https://www.godofprompt.ai/blog/9-prompt-engineering-methods-to-reduce-hallucinations-proven-tips">https://www.godofprompt.ai/blog/9-prompt-engineering-methods-to-reduce-hallucinations-proven-tips</a>&#160;<a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:8">
+<p>Vellum AI. (2024). &ldquo;3 Recommended Strategies to Reduce LLM Hallucinations.&rdquo; <a href="https://www.vellum.ai/blog/how-to-reduce-llm-hallucinations">https://www.vellum.ai/blog/how-to-reduce-llm-hallucinations</a>&#160;<a href="#fnref:8" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:9">
+<p>Contextual AI. (2024). &ldquo;Introducing Grounded Language Model.&rdquo; <a href="https://contextual.ai/blog/introducing-grounded-language-model/">https://contextual.ai/blog/introducing-grounded-language-model/</a>&#160;<a href="#fnref:9" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://mz462.github.io/tags/ai/">AI</a></li>
+      <li><a href="https://mz462.github.io/tags/llm/">LLM</a></li>
+      <li><a href="https://mz462.github.io/tags/hallucination/">Hallucination</a></li>
+      <li><a href="https://mz462.github.io/tags/product-management/">Product Management</a></li>
+      <li><a href="https://mz462.github.io/tags/context-engineering/">Context Engineering</a></li>
+      <li><a href="https://mz462.github.io/tags/human-cognition/">Human Cognition</a></li>
+      <li><a href="https://mz462.github.io/tags/enterprise-ai/">Enterprise AI</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="next" href="https://mz462.github.io/posts/three-months-later/">
+    <span class="title">Next »</span>
+    <br>
+    <span>Three Months Later: From Prompt Engineering to Context Engineering (And Why I&#39;ve Been Doing It With Humans All Along)</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2025 <a href="https://mz462.github.io/">MJ&#39;s Blog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>
