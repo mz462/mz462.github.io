@@ -1,26 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>LLM on MJ&#39;s Blog</title>
-    <link>https://mz462.github.io/tags/llm/</link>
-    <description>Recent content in LLM on MJ&#39;s Blog</description>
+    <title>Prompt Engineering on MJ&#39;s Blog</title>
+    <link>https://mz462.github.io/tags/prompt-engineering/</link>
+    <description>Recent content in Prompt Engineering on MJ&#39;s Blog</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 10 Jul 2025 12:00:00 -0800</lastBuildDate>
-    <atom:link href="https://mz462.github.io/tags/llm/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://mz462.github.io/tags/prompt-engineering/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>The Best Interview Question for AI Product Managers</title>
       <link>https://mz462.github.io/posts/the-best-interview-question-for-ai-product-managers/</link>
       <pubDate>Thu, 10 Jul 2025 12:00:00 -0800</pubDate>
       <guid>https://mz462.github.io/posts/the-best-interview-question-for-ai-product-managers/</guid>
       <description>Why asking &amp;#39;Show me your best prompt&amp;#39; reveals everything about an AI product manager&amp;#39;s competency - and how to evaluate their answers.</description>
-    </item>
-    <item>
-      <title>Why Can&#39;t LLMs Say &#39;I Don&#39;t Know&#39;?</title>
-      <link>https://mz462.github.io/posts/why-cant-llms-say-i-dont-know/</link>
-      <pubDate>Wed, 09 Jul 2025 00:00:00 +0000</pubDate>
-      <guid>https://mz462.github.io/posts/why-cant-llms-say-i-dont-know/</guid>
-      <description>A deep dive into why AI models struggle with uncertainty, what Anthropic discovered about hallucination mechanisms, and practical strategies for reducing AI hallucinations in both personal and enterprise contexts.</description>
     </item>
   </channel>
 </rss>
