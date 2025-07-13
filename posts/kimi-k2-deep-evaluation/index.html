@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Translation - Kimi K2: A Deep Evaluation Beyond the Chat Interface | MJ&#39;s Blog</title>
+<meta name="keywords" content="AI, Agentic AI, LLM, evaluation, Kimi, programming, tool calling, enterprise AI">
+<meta name="description" content="A comprehensive evaluation of Kimi K2&#39;s Agentic AI capabilities through real-world programming and research tasks, revealing both its strengths as an execution-focused model and the challenges of ecosystem integration.">
+<meta name="author" content="">
+<link rel="canonical" href="https://mz462.github.io/posts/kimi-k2-deep-evaluation/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.f49d66caae9ea0fd43f21f29e71a8d3e284517ed770f2aa86fa012953ad3c9ef.css" integrity="sha256-9J1myq6eoP1D8h8p5xqNPihFF&#43;13Dyqob6ASlTrTye8=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://mz462.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://mz462.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://mz462.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://mz462.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://mz462.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://mz462.github.io/posts/kimi-k2-deep-evaluation/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:url" content="https://mz462.github.io/posts/kimi-k2-deep-evaluation/">
+  <meta property="og:site_name" content="MJ&#39;s Blog">
+  <meta property="og:title" content="Translation - Kimi K2: A Deep Evaluation Beyond the Chat Interface">
+  <meta property="og:description" content="A comprehensive evaluation of Kimi K2&#39;s Agentic AI capabilities through real-world programming and research tasks, revealing both its strengths as an execution-focused model and the challenges of ecosystem integration.">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-07-13T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-07-13T00:00:00+00:00">
+    <meta property="article:tag" content="AI">
+    <meta property="article:tag" content="Agentic AI">
+    <meta property="article:tag" content="LLM">
+    <meta property="article:tag" content="Evaluation">
+    <meta property="article:tag" content="Kimi">
+    <meta property="article:tag" content="Programming">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Translation - Kimi K2: A Deep Evaluation Beyond the Chat Interface">
+<meta name="twitter:description" content="A comprehensive evaluation of Kimi K2&#39;s Agentic AI capabilities through real-world programming and research tasks, revealing both its strengths as an execution-focused model and the challenges of ecosystem integration.">
+      <meta name="twitter:site" content="@emjayzo">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://mz462.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Translation - Kimi K2: A Deep Evaluation Beyond the Chat Interface",
+      "item": "https://mz462.github.io/posts/kimi-k2-deep-evaluation/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Translation - Kimi K2: A Deep Evaluation Beyond the Chat Interface",
+  "name": "Translation - Kimi K2: A Deep Evaluation Beyond the Chat Interface",
+  "description": "A comprehensive evaluation of Kimi K2's Agentic AI capabilities through real-world programming and research tasks, revealing both its strengths as an execution-focused model and the challenges of ecosystem integration.",
+  "keywords": [
+    "AI", "Agentic AI", "LLM", "evaluation", "Kimi", "programming", "tool calling", "enterprise AI"
+  ],
+  "articleBody": "Recently, whenever a new large language model is released, we can always see a wave of evaluation reports. But there’s an interesting phenomenon: the vast majority of evaluations are invariably confined to an environment we’re most familiar with—the chat interface.\nThis is actually a fundamental limitation. In 2025, when Agentic AI is all the rage, evaluating a model designed for Agentic capabilities within a chat interface is like using whiteboard coding to interview a development director. The feedback you get has almost no relation to its core capabilities.\nKimi K2, released by Moonshot AI, has from the very beginning clearly positioned Agentic capabilities—that is, the ability for intelligent agents to autonomously use tools to complete tasks—in an extremely important position. This is a very rare choice in the entire field. For example, DeepSeek R1 only added tool-calling functionality quite some time after its release, and many platforms like ollama still don’t fully support it today. Kimi K2 takes the opposite approach, developing Agentic capabilities as a core competency, which in itself is worth evaluating with a paradigm that’s closer to its design goals.\nWhy We Must Go Beyond Chat Interfaces: The Evaluation Dilemma of Agentic AI But before we proceed, we must first clarify the premise of our discussion: What exactly is the core of Agentic AI? It has two inseparable core elements:\nAutonomous Decision-Making and Feedback Loops: This is the true manifestation of intelligence. An Agentic model doesn’t just passively answer questions; it needs to be able to autonomously break down a large goal into step-by-step action plans. More critically, it observes the results of its own actions—such as whether a file was successfully written or code compilation failed—and then adjusts based on this feedback to decide what to do next. This is a continuous perception-thinking-action loop.\nTool Invocation and Environment Interaction: These are the “hands and feet” connecting the model’s brain to the real world. The model itself cannot directly operate your computer; it needs to achieve this through tool invocation. These tools can be operating system-level functions, such as reading and writing files or executing code, or they can be functions that connect to the external world, such as web searches or retrieving video content.\nUnderstanding these two points helps us see why simply chatting with AI completely fails to evaluate its Agentic capabilities.\nFirst, the chat format, in most cases, doesn’t require invoking any tools at all, so naturally it cannot evaluate this capability. Its interaction is purely text generation. You ask, it answers, rather than you speak, it acts. Here we are in 2025, still using the same approach to evaluate ChatGPT to assess a model designed for Agentic purposes—this itself represents a disconnect.\nSecond, chat interfaces severely limit the complexity of problems. A true Agentic task requires continuous context and environmental awareness. Tasks within chat interfaces are often isolated with extremely short contexts. They cannot construct the kind of feedback loop mentioned earlier, where the results of a previous compilation failure determine the next round of modification strategies.\nTherefore, the only way to evaluate the true capabilities of an Agentic model is to place it in a real environment where it can get its hands dirty. I spent some time conducting a more systematic analysis of Kimi K2 that’s closer to its design intentions, by directly writing code to call its API.\nProgramming Test: The Friction Between High-Level Intelligence and Execution In the Agentic world, programming is a classic comprehensive task. To evaluate a model’s true capabilities in programming tasks, we similarly cannot adopt the mode of copying and pasting code back and forth in chat interfaces. That question-and-answer approach fragments what should be a continuous, complex engineering task into countless discrete, scattered Q\u0026As. This way of using AI is like applying telegraph thinking to sending WeChat messages: compressing what should be an immersive collaborative information space into a small box where context is frequently lost, then making do with manual补全 to keep things running—both inefficient and counterproductive.\nThis is precisely why the emergence of Agentic programming environments like Cursor or Claude Code represents revolutionary progress.\nTheir core value lies in building a real arena where AI models can truly stretch their legs. In this environment, the model is no longer just a chat partner, but transforms into a copilot equipped with a series of tools like reading and writing files, executing code. It can finally work like a real human developer in actual codebases, building that crucial feedback loop and truly participating in stateful, continuous task flows.\nTherefore, to evaluate K2’s real capabilities, the first thing I did was integrate it into the powerful Agentic programming environment of Claude Code (specific methods at the end of the article), and had it develop a chicken-crossing-the-road game from scratch. (Below is a video of the game it created)\nWatch the chicken-crossing-the-road game video here.\nThe first version it produced was quite playable, and after two or three iterations, it was basically bug-free. However, the entire development process was far from smooth—it could even be described as bumpy. I had a clear impression: there exists an obvious gap between the model’s high-level intelligence and low-level tool execution.\nOn one hand, Kimi K2’s intelligence is first-rate. Its understanding of tasks, decomposition of game logic, and the quality of final code generation are all at industry-leading levels. It can understand my intentions well and write genuinely effective programs or perform effective debugging. This is a very smart “brain.”\nBut on the other hand, when this brain needs to interact with the real file system through its “hands and feet” (i.e., tool calls), systematic friction begins to appear. For example, in the Claude Code environment, it seems to have its own preferences for handling file paths, which causes it to repeatedly fail when attempting to read and write files. Those “cannot find string to replace” errors in the logs are not random bugs, but rather a consistent pattern throughout. This gives me the feeling that the model and tools are like speaking the same language with different accents, often leading to misunderstandings.\nMore seriously, when it’s handling particularly complex tasks, it sometimes just stops mid-sentence. This sudden interruption of the reasoning process is fatal for an Agentic system. An intelligent agent that cannot reliably complete tasks is unreliable. So what might be the root causes of these problems? I speculate there are mainly two levels of reasons:\nFirst is systematic tool mismatch. Claude Code is an environment Anthropic built specifically for their own Claude models. Its tool instruction formats, internal prompt templates, and expectations for model outputs have all been fine-tuned to perfectly match Claude models’ temperament and personality (universal Agentic programming tools like Cursor or Trae also need individual adaptation for each model. The main reason we don’t use Cursor/Trae here is that they don’t have the convenient integration method like Claude Code Router). Kimi K2 is like a potentially highly skilled actor with a different accent who’s suddenly placed in a script written for another lead actor. It can understand the general meaning of the lines, but consistently deviates on certain key intonations, rhythms, and subtexts. The file path handling issues mentioned earlier are likely manifestations of this accent mismatch.\nSecond, a more specific technical reason might be context window limitations. Agentic programming environments are very context-intensive, requiring the entire conversation history, system prompts, and code from multiple currently open files to be stuffed into the model’s memory. Claude Code’s natively adapted Claude 4 model has a 200K context window, while Kimi K2’s currently available API is 128K. When the entire task context exceeds this length, the model may exhibit unpredictable behavior, such as the sudden reasoning interruptions I observed. This might not be Kimi forgetting what to say, but rather its workbench being full and unable to process new information. Of course, this is just one possibility; another possibility is that, similar to Gemini 2.5 Pro, Kimi K2’s training process didn’t perfectly handle long-chain tool processing, which would require further in-depth investigation.\nTherefore, my hypothesis is that the bumpy development process is not due to deficiencies in Kimi K2’s intelligence level. It exposes a deeper problem: the contradiction between a potentially top-tier AI brain and hands and feet that haven’t been fully adapted to it. This results in a less-than-ideal user experience. This is a problem worth considering for all teams dedicated to Agentic AI development.\nInformation Research: The Execution Resilience of Agentic Models My second test was open-ended information research. This is a scenario that better tests a model’s autonomous planning and iterative execution capabilities.\nIt was precisely in this test that Kimi K2 demonstrated its enormous value as a system component. I discovered it has a very precious characteristic that I call task execution resilience. When facing a complex research topic, it will very naturally generate large quantities of diverse keywords, then tirelessly conduct multiple rounds of iterative searches. It has a strong bias for action, while many other models, when facing this type of open task, quickly start to slack off, preferring to use their existing knowledge rather than actively explore. For example, GPT-4o, Gemini, Deepseek, and Qwen all have similar problems. Even when the system prompt repeatedly emphasizes “please absolutely must search with multiple keywords,” they’ll just casually search for one or two rounds or even be too lazy to search at all and directly start answering.\nOf course, it also has a significant shortcoming. Possibly because K2 is not a reasoning model, while it’s very good at collecting and compiling information and can provide you with an extremely detailed list of materials, it’s not good at extracting profound, high-level insights from these materials. It’s more like a top-tier information gatherer rather than an analyst. This point is actually very similar to o3—o3 can also tirelessly invoke multiple rounds of searches, but in the end often just generates a simple running list. Moreover, this issue of thinking depth is very difficult to change. It’s like telling an intern multiple times (through prompts) that reports need strategic height—they still can’t write VP-level reports for you. This is a limitation of the model’s inherent capabilities.\nBut this can already provide tremendous value. A model with strong execution resilience is the foundation for building complex Agentic systems. Because in a system, the most valuable quality is not occasional flashes of brilliance, but predictable, reliable execution. A component that can always faithfully complete instructions is far more valuable than one that’s brilliant but makes its own decisions. You can build more diverse and reliable automated workflows around it. I used to always use o3 to complete such tasks, but due to o3’s cost, I was always hesitant to extend this approach to more complex tasks. Now Kimi K2’s emergence has given me a low-cost but quite comparable quality option.\nThis directly spawned a very efficient workflow. I now use Kimi K2 as the frontend of a research system, leveraging its strong execution resilience and long-text capabilities to perform carpet-bombing information gathering on any topic I want to research. Then, I hand the extremely information-rich context that Kimi has organized directly to a reasoning model that excels at deep analysis, such as Gemini 2.5 Pro as the backend, letting it complete the final step of analysis and insight extraction. This two-stage combination works surprisingly well. Not only does the final output quality far exceed any single model, but due to Kimi’s cost-effectiveness, the entire process costs significantly less compared to o3. This gives me a clear view of Kimi K2’s precise positioning in a complex Agentic system: a tireless, exceptionally capable doer.\nHere’s an example:\nInference process\nMoreover, I’ve found that Kimi’s shortcoming in reasoning ability can also be compensated through workflow design. I’ll have it first play the role of an architect, generating a detailed and clear step-by-step plan for a complex task. This plan itself is equivalent to us manually injecting a thinking component for it, externalizing and structuring the thinking process. Then, I’ll have it play the role of a scheduler, strictly and step-by-step calling various tools to execute the plan it just created. This achieves a decoupling of planning and execution in a multi-agent system. As a scheduler, it can call search engines, invoke code interpreters, and even call another model that excels at analysis (such as Gemini 2.5 Pro) to complete a particular step in the plan that requires deep thinking.\nSome Final Thoughts So, after this round of testing, I feel that Kimi K2’s advantages and deficiencies are both quite apparent. Its strategic bet on the Agentic direction is a rather visionary move. But between its powerful potential and current reliable execution capability, there indeed still exists a gap.\nKimi K2’s most precious asset is its intelligent brain. But the value of this core asset is being consumed by unstable tool calls and ecosystem friction. If we want it to fully realize its potential, I think there are two things that may be unavoidable:\nFirst is proactively solving the last-mile problems of the ecosystem. Expecting the community to spontaneously create perfect adaptations for Kimi would be a very lengthy process. A more proactive approach would be to directly engage in deep collaboration with one or two mainstream Agentic programming tools, such as Cursor or Trae, for targeted fine-tuning, or even releasing official, deeply adapted open-source toolchains. There’s only one goal: upgrading the usability of Agentic capabilities to the reliability that developers can trust. This is a key step in building a true moat.\nSecond is treating reasoning stability as a core engineering metric. The problem of tool calls stopping midway must be located and solved at its root. Because this problem directly determines whether Kimi K2 will ultimately become an interesting toy or a productivity tool that developers can rely on. The upper limit of an intelligent agent is often determined by its most unstable component.\nOverall, Kimi K2 gives me the feeling of unpolished rough jade. Its core material—the model’s intelligence—is excellent, showing us the enormous possibilities of Agentic AI’s future. Its task completion resilience and cost-effectiveness have already made it the default frontend of my information research system. But the challenges it currently faces are not a lack of intelligence, but rather the friction between engineering and ecosystem integration. What position it will ultimately occupy in AI history will largely depend on the determination and speed of bridging this gap.\nThis post is a translation of the original Chinese article by grapeot, published on July 12, 2025. The original article can be found at: https://yage.ai/kimi-k2.html\n",
+  "wordCount" : "2426",
+  "inLanguage": "en",
+  "datePublished": "2025-07-13T00:00:00Z",
+  "dateModified": "2025-07-13T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://mz462.github.io/posts/kimi-k2-deep-evaluation/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "MJ's Blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://mz462.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://mz462.github.io/" accesskey="h" title="MJ&#39;s Blog (Alt + H)">MJ&#39;s Blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://mz462.github.io/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://mz462.github.io/search/" title="Search">
+                    <span>Search</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://mz462.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://mz462.github.io/posts/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Translation - Kimi K2: A Deep Evaluation Beyond the Chat Interface
+    </h1>
+    <div class="post-description">
+      A comprehensive evaluation of Kimi K2&#39;s Agentic AI capabilities through real-world programming and research tasks, revealing both its strengths as an execution-focused model and the challenges of ecosystem integration.
+    </div>
+    <div class="post-meta"><span title='2025-07-13 00:00:00 +0000 UTC'>July 13, 2025</span>&nbsp;·&nbsp;12 min&nbsp;·&nbsp;2426 words
+
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#why-we-must-go-beyond-chat-interfaces-the-evaluation-dilemma-of-agentic-ai" aria-label="Why We Must Go Beyond Chat Interfaces: The Evaluation Dilemma of Agentic AI">Why We Must Go Beyond Chat Interfaces: The Evaluation Dilemma of Agentic AI</a></li>
+                <li>
+                    <a href="#programming-test-the-friction-between-high-level-intelligence-and-execution" aria-label="Programming Test: The Friction Between High-Level Intelligence and Execution">Programming Test: The Friction Between High-Level Intelligence and Execution</a></li>
+                <li>
+                    <a href="#information-research-the-execution-resilience-of-agentic-models" aria-label="Information Research: The Execution Resilience of Agentic Models">Information Research: The Execution Resilience of Agentic Models</a></li>
+                <li>
+                    <a href="#some-final-thoughts" aria-label="Some Final Thoughts">Some Final Thoughts</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><p>Recently, whenever a new large language model is released, we can always see a wave of evaluation reports. But there&rsquo;s an interesting phenomenon: the vast majority of evaluations are invariably confined to an environment we&rsquo;re most familiar with—the chat interface.</p>
+<p>This is actually a fundamental limitation. In 2025, when Agentic AI is all the rage, evaluating a model designed for Agentic capabilities within a chat interface is like using whiteboard coding to interview a development director. The feedback you get has almost no relation to its core capabilities.</p>
+<p>Kimi K2, released by Moonshot AI, has from the very beginning clearly positioned Agentic capabilities—that is, the ability for intelligent agents to autonomously use tools to complete tasks—in an extremely important position. This is a very rare choice in the entire field. For example, DeepSeek R1 only added tool-calling functionality quite some time after its release, and many platforms like ollama still don&rsquo;t fully support it today. Kimi K2 takes the opposite approach, developing Agentic capabilities as a core competency, which in itself is worth evaluating with a paradigm that&rsquo;s closer to its design goals.</p>
+<h2 id="why-we-must-go-beyond-chat-interfaces-the-evaluation-dilemma-of-agentic-ai">Why We Must Go Beyond Chat Interfaces: The Evaluation Dilemma of Agentic AI<a hidden class="anchor" aria-hidden="true" href="#why-we-must-go-beyond-chat-interfaces-the-evaluation-dilemma-of-agentic-ai">#</a></h2>
+<p>But before we proceed, we must first clarify the premise of our discussion: What exactly is the core of Agentic AI? It has two inseparable core elements:</p>
+<ol>
+<li>
+<p><strong>Autonomous Decision-Making and Feedback Loops</strong>: This is the true manifestation of intelligence. An Agentic model doesn&rsquo;t just passively answer questions; it needs to be able to autonomously break down a large goal into step-by-step action plans. More critically, it observes the results of its own actions—such as whether a file was successfully written or code compilation failed—and then adjusts based on this feedback to decide what to do next. This is a continuous perception-thinking-action loop.</p>
+</li>
+<li>
+<p><strong>Tool Invocation and Environment Interaction</strong>: These are the &ldquo;hands and feet&rdquo; connecting the model&rsquo;s brain to the real world. The model itself cannot directly operate your computer; it needs to achieve this through tool invocation. These tools can be operating system-level functions, such as reading and writing files or executing code, or they can be functions that connect to the external world, such as web searches or retrieving video content.</p>
+</li>
+</ol>
+<p>Understanding these two points helps us see why simply chatting with AI completely fails to evaluate its Agentic capabilities.</p>
+<p>First, the chat format, in most cases, doesn&rsquo;t require invoking any tools at all, so naturally it cannot evaluate this capability. Its interaction is purely text generation. You ask, it answers, rather than you speak, it acts. Here we are in 2025, still using the same approach to evaluate ChatGPT to assess a model designed for Agentic purposes—this itself represents a disconnect.</p>
+<p>Second, chat interfaces severely limit the complexity of problems. A true Agentic task requires continuous context and environmental awareness. Tasks within chat interfaces are often isolated with extremely short contexts. They cannot construct the kind of feedback loop mentioned earlier, where the results of a previous compilation failure determine the next round of modification strategies.</p>
+<p>Therefore, the only way to evaluate the true capabilities of an Agentic model is to place it in a real environment where it can get its hands dirty. I spent some time conducting a more systematic analysis of Kimi K2 that&rsquo;s closer to its design intentions, by directly writing code to call its API.</p>
+<h2 id="programming-test-the-friction-between-high-level-intelligence-and-execution">Programming Test: The Friction Between High-Level Intelligence and Execution<a hidden class="anchor" aria-hidden="true" href="#programming-test-the-friction-between-high-level-intelligence-and-execution">#</a></h2>
+<p>In the Agentic world, programming is a classic comprehensive task. To evaluate a model&rsquo;s true capabilities in programming tasks, we similarly cannot adopt the mode of copying and pasting code back and forth in chat interfaces. That question-and-answer approach fragments what should be a continuous, complex engineering task into countless discrete, scattered Q&amp;As. This way of using AI is like applying telegraph thinking to sending WeChat messages: compressing what should be an immersive collaborative information space into a small box where context is frequently lost, then making do with manual补全 to keep things running—both inefficient and counterproductive.</p>
+<p>This is precisely why the emergence of Agentic programming environments like Cursor or Claude Code represents revolutionary progress.</p>
+<p>Their core value lies in building a real arena where AI models can truly stretch their legs. In this environment, the model is no longer just a chat partner, but transforms into a copilot equipped with a series of tools like reading and writing files, executing code. It can finally work like a real human developer in actual codebases, building that crucial feedback loop and truly participating in stateful, continuous task flows.</p>
+<p>Therefore, to evaluate K2&rsquo;s real capabilities, the first thing I did was integrate it into the powerful Agentic programming environment of Claude Code (specific methods at the end of the article), and had it develop a chicken-crossing-the-road game from scratch. (Below is a video of the game it created)</p>
+<p><a href="https://yage.ai/images/chicken_cross_road.mov">Watch the chicken-crossing-the-road game video here.</a></p>
+<p>The first version it produced was quite playable, and after two or three iterations, it was basically bug-free. However, the entire development process was far from smooth—it could even be described as bumpy. I had a clear impression: there exists an obvious gap between the model&rsquo;s high-level intelligence and low-level tool execution.</p>
+<p>On one hand, Kimi K2&rsquo;s intelligence is first-rate. Its understanding of tasks, decomposition of game logic, and the quality of final code generation are all at industry-leading levels. It can understand my intentions well and write genuinely effective programs or perform effective debugging. This is a very smart &ldquo;brain.&rdquo;</p>
+<p>But on the other hand, when this brain needs to interact with the real file system through its &ldquo;hands and feet&rdquo; (i.e., tool calls), systematic friction begins to appear. For example, in the Claude Code environment, it seems to have its own preferences for handling file paths, which causes it to repeatedly fail when attempting to read and write files. Those &ldquo;cannot find string to replace&rdquo; errors in the logs are not random bugs, but rather a consistent pattern throughout. This gives me the feeling that the model and tools are like speaking the same language with different accents, often leading to misunderstandings.</p>
+<p>More seriously, when it&rsquo;s handling particularly complex tasks, it sometimes just stops mid-sentence. This sudden interruption of the reasoning process is fatal for an Agentic system. An intelligent agent that cannot reliably complete tasks is unreliable. So what might be the root causes of these problems? I speculate there are mainly two levels of reasons:</p>
+<p>First is systematic tool mismatch. Claude Code is an environment Anthropic built specifically for their own Claude models. Its tool instruction formats, internal prompt templates, and expectations for model outputs have all been fine-tuned to perfectly match Claude models&rsquo; temperament and personality (universal Agentic programming tools like Cursor or Trae also need individual adaptation for each model. The main reason we don&rsquo;t use Cursor/Trae here is that they don&rsquo;t have the convenient integration method like Claude Code Router). Kimi K2 is like a potentially highly skilled actor with a different accent who&rsquo;s suddenly placed in a script written for another lead actor. It can understand the general meaning of the lines, but consistently deviates on certain key intonations, rhythms, and subtexts. The file path handling issues mentioned earlier are likely manifestations of this accent mismatch.</p>
+<p>Second, a more specific technical reason might be context window limitations. Agentic programming environments are very context-intensive, requiring the entire conversation history, system prompts, and code from multiple currently open files to be stuffed into the model&rsquo;s memory. Claude Code&rsquo;s natively adapted Claude 4 model has a 200K context window, while Kimi K2&rsquo;s currently available API is 128K. When the entire task context exceeds this length, the model may exhibit unpredictable behavior, such as the sudden reasoning interruptions I observed. This might not be Kimi forgetting what to say, but rather its workbench being full and unable to process new information. Of course, this is just one possibility; another possibility is that, similar to Gemini 2.5 Pro, Kimi K2&rsquo;s training process didn&rsquo;t perfectly handle long-chain tool processing, which would require further in-depth investigation.</p>
+<p>Therefore, my hypothesis is that the bumpy development process is not due to deficiencies in Kimi K2&rsquo;s intelligence level. It exposes a deeper problem: the contradiction between a potentially top-tier AI brain and hands and feet that haven&rsquo;t been fully adapted to it. This results in a less-than-ideal user experience. This is a problem worth considering for all teams dedicated to Agentic AI development.</p>
+<h2 id="information-research-the-execution-resilience-of-agentic-models">Information Research: The Execution Resilience of Agentic Models<a hidden class="anchor" aria-hidden="true" href="#information-research-the-execution-resilience-of-agentic-models">#</a></h2>
+<p>My second test was open-ended information research. This is a scenario that better tests a model&rsquo;s autonomous planning and iterative execution capabilities.</p>
+<p>It was precisely in this test that Kimi K2 demonstrated its enormous value as a system component. I discovered it has a very precious characteristic that I call task execution resilience. When facing a complex research topic, it will very naturally generate large quantities of diverse keywords, then tirelessly conduct multiple rounds of iterative searches. It has a strong bias for action, while many other models, when facing this type of open task, quickly start to slack off, preferring to use their existing knowledge rather than actively explore. For example, GPT-4o, Gemini, Deepseek, and Qwen all have similar problems. Even when the system prompt repeatedly emphasizes &ldquo;please absolutely must search with multiple keywords,&rdquo; they&rsquo;ll just casually search for one or two rounds or even be too lazy to search at all and directly start answering.</p>
+<p>Of course, it also has a significant shortcoming. Possibly because K2 is not a reasoning model, while it&rsquo;s very good at collecting and compiling information and can provide you with an extremely detailed list of materials, it&rsquo;s not good at extracting profound, high-level insights from these materials. It&rsquo;s more like a top-tier information gatherer rather than an analyst. This point is actually very similar to o3—o3 can also tirelessly invoke multiple rounds of searches, but in the end often just generates a simple running list. Moreover, this issue of thinking depth is very difficult to change. It&rsquo;s like telling an intern multiple times (through prompts) that reports need strategic height—they still can&rsquo;t write VP-level reports for you. This is a limitation of the model&rsquo;s inherent capabilities.</p>
+<p>But this can already provide tremendous value. A model with strong execution resilience is the foundation for building complex Agentic systems. Because in a system, the most valuable quality is not occasional flashes of brilliance, but predictable, reliable execution. A component that can always faithfully complete instructions is far more valuable than one that&rsquo;s brilliant but makes its own decisions. You can build more diverse and reliable automated workflows around it. I used to always use o3 to complete such tasks, but due to o3&rsquo;s cost, I was always hesitant to extend this approach to more complex tasks. Now Kimi K2&rsquo;s emergence has given me a low-cost but quite comparable quality option.</p>
+<p>This directly spawned a very efficient workflow. I now use Kimi K2 as the frontend of a research system, leveraging its strong execution resilience and long-text capabilities to perform carpet-bombing information gathering on any topic I want to research. Then, I hand the extremely information-rich context that Kimi has organized directly to a reasoning model that excels at deep analysis, such as Gemini 2.5 Pro as the backend, letting it complete the final step of analysis and insight extraction. This two-stage combination works surprisingly well. Not only does the final output quality far exceed any single model, but due to Kimi&rsquo;s cost-effectiveness, the entire process costs significantly less compared to o3. This gives me a clear view of Kimi K2&rsquo;s precise positioning in a complex Agentic system: a tireless, exceptionally capable doer.</p>
+<p>Here&rsquo;s an example:</p>
+<p><strong>Inference process</strong></p>
+<p><img alt="Kimi K2 Inference Process" loading="lazy" src="https://yage.ai/images/kimi_inference.jpg"></p>
+<p>Moreover, I&rsquo;ve found that Kimi&rsquo;s shortcoming in reasoning ability can also be compensated through workflow design. I&rsquo;ll have it first play the role of an architect, generating a detailed and clear step-by-step plan for a complex task. This plan itself is equivalent to us manually injecting a thinking component for it, externalizing and structuring the thinking process. Then, I&rsquo;ll have it play the role of a scheduler, strictly and step-by-step calling various tools to execute the plan it just created. This achieves a decoupling of planning and execution in a multi-agent system. As a scheduler, it can call search engines, invoke code interpreters, and even call another model that excels at analysis (such as Gemini 2.5 Pro) to complete a particular step in the plan that requires deep thinking.</p>
+<h2 id="some-final-thoughts">Some Final Thoughts<a hidden class="anchor" aria-hidden="true" href="#some-final-thoughts">#</a></h2>
+<p>So, after this round of testing, I feel that Kimi K2&rsquo;s advantages and deficiencies are both quite apparent. Its strategic bet on the Agentic direction is a rather visionary move. But between its powerful potential and current reliable execution capability, there indeed still exists a gap.</p>
+<p>Kimi K2&rsquo;s most precious asset is its intelligent brain. But the value of this core asset is being consumed by unstable tool calls and ecosystem friction. If we want it to fully realize its potential, I think there are two things that may be unavoidable:</p>
+<p>First is proactively solving the last-mile problems of the ecosystem. Expecting the community to spontaneously create perfect adaptations for Kimi would be a very lengthy process. A more proactive approach would be to directly engage in deep collaboration with one or two mainstream Agentic programming tools, such as Cursor or Trae, for targeted fine-tuning, or even releasing official, deeply adapted open-source toolchains. There&rsquo;s only one goal: upgrading the usability of Agentic capabilities to the reliability that developers can trust. This is a key step in building a true moat.</p>
+<p>Second is treating reasoning stability as a core engineering metric. The problem of tool calls stopping midway must be located and solved at its root. Because this problem directly determines whether Kimi K2 will ultimately become an interesting toy or a productivity tool that developers can rely on. The upper limit of an intelligent agent is often determined by its most unstable component.</p>
+<p>Overall, Kimi K2 gives me the feeling of unpolished rough jade. Its core material—the model&rsquo;s intelligence—is excellent, showing us the enormous possibilities of Agentic AI&rsquo;s future. Its task completion resilience and cost-effectiveness have already made it the default frontend of my information research system. But the challenges it currently faces are not a lack of intelligence, but rather the friction between engineering and ecosystem integration. What position it will ultimately occupy in AI history will largely depend on the determination and speed of bridging this gap.</p>
+<hr>
+<p><em>This post is a translation of the original Chinese article by grapeot, published on July 12, 2025. The original article can be found at: <a href="https://yage.ai/kimi-k2.html">https://yage.ai/kimi-k2.html</a></em></p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://mz462.github.io/tags/ai/">AI</a></li>
+      <li><a href="https://mz462.github.io/tags/agentic-ai/">Agentic AI</a></li>
+      <li><a href="https://mz462.github.io/tags/llm/">LLM</a></li>
+      <li><a href="https://mz462.github.io/tags/evaluation/">Evaluation</a></li>
+      <li><a href="https://mz462.github.io/tags/kimi/">Kimi</a></li>
+      <li><a href="https://mz462.github.io/tags/programming/">Programming</a></li>
+      <li><a href="https://mz462.github.io/tags/tool-calling/">Tool Calling</a></li>
+      <li><a href="https://mz462.github.io/tags/enterprise-ai/">Enterprise AI</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="next" href="https://mz462.github.io/posts/ai-productivity-paradox/">
+    <span class="title">Next »</span>
+    <br>
+    <span>The AI Productivity Paradox: Why Curiosity Beats Role</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2025 <a href="https://mz462.github.io/">MJ&#39;s Blog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

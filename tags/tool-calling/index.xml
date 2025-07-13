@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Tool Calling on MJ&#39;s Blog</title>
+    <link>https://mz462.github.io/tags/tool-calling/</link>
+    <description>Recent content in Tool Calling on MJ&#39;s Blog</description>
+    <generator>Hugo -- 0.145.0</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 13 Jul 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://mz462.github.io/tags/tool-calling/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Translation - Kimi K2: A Deep Evaluation Beyond the Chat Interface</title>
+      <link>https://mz462.github.io/posts/kimi-k2-deep-evaluation/</link>
+      <pubDate>Sun, 13 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>https://mz462.github.io/posts/kimi-k2-deep-evaluation/</guid>
+      <description>A comprehensive evaluation of Kimi K2&amp;#39;s Agentic AI capabilities through real-world programming and research tasks, revealing both its strengths as an execution-focused model and the challenges of ecosystem integration.</description>
+    </item>
+  </channel>
+</rss>
