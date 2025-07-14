@@ -6,8 +6,15 @@
     <description>Recent content on MJ&#39;s Blog</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 13 Jul 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 14 Jul 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://mz462.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The AI Honeymoon Period: What Context Engineering Taught Me About Hype vs Reality</title>
+      <link>https://mz462.github.io/posts/ai-honeymoon-period/</link>
+      <pubDate>Mon, 14 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>https://mz462.github.io/posts/ai-honeymoon-period/</guid>
+      <description>A Twitter debate about AI&amp;#39;s transformative potential reveals the gap between honeymoon-period optimism and measured reality. Why agile methodology and product managers might be the real winners in this AI transition.</description>
+    </item>
     <item>
       <title>Translation - Kimi K2: A Deep Evaluation Beyond the Chat Interface</title>
       <link>https://mz462.github.io/posts/kimi-k2-deep-evaluation/</link>

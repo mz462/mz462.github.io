@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>TDD on MJ&#39;s Blog</title>
+    <link>https://mz462.github.io/tags/tdd/</link>
+    <description>Recent content in TDD on MJ&#39;s Blog</description>
+    <generator>Hugo -- 0.145.0</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 14 Jul 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://mz462.github.io/tags/tdd/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The AI Honeymoon Period: What Context Engineering Taught Me About Hype vs Reality</title>
+      <link>https://mz462.github.io/posts/ai-honeymoon-period/</link>
+      <pubDate>Mon, 14 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>https://mz462.github.io/posts/ai-honeymoon-period/</guid>
+      <description>A Twitter debate about AI&amp;#39;s transformative potential reveals the gap between honeymoon-period optimism and measured reality. Why agile methodology and product managers might be the real winners in this AI transition.</description>
+    </item>
+  </channel>
+</rss>
