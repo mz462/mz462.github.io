@@ -2,6 +2,12 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://mz462.github.io/posts/kimi-k2-developper-diary-translation/</loc>
+    <lastmod>2025-07-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://mz462.github.io/tags/agents/</loc>
+    <lastmod>2025-07-14T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://mz462.github.io/tags/agile/</loc>
     <lastmod>2025-07-14T00:00:00+00:00</lastmod>
   </url><url>
@@ -14,13 +20,25 @@
     <loc>https://mz462.github.io/tags/enterprise-ai/</loc>
     <lastmod>2025-07-14T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://mz462.github.io/tags/frontend-development/</loc>
+    <lastmod>2025-07-14T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://mz462.github.io/tags/hype-cycle/</loc>
+    <lastmod>2025-07-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://mz462.github.io/tags/llm/</loc>
     <lastmod>2025-07-14T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://mz462.github.io/</loc>
     <lastmod>2025-07-14T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://mz462.github.io/tags/open-source/</loc>
+    <lastmod>2025-07-14T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://mz462.github.io/posts/</loc>
+    <lastmod>2025-07-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://mz462.github.io/tags/product-development/</loc>
     <lastmod>2025-07-14T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://mz462.github.io/tags/product-management/</loc>
@@ -38,6 +56,9 @@
     <loc>https://mz462.github.io/posts/ai-honeymoon-period/</loc>
     <lastmod>2025-07-14T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://mz462.github.io/tags/translation/</loc>
+    <lastmod>2025-07-14T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://mz462.github.io/tags/agentic-ai/</loc>
     <lastmod>2025-07-13T00:00:00+00:00</lastmod>
   </url><url>
@@ -45,9 +66,6 @@
     <lastmod>2025-07-13T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://mz462.github.io/tags/kimi/</loc>
-    <lastmod>2025-07-13T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://mz462.github.io/tags/llm/</loc>
     <lastmod>2025-07-13T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://mz462.github.io/tags/programming/</loc>

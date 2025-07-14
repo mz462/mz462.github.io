@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>After Kimi K2&#39;s Release: No Longer Just a ChatBot | MJ&#39;s Blog</title>
+<meta name="keywords" content="AI, translation, LLM, product development, open source, frontend development, agents">
+<meta name="description" content="Translation of Justin Wong&#39;s reflection on Kimi K2&#39;s release, exploring AI&#39;s evolution beyond chatbots toward interactive applications and agent capabilities.">
+<meta name="author" content="">
+<link rel="canonical" href="https://mz462.github.io/posts/kimi-k2-developper-diary-translation/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.f49d66caae9ea0fd43f21f29e71a8d3e284517ed770f2aa86fa012953ad3c9ef.css" integrity="sha256-9J1myq6eoP1D8h8p5xqNPihFF&#43;13Dyqob6ASlTrTye8=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://mz462.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://mz462.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://mz462.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://mz462.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://mz462.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://mz462.github.io/posts/kimi-k2-developper-diary-translation/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:url" content="https://mz462.github.io/posts/kimi-k2-developper-diary-translation/">
+  <meta property="og:site_name" content="MJ&#39;s Blog">
+  <meta property="og:title" content="After Kimi K2&#39;s Release: No Longer Just a ChatBot">
+  <meta property="og:description" content="Translation of Justin Wong&#39;s reflection on Kimi K2&#39;s release, exploring AI&#39;s evolution beyond chatbots toward interactive applications and agent capabilities.">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-07-14T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-07-14T00:00:00+00:00">
+    <meta property="article:tag" content="AI">
+    <meta property="article:tag" content="Translation">
+    <meta property="article:tag" content="LLM">
+    <meta property="article:tag" content="Product Development">
+    <meta property="article:tag" content="Open Source">
+    <meta property="article:tag" content="Frontend Development">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="After Kimi K2&#39;s Release: No Longer Just a ChatBot">
+<meta name="twitter:description" content="Translation of Justin Wong&#39;s reflection on Kimi K2&#39;s release, exploring AI&#39;s evolution beyond chatbots toward interactive applications and agent capabilities.">
+      <meta name="twitter:site" content="@emjayzo">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://mz462.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "After Kimi K2's Release: No Longer Just a ChatBot",
+      "item": "https://mz462.github.io/posts/kimi-k2-developper-diary-translation/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "After Kimi K2's Release: No Longer Just a ChatBot",
+  "name": "After Kimi K2\u0027s Release: No Longer Just a ChatBot",
+  "description": "Translation of Justin Wong's reflection on Kimi K2's release, exploring AI's evolution beyond chatbots toward interactive applications and agent capabilities.",
+  "keywords": [
+    "AI", "translation", "LLM", "product development", "open source", "frontend development", "agents"
+  ],
+  "articleBody": " Translation Note: This is a translation of the original Chinese blog post “写在 Kimi K2 发布之后：再也不仅仅是 ChatBot” by Justin Wong (bigeagle), published on July 13, 2025. All opinions expressed are those of the original author.\nIntroduction Two days ago, the Kimi K2 we’d been working on for most of the year was finally released. After pulling an all-nighter before launch, I slept soundly for two days and finally have some time to write about my thoughts.\nDisclaimer: Everything below represents my personal views and does not represent the company’s position.\nAdditional disclaimer: Everything below is handcrafted the old-fashioned way (only using GitHub Copilot as an advanced input method).\nAbout “Frontend Development” Since Claude 3.5 Sonnet, AI frontend development has reached a practically usable level. Almost all new models since then have showcased their frontend development capabilities, and Kimi K2 is no exception. Here, I’d like to share my personal thoughts on this.\nText-based AI has always defaulted to outputting Markdown, and products have been essentially advanced ChatBots. People’s expectations of a ChatBot are nothing more than answering questions, writing articles, and providing emotional value like a human would. Once I saw user feedback requesting that Kimi “reformat the article to fit on one A4 page” - this was obviously impossible in pure text mode, and I dismissed this case as a joke between product managers and programmers.\nAround March of this year, when Kimi Researcher was being developed, both OpenAI and Gemini’s Deep Research ultimately delivered pure text research reports. We thought we could do something different by leveraging the already decent frontend programming capabilities at the time, giving users a richer, more interactive final report. The final form of this idea was revealed to the public after Kimi Researcher went live and received quite positive feedback.\nBut when I saw this idea, something completely different flashed through my mind: no one dictates that text AI must output markdown. If “frontend programming” becomes AI’s default interaction method, what would the product form become?\nFrom “chat-first” to “artifact-first.” Users wouldn’t need to engage in lengthy conversations with AI to get what they want. Instead, they could directly tell AI what interactive application they need, and AI would create it for them. This fundamentally changes the user’s interaction paradigm with AI.\nFor example, instead of asking “help me analyze this data,” users could say “create an interactive dashboard for me to analyze this data.” Instead of asking “help me write a report,” they could say “create an interactive report generator for me.” This is no longer just a ChatBot - it’s an intelligent application generator.\nAbout Tool Use \u0026 Agent At the beginning of the year, MCP started gaining popularity, and we thought about whether we could also connect Kimi to various third-party tools through MCP. At that time, we achieved quite good results through RLVR (Reinforcement Learning with Verifiable Rewards) during K1.5 development, so we thought we could replicate this approach - get a bunch of real MCP servers and directly integrate them into the RL environment for joint training.\nThis approach quickly hit a wall. First, deployment was troublesome - for example, Blender MCP is easy for users who already have Blender, but installing Blender in the RL environment becomes a burden. Second, and more fatally, many third-party tools require login to use. You can’t just register a bunch of Notion accounts for training Notion MCP usage, right?\nBut we changed our perspective. My hypothesis is: the model already knows how to use tools from pretraining; we just need to activate this capability. The foundation of this hypothesis is easy to understand: pretraining has seen massive amounts of code data, including numerous API calls in various languages and expressions. If we treat each API call as a tool, then the model should already know how to use them. Another foundation is that pretrained models already master rich world knowledge - for example, if you ask it to roleplay a Linux Terminal, it can interact with you quite convincingly. So obviously, for terminal tool calls, only a small amount of data should be needed to activate this capability.\nTherefore, we designed a rather elegant workflow:\nSimulation Phase: Use the model to simulate tool behavior instead of connecting to real tools Activation Phase: Use minimal real data to activate the capability that already exists in the model Refinement Phase: Fine-tune based on actual usage patterns This approach avoids the complexity of real tool integration while leveraging the model’s existing knowledge. The key insight is that the model doesn’t need to learn how to use tools from scratch - it needs to learn how to activate and apply the knowledge it already has.\nWhy Open Source First, to gain some fame. If K2 was just a closed-source service, it wouldn’t have received as much attention and discussion.\nSecond, to leverage community strength in improving the technical ecosystem. Within 24 hours of open-sourcing, the community had already created MLX implementations and 4-bit quantization - things our small team couldn’t accomplish alone.\nMost importantly: Open source means higher technical standards, which will force us to create better models, more aligned with AGI goals.\nThis isn’t just about releasing model weights. Open-sourcing means the first-party can no longer use “hack” methods to artificially enhance results. We must produce a truly universal model that any third party can easily reproduce.\nFor closed-source chatbots, users don’t know the underlying workflow or model complexity. I’ve heard rumors of services using dozens of models and hundreds of scenario classifications - this approach is contrary to true AGI development.\nBy open-sourcing, we prevent taking shortcuts and ensure a more rigorous approach to model development. I even playfully told the product team that if someone creates a more interesting application using Kimi K2, I’ll challenge them on it.\nAbout Determination and Some Potentially Controversial Scattered Views Despite criticism about our previous large-scale marketing efforts, Kimi stopped investing in marketing. Even when “Kimi” disappeared from app store search results, we did not resume marketing campaigns.\nI believe “hard capabilities are the best promotion” - if the model is good, it will gain market recognition. I see pursuing AGI as an “extremely perilous path” that requires total commitment. Hesitation will definitely lead to failure in the pursuit of AGI.\nI’m critical of purely application-focused AI strategies. Most Agent products are insignificant without advanced foundational models. I’m skeptical of approaches that prioritize Return on Investment (ROI) over technological advancement.\nOur core motivation is pushing the upper limits of intelligence through model development. We’re willing to make radical organizational decisions to pursue AGI goals. I believe the model’s intelligence fundamentally determines an AI system’s capabilities.\nThis is an uncompromising approach to AI development, prioritizing technological advancement over short-term market gains. We’re committed to this path despite its risks and challenges.\nConclusion I know Kimi K2 still has countless flaws. Now more than ever, I want K3.\nAddendum I didn’t expect this article to attract so much attention (scared). I must admit that while my sharp criticism was satisfying to write, some of my statements were too extreme. I have great respect for the entire industry - entrepreneurship is not easy, and we are all fellow travelers on the path to AGI.\nOriginal Author: Justin Wong (bigeagle)\nOriginal Publication: July 13, 2025\nOriginal URL: https://bigeagle.me/2025/07/kimi-k2/\nTranslation: English translation for educational and informational purposes\n",
+  "wordCount" : "1226",
+  "inLanguage": "en",
+  "datePublished": "2025-07-14T00:00:00Z",
+  "dateModified": "2025-07-14T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://mz462.github.io/posts/kimi-k2-developper-diary-translation/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "MJ's Blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://mz462.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://mz462.github.io/" accesskey="h" title="MJ&#39;s Blog (Alt + H)">MJ&#39;s Blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://mz462.github.io/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://mz462.github.io/search/" title="Search">
+                    <span>Search</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://mz462.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://mz462.github.io/posts/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      After Kimi K2&#39;s Release: No Longer Just a ChatBot
+    </h1>
+    <div class="post-description">
+      Translation of Justin Wong&#39;s reflection on Kimi K2&#39;s release, exploring AI&#39;s evolution beyond chatbots toward interactive applications and agent capabilities.
+    </div>
+    <div class="post-meta"><span title='2025-07-14 00:00:00 +0000 +0000'>July 14, 2025</span>&nbsp;·&nbsp;6 min&nbsp;·&nbsp;1226 words
+
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#introduction" aria-label="Introduction">Introduction</a></li>
+                <li>
+                    <a href="#about-frontend-development" aria-label="About &ldquo;Frontend Development&rdquo;">About &ldquo;Frontend Development&rdquo;</a></li>
+                <li>
+                    <a href="#about-tool-use--agent" aria-label="About Tool Use &amp; Agent">About Tool Use &amp; Agent</a></li>
+                <li>
+                    <a href="#why-open-source" aria-label="Why Open Source">Why Open Source</a></li>
+                <li>
+                    <a href="#about-determination-and-some-potentially-controversial-scattered-views" aria-label="About Determination and Some Potentially Controversial Scattered Views">About Determination and Some Potentially Controversial Scattered Views</a></li>
+                <li>
+                    <a href="#conclusion" aria-label="Conclusion">Conclusion</a></li>
+                <li>
+                    <a href="#addendum" aria-label="Addendum">Addendum</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><blockquote>
+<p><strong>Translation Note</strong>: This is a translation of the original Chinese blog post <a href="https://bigeagle.me/2025/07/kimi-k2/">&ldquo;写在 Kimi K2 发布之后：再也不仅仅是 ChatBot&rdquo;</a> by Justin Wong (bigeagle), published on July 13, 2025. All opinions expressed are those of the original author.</p></blockquote>
+<hr>
+<h2 id="introduction">Introduction<a hidden class="anchor" aria-hidden="true" href="#introduction">#</a></h2>
+<p>Two days ago, the Kimi K2 we&rsquo;d been working on for most of the year was finally released. After pulling an all-nighter before launch, I slept soundly for two days and finally have some time to write about my thoughts.</p>
+<p>Disclaimer: Everything below represents my personal views and does not represent the company&rsquo;s position.</p>
+<p>Additional disclaimer: Everything below is handcrafted the old-fashioned way (only using GitHub Copilot as an advanced input method).</p>
+<h2 id="about-frontend-development">About &ldquo;Frontend Development&rdquo;<a hidden class="anchor" aria-hidden="true" href="#about-frontend-development">#</a></h2>
+<p>Since Claude 3.5 Sonnet, AI frontend development has reached a practically usable level. Almost all new models since then have showcased their frontend development capabilities, and Kimi K2 is no exception. Here, I&rsquo;d like to share my personal thoughts on this.</p>
+<p>Text-based AI has always defaulted to outputting Markdown, and products have been essentially advanced ChatBots. People&rsquo;s expectations of a ChatBot are nothing more than answering questions, writing articles, and providing emotional value like a human would. Once I saw user feedback requesting that Kimi &ldquo;reformat the article to fit on one A4 page&rdquo; - this was obviously impossible in pure text mode, and I dismissed this case as a joke between product managers and programmers.</p>
+<p>Around March of this year, when Kimi Researcher was being developed, both OpenAI and Gemini&rsquo;s Deep Research ultimately delivered pure text research reports. We thought we could do something different by leveraging the already decent frontend programming capabilities at the time, giving users a richer, more interactive final report. The final form of this idea was revealed to the public after Kimi Researcher went live and received quite positive feedback.</p>
+<p>But when I saw this idea, something completely different flashed through my mind: no one dictates that text AI must output markdown. If &ldquo;frontend programming&rdquo; becomes AI&rsquo;s default interaction method, what would the product form become?</p>
+<p>From &ldquo;chat-first&rdquo; to &ldquo;artifact-first.&rdquo; Users wouldn&rsquo;t need to engage in lengthy conversations with AI to get what they want. Instead, they could directly tell AI what interactive application they need, and AI would create it for them. This fundamentally changes the user&rsquo;s interaction paradigm with AI.</p>
+<p>For example, instead of asking &ldquo;help me analyze this data,&rdquo; users could say &ldquo;create an interactive dashboard for me to analyze this data.&rdquo; Instead of asking &ldquo;help me write a report,&rdquo; they could say &ldquo;create an interactive report generator for me.&rdquo; This is no longer just a ChatBot - it&rsquo;s an intelligent application generator.</p>
+<h2 id="about-tool-use--agent">About Tool Use &amp; Agent<a hidden class="anchor" aria-hidden="true" href="#about-tool-use--agent">#</a></h2>
+<p>At the beginning of the year, MCP started gaining popularity, and we thought about whether we could also connect Kimi to various third-party tools through MCP. At that time, we achieved quite good results through RLVR (Reinforcement Learning with Verifiable Rewards) during K1.5 development, so we thought we could replicate this approach - get a bunch of real MCP servers and directly integrate them into the RL environment for joint training.</p>
+<p>This approach quickly hit a wall. First, deployment was troublesome - for example, Blender MCP is easy for users who already have Blender, but installing Blender in the RL environment becomes a burden. Second, and more fatally, many third-party tools require login to use. You can&rsquo;t just register a bunch of Notion accounts for training Notion MCP usage, right?</p>
+<p>But we changed our perspective. My hypothesis is: the model already knows how to use tools from pretraining; we just need to activate this capability. The foundation of this hypothesis is easy to understand: pretraining has seen massive amounts of code data, including numerous API calls in various languages and expressions. If we treat each API call as a tool, then the model should already know how to use them. Another foundation is that pretrained models already master rich world knowledge - for example, if you ask it to roleplay a Linux Terminal, it can interact with you quite convincingly. So obviously, for terminal tool calls, only a small amount of data should be needed to activate this capability.</p>
+<p>Therefore, we designed a rather elegant workflow:</p>
+<ol>
+<li><strong>Simulation Phase</strong>: Use the model to simulate tool behavior instead of connecting to real tools</li>
+<li><strong>Activation Phase</strong>: Use minimal real data to activate the capability that already exists in the model</li>
+<li><strong>Refinement Phase</strong>: Fine-tune based on actual usage patterns</li>
+</ol>
+<p>This approach avoids the complexity of real tool integration while leveraging the model&rsquo;s existing knowledge. The key insight is that the model doesn&rsquo;t need to learn how to use tools from scratch - it needs to learn how to activate and apply the knowledge it already has.</p>
+<h2 id="why-open-source">Why Open Source<a hidden class="anchor" aria-hidden="true" href="#why-open-source">#</a></h2>
+<p>First, to gain some fame. If K2 was just a closed-source service, it wouldn&rsquo;t have received as much attention and discussion.</p>
+<p>Second, to leverage community strength in improving the technical ecosystem. Within 24 hours of open-sourcing, the community had already created MLX implementations and 4-bit quantization - things our small team couldn&rsquo;t accomplish alone.</p>
+<p>Most importantly: <strong>Open source means higher technical standards, which will force us to create better models, more aligned with AGI goals</strong>.</p>
+<p>This isn&rsquo;t just about releasing model weights. Open-sourcing means the first-party can no longer use &ldquo;hack&rdquo; methods to artificially enhance results. We must produce a truly universal model that any third party can easily reproduce.</p>
+<p>For closed-source chatbots, users don&rsquo;t know the underlying workflow or model complexity. I&rsquo;ve heard rumors of services using dozens of models and hundreds of scenario classifications - this approach is contrary to true AGI development.</p>
+<p>By open-sourcing, we prevent taking shortcuts and ensure a more rigorous approach to model development. I even playfully told the product team that if someone creates a more interesting application using Kimi K2, I&rsquo;ll challenge them on it.</p>
+<h2 id="about-determination-and-some-potentially-controversial-scattered-views">About Determination and Some Potentially Controversial Scattered Views<a hidden class="anchor" aria-hidden="true" href="#about-determination-and-some-potentially-controversial-scattered-views">#</a></h2>
+<p>Despite criticism about our previous large-scale marketing efforts, Kimi stopped investing in marketing. Even when &ldquo;Kimi&rdquo; disappeared from app store search results, we did not resume marketing campaigns.</p>
+<p>I believe &ldquo;hard capabilities are the best promotion&rdquo; - if the model is good, it will gain market recognition. I see pursuing AGI as an &ldquo;extremely perilous path&rdquo; that requires total commitment. Hesitation will definitely lead to failure in the pursuit of AGI.</p>
+<p>I&rsquo;m critical of purely application-focused AI strategies. Most Agent products are insignificant without advanced foundational models. I&rsquo;m skeptical of approaches that prioritize Return on Investment (ROI) over technological advancement.</p>
+<p>Our core motivation is pushing the upper limits of intelligence through model development. We&rsquo;re willing to make radical organizational decisions to pursue AGI goals. I believe the model&rsquo;s intelligence fundamentally determines an AI system&rsquo;s capabilities.</p>
+<p>This is an uncompromising approach to AI development, prioritizing technological advancement over short-term market gains. We&rsquo;re committed to this path despite its risks and challenges.</p>
+<h2 id="conclusion">Conclusion<a hidden class="anchor" aria-hidden="true" href="#conclusion">#</a></h2>
+<p>I know Kimi K2 still has countless flaws. Now more than ever, I want K3.</p>
+<h2 id="addendum">Addendum<a hidden class="anchor" aria-hidden="true" href="#addendum">#</a></h2>
+<p>I didn&rsquo;t expect this article to attract so much attention (scared). I must admit that while my sharp criticism was satisfying to write, some of my statements were too extreme. I have great respect for the entire industry - entrepreneurship is not easy, and we are all fellow travelers on the path to AGI.</p>
+<hr>
+<blockquote>
+<p><strong>Original Author</strong>: Justin Wong (bigeagle)<br>
+<strong>Original Publication</strong>: July 13, 2025<br>
+<strong>Original URL</strong>: <a href="https://bigeagle.me/2025/07/kimi-k2/">https://bigeagle.me/2025/07/kimi-k2/</a><br>
+<strong>Translation</strong>: English translation for educational and informational purposes</p></blockquote>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://mz462.github.io/tags/ai/">AI</a></li>
+      <li><a href="https://mz462.github.io/tags/translation/">Translation</a></li>
+      <li><a href="https://mz462.github.io/tags/llm/">LLM</a></li>
+      <li><a href="https://mz462.github.io/tags/product-development/">Product Development</a></li>
+      <li><a href="https://mz462.github.io/tags/open-source/">Open Source</a></li>
+      <li><a href="https://mz462.github.io/tags/frontend-development/">Frontend Development</a></li>
+      <li><a href="https://mz462.github.io/tags/agents/">Agents</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="next" href="https://mz462.github.io/posts/ai-honeymoon-period/">
+    <span class="title">Next »</span>
+    <br>
+    <span>The AI Honeymoon Period: What Context Engineering Taught Me About Hype vs Reality</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2025 <a href="https://mz462.github.io/">MJ&#39;s Blog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>
