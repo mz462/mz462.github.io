@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Culture on MJ&#39;s Blog</title>
+    <link>https://mz462.github.io/tags/culture/</link>
+    <description>Recent content in Culture on MJ&#39;s Blog</description>
+    <generator>Hugo -- 0.145.0</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 16 Jul 2025 00:00:00 -0500</lastBuildDate>
+    <atom:link href="https://mz462.github.io/tags/culture/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Perfect Storm: How China Created the AI Talent Pipeline Dominating Silicon Valley</title>
+      <link>https://mz462.github.io/posts/china-ai-talent-pipeline/</link>
+      <pubDate>Wed, 16 Jul 2025 00:00:00 -0500</pubDate>
+      <guid>https://mz462.github.io/posts/china-ai-talent-pipeline/</guid>
+      <description>Why are Chinese-educated engineers worth $100M to Meta? The answer reveals how a generation educated decades ago is reshaping the future of AI through a unique combination of systematic education, cultural values, and population mathematics.</description>
+    </item>
+  </channel>
+</rss>
