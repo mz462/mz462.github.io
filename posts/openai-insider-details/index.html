@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Things I Found Fascinating in Calvin&#39;s OpenAI Reflections | MJ&#39;s Blog</title>
+<meta name="keywords" content="AI, product management, OpenAI, engineering culture, technical infrastructure, startup scaling">
+<meta name="description" content="A product person&#39;s fascination with the operational realities revealed in Calvin French-Owen&#39;s insider perspective on building products at OpenAI.">
+<meta name="author" content="">
+<link rel="canonical" href="https://mz462.github.io/posts/openai-insider-details/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.f49d66caae9ea0fd43f21f29e71a8d3e284517ed770f2aa86fa012953ad3c9ef.css" integrity="sha256-9J1myq6eoP1D8h8p5xqNPihFF&#43;13Dyqob6ASlTrTye8=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://mz462.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://mz462.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://mz462.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://mz462.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://mz462.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://mz462.github.io/posts/openai-insider-details/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:url" content="https://mz462.github.io/posts/openai-insider-details/">
+  <meta property="og:site_name" content="MJ&#39;s Blog">
+  <meta property="og:title" content="Things I Found Fascinating in Calvin&#39;s OpenAI Reflections">
+  <meta property="og:description" content="A product person&#39;s fascination with the operational realities revealed in Calvin French-Owen&#39;s insider perspective on building products at OpenAI.">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-07-16T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-07-16T00:00:00+00:00">
+    <meta property="article:tag" content="AI">
+    <meta property="article:tag" content="Product Management">
+    <meta property="article:tag" content="OpenAI">
+    <meta property="article:tag" content="Engineering Culture">
+    <meta property="article:tag" content="Technical Infrastructure">
+    <meta property="article:tag" content="Startup Scaling">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Things I Found Fascinating in Calvin&#39;s OpenAI Reflections">
+<meta name="twitter:description" content="A product person&#39;s fascination with the operational realities revealed in Calvin French-Owen&#39;s insider perspective on building products at OpenAI.">
+      <meta name="twitter:site" content="@emjayzo">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://mz462.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Things I Found Fascinating in Calvin's OpenAI Reflections",
+      "item": "https://mz462.github.io/posts/openai-insider-details/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Things I Found Fascinating in Calvin's OpenAI Reflections",
+  "name": "Things I Found Fascinating in Calvin\u0027s OpenAI Reflections",
+  "description": "A product person's fascination with the operational realities revealed in Calvin French-Owen's insider perspective on building products at OpenAI.",
+  "keywords": [
+    "AI", "product management", "OpenAI", "engineering culture", "technical infrastructure", "startup scaling"
+  ],
+  "articleBody": "I stumbled across Calvin French-Owen’s reflections on his time at OpenAI and found myself completely absorbed—not by the high-level insights about AI safety or AGI timelines, but by the operational details buried throughout. The kind of specifics that make you go “wait, they did what in 7 weeks?”\nThere’s something deeply fascinating about getting a peek behind the curtain of a company operating at the technological frontier. Calvin’s post is full of these moments where you realize just how different building products looks when you have the resources, talent, and mandate to try audacious things from scratch.\nHere are the details that stuck with me, and why they make me a little envious of what it must feel like to build without constraints.\nThe Monorepo Reality “Giant Python monorepo” is such a delightfully specific detail. In most companies, suggesting a monorepo triggers debates about build times, dependency management, and team autonomy. At OpenAI? They just… do it. And apparently live with CI that takes 30 minutes to run on master and “frequently breaks.”\nThis feels like the engineering equivalent of luxury problems. Yes, your builds are slow and your CI is fragile, but you’re also shipping frontier AI models. The tolerance for technical debt when you’re racing toward AGI is apparently quite high—and honestly, that’s probably the right trade-off.\nThe infrastructure choices are equally fascinating: everything on Azure, FastAPI for APIs, Pydantic for validation. Nothing exotic or cutting-edge, just solid, boring choices that let you focus on the hard problems. There’s wisdom in not reinventing wheels when you’re already reinventing intelligence.\nSpeed vs. Scale Tensions The Codex story is wild: 7 weeks from start to launch with a team of about 17 people (8 engineers, 4 researchers, 2 designers, 2 GTM, 1 PM). Seven weeks! And it generated 630,000 public PRs in the first 53 days.\nBut then Calvin also mentions the challenge of scaling from 1,000 to 3,000 employees in a single year. That’s a fascinating tension—you can still move incredibly fast on individual products, but the organizational overhead is crushing you in other ways.\nMost companies optimize for predictable scaling. OpenAI seems to optimize for breakthrough speed while accepting the chaos that rapid growth brings. Slack replacing email entirely, highly fluid team structures, rapid direction changes—it sounds simultaneously thrilling and exhausting.\nThe Stack That Ships The technical details scattered throughout are fascinating. They built their own reimplementation of Meta’s TAO graph database. They created custom container runtimes and repo downloading optimizations for Codex. They fine-tuned models specifically for code editing.\nThis is what “build vs. buy” looks like when you have the talent pipeline from Meta and the resources to solve problems from first principles. Most companies would integrate an existing graph database or use off-the-shelf container solutions. OpenAI just… builds their own.\nThere’s something both admirable and absurd about this level of custom engineering. It’s the kind of technical ambition that only makes sense when you’re well-funded and operating at the frontier.\nThe Meta Pipeline One detail that caught my attention: the “significant Meta → OpenAI engineering talent pipeline.” This isn’t just about hiring good engineers—it’s about importing institutional knowledge and technical DNA.\nWhen you poach enough talent from one place, you don’t just get their skills, you get their approaches, their tools, their assumptions about how things should be built. The TAO graph database reimplementation suddenly makes more sense in this context. It’s not just “we need a graph database,” it’s “we know how Meta solved this problem, and we can do it better.”\nThis kind of talent concentration is fascinating from a product development perspective. Most companies have to learn hard lessons the slow way. OpenAI gets to inherit lessons already learned elsewhere and apply them to novel problems.\nProduct Velocity Envy Here’s what really gets me: “GPU cost is a major consideration for every feature.” What a luxury problem to have! Most product teams are constrained by engineering time, user research timelines, or market positioning. OpenAI’s constraint is that their compute is so expensive they have to think carefully about what’s worth the GPU cycles.\nThis fundamentally changes how you approach product development. When your marginal cost per experiment is measured in thousands of dollars of compute, you probably get very good at hypothesizing, very disciplined about testing, and very focused on high-impact features.\nCompare this to the typical startup approach of “throw spaghetti at the wall and see what sticks.” When spaghetti costs $10,000 per throw, you develop much better aim.\nWhat This Makes Me Think About Reading Calvin’s reflections, I keep coming back to one feeling: envy for the freedom to build things ground-up with proper resources and the organizational mandate to take big swings.\nMost product development happens within constraints—legacy systems, technical debt, budget limitations, risk-averse stakeholders. You optimize for incremental improvements because that’s what’s feasible.\nBut what would it feel like to work somewhere with the resources and audacity to say “let’s reimplement TAO” or “let’s ship an AI coding assistant in 7 weeks”? Where the constraint isn’t “can we afford to try this?” but “is this the best use of our expensive compute?”\nThere’s something deeply appealing about that level of ambition, even if it comes with 30-minute CI builds and the chaos of hypergrowth. Sometimes I wonder what products we’d all build if we had OpenAI’s combination of resources, talent, and willingness to bet big on uncertain outcomes.\nCalvin’s full post is worth reading for the cultural and strategic insights too, but these operational details were what caught my product manager brain. Sometimes the most interesting part of any story is simply how the sausage gets made.\n",
+  "wordCount" : "939",
+  "inLanguage": "en",
+  "datePublished": "2025-07-16T00:00:00Z",
+  "dateModified": "2025-07-16T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://mz462.github.io/posts/openai-insider-details/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "MJ's Blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://mz462.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://mz462.github.io/" accesskey="h" title="MJ&#39;s Blog (Alt + H)">MJ&#39;s Blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://mz462.github.io/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://mz462.github.io/search/" title="Search">
+                    <span>Search</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://mz462.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://mz462.github.io/posts/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Things I Found Fascinating in Calvin&#39;s OpenAI Reflections
+    </h1>
+    <div class="post-description">
+      A product person&#39;s fascination with the operational realities revealed in Calvin French-Owen&#39;s insider perspective on building products at OpenAI.
+    </div>
+    <div class="post-meta"><span title='2025-07-16 00:00:00 +0000 UTC'>July 16, 2025</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;939 words
+
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#the-monorepo-reality" aria-label="The Monorepo Reality">The Monorepo Reality</a></li>
+                <li>
+                    <a href="#speed-vs-scale-tensions" aria-label="Speed vs. Scale Tensions">Speed vs. Scale Tensions</a></li>
+                <li>
+                    <a href="#the-stack-that-ships" aria-label="The Stack That Ships">The Stack That Ships</a></li>
+                <li>
+                    <a href="#the-meta-pipeline" aria-label="The Meta Pipeline">The Meta Pipeline</a></li>
+                <li>
+                    <a href="#product-velocity-envy" aria-label="Product Velocity Envy">Product Velocity Envy</a></li>
+                <li>
+                    <a href="#what-this-makes-me-think-about" aria-label="What This Makes Me Think About">What This Makes Me Think About</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><p>I stumbled across <a href="https://calv.info/openai-reflections">Calvin French-Owen&rsquo;s reflections on his time at OpenAI</a> and found myself completely absorbed—not by the high-level insights about AI safety or AGI timelines, but by the operational details buried throughout. The kind of specifics that make you go &ldquo;wait, they did <em>what</em> in 7 weeks?&rdquo;</p>
+<p>There&rsquo;s something deeply fascinating about getting a peek behind the curtain of a company operating at the technological frontier. Calvin&rsquo;s post is full of these moments where you realize just how different building products looks when you have the resources, talent, and mandate to try audacious things from scratch.</p>
+<p>Here are the details that stuck with me, and why they make me a little envious of what it must feel like to build without constraints.</p>
+<h2 id="the-monorepo-reality">The Monorepo Reality<a hidden class="anchor" aria-hidden="true" href="#the-monorepo-reality">#</a></h2>
+<p>&ldquo;Giant Python monorepo&rdquo; is such a delightfully specific detail. In most companies, suggesting a monorepo triggers debates about build times, dependency management, and team autonomy. At OpenAI? They just&hellip; do it. And apparently live with CI that takes 30 minutes to run on master and &ldquo;frequently breaks.&rdquo;</p>
+<p>This feels like the engineering equivalent of luxury problems. Yes, your builds are slow and your CI is fragile, but you&rsquo;re also shipping frontier AI models. The tolerance for technical debt when you&rsquo;re racing toward AGI is apparently quite high—and honestly, that&rsquo;s probably the right trade-off.</p>
+<p>The infrastructure choices are equally fascinating: everything on Azure, FastAPI for APIs, Pydantic for validation. Nothing exotic or cutting-edge, just solid, boring choices that let you focus on the hard problems. There&rsquo;s wisdom in not reinventing wheels when you&rsquo;re already reinventing intelligence.</p>
+<h2 id="speed-vs-scale-tensions">Speed vs. Scale Tensions<a hidden class="anchor" aria-hidden="true" href="#speed-vs-scale-tensions">#</a></h2>
+<p>The Codex story is wild: 7 weeks from start to launch with a team of about 17 people (8 engineers, 4 researchers, 2 designers, 2 GTM, 1 PM). Seven weeks! And it generated 630,000 public PRs in the first 53 days.</p>
+<p>But then Calvin also mentions the challenge of scaling from 1,000 to 3,000 employees in a single year. That&rsquo;s a fascinating tension—you can still move incredibly fast on individual products, but the organizational overhead is crushing you in other ways.</p>
+<p>Most companies optimize for predictable scaling. OpenAI seems to optimize for breakthrough speed while accepting the chaos that rapid growth brings. Slack replacing email entirely, highly fluid team structures, rapid direction changes—it sounds simultaneously thrilling and exhausting.</p>
+<h2 id="the-stack-that-ships">The Stack That Ships<a hidden class="anchor" aria-hidden="true" href="#the-stack-that-ships">#</a></h2>
+<p>The technical details scattered throughout are fascinating. They built their own reimplementation of Meta&rsquo;s TAO graph database. They created custom container runtimes and repo downloading optimizations for Codex. They fine-tuned models specifically for code editing.</p>
+<p>This is what &ldquo;build vs. buy&rdquo; looks like when you have the talent pipeline from Meta and the resources to solve problems from first principles. Most companies would integrate an existing graph database or use off-the-shelf container solutions. OpenAI just&hellip; builds their own.</p>
+<p>There&rsquo;s something both admirable and absurd about this level of custom engineering. It&rsquo;s the kind of technical ambition that only makes sense when you&rsquo;re well-funded and operating at the frontier.</p>
+<h2 id="the-meta-pipeline">The Meta Pipeline<a hidden class="anchor" aria-hidden="true" href="#the-meta-pipeline">#</a></h2>
+<p>One detail that caught my attention: the &ldquo;significant Meta → OpenAI engineering talent pipeline.&rdquo; This isn&rsquo;t just about hiring good engineers—it&rsquo;s about importing institutional knowledge and technical DNA.</p>
+<p>When you poach enough talent from one place, you don&rsquo;t just get their skills, you get their approaches, their tools, their assumptions about how things should be built. The TAO graph database reimplementation suddenly makes more sense in this context. It&rsquo;s not just &ldquo;we need a graph database,&rdquo; it&rsquo;s &ldquo;we know how Meta solved this problem, and we can do it better.&rdquo;</p>
+<p>This kind of talent concentration is fascinating from a product development perspective. Most companies have to learn hard lessons the slow way. OpenAI gets to inherit lessons already learned elsewhere and apply them to novel problems.</p>
+<h2 id="product-velocity-envy">Product Velocity Envy<a hidden class="anchor" aria-hidden="true" href="#product-velocity-envy">#</a></h2>
+<p>Here&rsquo;s what really gets me: &ldquo;GPU cost is a major consideration for every feature.&rdquo; What a luxury problem to have! Most product teams are constrained by engineering time, user research timelines, or market positioning. OpenAI&rsquo;s constraint is that their compute is so expensive they have to think carefully about what&rsquo;s worth the GPU cycles.</p>
+<p>This fundamentally changes how you approach product development. When your marginal cost per experiment is measured in thousands of dollars of compute, you probably get very good at hypothesizing, very disciplined about testing, and very focused on high-impact features.</p>
+<p>Compare this to the typical startup approach of &ldquo;throw spaghetti at the wall and see what sticks.&rdquo; When spaghetti costs $10,000 per throw, you develop much better aim.</p>
+<h2 id="what-this-makes-me-think-about">What This Makes Me Think About<a hidden class="anchor" aria-hidden="true" href="#what-this-makes-me-think-about">#</a></h2>
+<p>Reading Calvin&rsquo;s reflections, I keep coming back to one feeling: envy for the freedom to build things ground-up with proper resources and the organizational mandate to take big swings.</p>
+<p>Most product development happens within constraints—legacy systems, technical debt, budget limitations, risk-averse stakeholders. You optimize for incremental improvements because that&rsquo;s what&rsquo;s feasible.</p>
+<p>But what would it feel like to work somewhere with the resources and audacity to say &ldquo;let&rsquo;s reimplement TAO&rdquo; or &ldquo;let&rsquo;s ship an AI coding assistant in 7 weeks&rdquo;? Where the constraint isn&rsquo;t &ldquo;can we afford to try this?&rdquo; but &ldquo;is this the best use of our expensive compute?&rdquo;</p>
+<p>There&rsquo;s something deeply appealing about that level of ambition, even if it comes with 30-minute CI builds and the chaos of hypergrowth. Sometimes I wonder what products we&rsquo;d all build if we had OpenAI&rsquo;s combination of resources, talent, and willingness to bet big on uncertain outcomes.</p>
+<hr>
+<p><em>Calvin&rsquo;s full post is worth reading for the cultural and strategic insights too, but these operational details were what caught my product manager brain. Sometimes the most interesting part of any story is simply how the sausage gets made.</em></p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://mz462.github.io/tags/ai/">AI</a></li>
+      <li><a href="https://mz462.github.io/tags/product-management/">Product Management</a></li>
+      <li><a href="https://mz462.github.io/tags/openai/">OpenAI</a></li>
+      <li><a href="https://mz462.github.io/tags/engineering-culture/">Engineering Culture</a></li>
+      <li><a href="https://mz462.github.io/tags/technical-infrastructure/">Technical Infrastructure</a></li>
+      <li><a href="https://mz462.github.io/tags/startup-scaling/">Startup Scaling</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="next" href="https://mz462.github.io/posts/kimi-k2-developper-diary-translation/">
+    <span class="title">Next »</span>
+    <br>
+    <span>After Kimi K2&#39;s Release: No Longer Just a ChatBot</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2025 <a href="https://mz462.github.io/">MJ&#39;s Blog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>
