@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Architecture on MJ&#39;s Blog</title>
+    <link>https://mz462.github.io/tags/architecture/</link>
+    <description>Recent content in Architecture on MJ&#39;s Blog</description>
+    <generator>Hugo -- 0.145.0</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 18 Jul 2025 15:30:00 -0800</lastBuildDate>
+    <atom:link href="https://mz462.github.io/tags/architecture/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Blanked Out During Claude&#39;s Demo. How Does It Just Work So Well?</title>
+      <link>https://mz462.github.io/posts/blanked-out-claude-demo/</link>
+      <pubDate>Fri, 18 Jul 2025 15:30:00 -0800</pubDate>
+      <guid>https://mz462.github.io/posts/blanked-out-claude-demo/</guid>
+      <description>From a jarring product demo to reverse engineering insights: why Anthropic&amp;#39;s &amp;#39;one model, many tools&amp;#39; philosophy creates seemingly effortless AI experiences.</description>
+    </item>
+  </channel>
+</rss>

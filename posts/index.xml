@@ -6,8 +6,15 @@
     <description>Recent content in Posts on MJ&#39;s Blog</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 16 Jul 2025 00:00:00 -0500</lastBuildDate>
+    <lastBuildDate>Fri, 18 Jul 2025 15:30:00 -0800</lastBuildDate>
     <atom:link href="https://mz462.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Blanked Out During Claude&#39;s Demo. How Does It Just Work So Well?</title>
+      <link>https://mz462.github.io/posts/blanked-out-claude-demo/</link>
+      <pubDate>Fri, 18 Jul 2025 15:30:00 -0800</pubDate>
+      <guid>https://mz462.github.io/posts/blanked-out-claude-demo/</guid>
+      <description>From a jarring product demo to reverse engineering insights: why Anthropic&amp;#39;s &amp;#39;one model, many tools&amp;#39; philosophy creates seemingly effortless AI experiences.</description>
+    </item>
     <item>
       <title>The Perfect Storm: How China Created the AI Talent Pipeline Dominating Silicon Valley</title>
       <link>https://mz462.github.io/posts/china-ai-talent-pipeline/</link>

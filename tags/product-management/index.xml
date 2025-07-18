@@ -6,8 +6,15 @@
     <description>Recent content in Product Management on MJ&#39;s Blog</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 16 Jul 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 18 Jul 2025 15:30:00 -0800</lastBuildDate>
     <atom:link href="https://mz462.github.io/tags/product-management/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Blanked Out During Claude&#39;s Demo. How Does It Just Work So Well?</title>
+      <link>https://mz462.github.io/posts/blanked-out-claude-demo/</link>
+      <pubDate>Fri, 18 Jul 2025 15:30:00 -0800</pubDate>
+      <guid>https://mz462.github.io/posts/blanked-out-claude-demo/</guid>
+      <description>From a jarring product demo to reverse engineering insights: why Anthropic&amp;#39;s &amp;#39;one model, many tools&amp;#39; philosophy creates seemingly effortless AI experiences.</description>
+    </item>
     <item>
       <title>Things I Found Fascinating in Calvin&#39;s OpenAI Reflections</title>
       <link>https://mz462.github.io/posts/openai-insider-details/</link>
