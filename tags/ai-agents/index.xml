@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>AI Agents on MJ&#39;s Blog</title>
+    <link>https://mz462.github.io/tags/ai-agents/</link>
+    <description>Recent content in AI Agents on MJ&#39;s Blog</description>
+    <generator>Hugo -- 0.145.0</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 20 Jul 2025 14:30:00 -0700</lastBuildDate>
+    <atom:link href="https://mz462.github.io/tags/ai-agents/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Context Engineering Lessons from Building Manus</title>
+      <link>https://mz462.github.io/posts/context-engineering-lessons-from-manus/</link>
+      <pubDate>Sun, 20 Jul 2025 14:30:00 -0700</pubDate>
+      <guid>https://mz462.github.io/posts/context-engineering-lessons-from-manus/</guid>
+      <description>Key insights from Manus&amp;#39;s experience building AI agents - why context engineering has become the critical skill for 2025</description>
+    </item>
+  </channel>
+</rss>
