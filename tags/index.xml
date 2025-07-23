@@ -6,47 +6,89 @@
     <description>Recent content in Tags on MJ&#39;s Blog</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 20 Jul 2025 14:30:00 -0700</lastBuildDate>
+    <lastBuildDate>Wed, 23 Jul 2025 10:30:00 -0700</lastBuildDate>
     <atom:link href="https://mz462.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>AI</title>
       <link>https://mz462.github.io/tags/ai/</link>
-      <pubDate>Fri, 18 Jul 2025 15:30:00 -0800</pubDate>
+      <pubDate>Sun, 20 Jul 2025 14:30:00 -0700</pubDate>
       <guid>https://mz462.github.io/tags/ai/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Benchmarks</title>
+      <link>https://mz462.github.io/tags/benchmarks/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://mz462.github.io/tags/benchmarks/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Cantonese</title>
+      <link>https://mz462.github.io/tags/cantonese/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://mz462.github.io/tags/cantonese/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Cultural Preservation</title>
+      <link>https://mz462.github.io/tags/cultural-preservation/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://mz462.github.io/tags/cultural-preservation/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Language Technology</title>
+      <link>https://mz462.github.io/tags/language-technology/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://mz462.github.io/tags/language-technology/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>LLM</title>
+      <link>https://mz462.github.io/tags/llm/</link>
+      <pubDate>Mon, 14 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>https://mz462.github.io/tags/llm/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Traditional Chinese</title>
+      <link>https://mz462.github.io/tags/traditional-chinese/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://mz462.github.io/tags/traditional-chinese/</guid>
       <description></description>
     </item>
     <item>
       <title>AI Agents</title>
       <link>https://mz462.github.io/tags/ai-agents/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 20 Jul 2025 14:30:00 -0700</pubDate>
       <guid>https://mz462.github.io/tags/ai-agents/</guid>
       <description></description>
     </item>
     <item>
       <title>Context Engineering</title>
       <link>https://mz462.github.io/tags/context-engineering/</link>
-      <pubDate>Mon, 14 Jul 2025 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 20 Jul 2025 14:30:00 -0700</pubDate>
       <guid>https://mz462.github.io/tags/context-engineering/</guid>
       <description></description>
     </item>
     <item>
       <title>Enterprise AI</title>
       <link>https://mz462.github.io/tags/enterprise-ai/</link>
-      <pubDate>Fri, 18 Jul 2025 15:30:00 -0800</pubDate>
+      <pubDate>Sun, 20 Jul 2025 14:30:00 -0700</pubDate>
       <guid>https://mz462.github.io/tags/enterprise-ai/</guid>
       <description></description>
     </item>
     <item>
       <title>LLM Optimization</title>
       <link>https://mz462.github.io/tags/llm-optimization/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 20 Jul 2025 14:30:00 -0700</pubDate>
       <guid>https://mz462.github.io/tags/llm-optimization/</guid>
       <description></description>
     </item>
     <item>
       <title>Product Management</title>
       <link>https://mz462.github.io/tags/product-management/</link>
-      <pubDate>Fri, 18 Jul 2025 15:30:00 -0800</pubDate>
+      <pubDate>Sun, 20 Jul 2025 14:30:00 -0700</pubDate>
       <guid>https://mz462.github.io/tags/product-management/</guid>
       <description></description>
     </item>
@@ -181,13 +223,6 @@
       <link>https://mz462.github.io/tags/hype-cycle/</link>
       <pubDate>Mon, 14 Jul 2025 00:00:00 +0000</pubDate>
       <guid>https://mz462.github.io/tags/hype-cycle/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>LLM</title>
-      <link>https://mz462.github.io/tags/llm/</link>
-      <pubDate>Mon, 14 Jul 2025 00:00:00 +0000</pubDate>
-      <guid>https://mz462.github.io/tags/llm/</guid>
       <description></description>
     </item>
     <item>
