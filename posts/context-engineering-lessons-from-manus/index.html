@@ -106,8 +106,8 @@
   "keywords": [
     "AI", "context engineering", "AI agents", "product management", "enterprise AI", "LLM optimization"
   ],
-  "articleBody": "I just read an excellent deep dive from the Manus team about context engineering for AI agents, and it’s packed with practical insights that anyone building AI systems should know about.\nThe Core Insight The Manus post1 opens with a striking observation: “Most agent failures are not model failures anymore, they are context failures.” We’ve moved past the era where model limitations were the primary bottleneck. Today’s models are remarkably capable—the challenge is giving them the right information at the right time.\nThey define context engineering as “the discipline of designing and building dynamic systems that provides the right information and tools, in the right format, at the right time, to give a LLM everything it needs to accomplish a task.” Notice that word: dynamic. This isn’t about crafting perfect static prompts—it’s about building systems that evolve context throughout an interaction.\nFive Critical Production Lessons 1. KV-Cache Optimization: The Hidden Performance Multiplier One of the most practical insights involves Key-Value cache optimization. Keep prompt prefixes stable and make context append-only to dramatically reduce inference costs. When identical context prefixes can be cached and reused, you’re not just saving compute—you’re enabling entirely new interaction patterns that would otherwise be prohibitively expensive.\n2. Action Space Management: Mask, Don’t Remove Rather than dynamically adding and removing tools mid-conversation, use “masking” to constrain action selection while maintaining context stability. This approach keeps the system predictable while still adapting to current state.\n3. File System as Ultimate Context Use the file system as your “ultimate context” store. This provides a durable, structured way to maintain state that survives beyond individual conversations. It also enables sophisticated compression strategies where detailed information can be dropped while preserving pathways to restore it when needed.\n4. Attention Manipulation Through Structure The Manus team introduces practical techniques for guiding model attention:\nTodo lists that help models “recite objectives” Keeping failed actions in context to enable learning from mistakes Introducing controlled randomness to prevent repetitive behavior loops These aren’t just prompting tricks—they’re systematic approaches to context design that shape how models process and prioritize information.\n5. Context as Experimental Science Perhaps the most important meta-lesson: context engineering is fundamentally experimental. Prioritize adaptability over perfection, treating context as a “dynamic, learnable environment.” We’re not trying to design perfect context upfront—we’re building systems that can evolve and improve their context management over time.\nTo be continue I like the idea of using file system as context a lot. It gave me quite some thoughts, and I need some more time to wrap this section up.\nContext Engineering for AI Agents: Lessons from Building Manus ↩︎\n",
-  "wordCount" : "431",
+  "articleBody": "I just read an excellent deep dive from the Manus team about context engineering for AI agents, and it’s packed with practical insights that anyone building AI systems should know about.\nThe Core Insight The Manus post1 opens with a striking observation: “Most agent failures are not model failures anymore, they are context failures.” We’ve moved past the era where model limitations were the primary bottleneck. Today’s models are remarkably capable—the challenge is giving them the right information at the right time.\nThey define context engineering as “the discipline of designing and building dynamic systems that provides the right information and tools, in the right format, at the right time, to give a LLM everything it needs to accomplish a task.” Notice that word: dynamic. This isn’t about crafting perfect static prompts—it’s about building systems that evolve context throughout an interaction.\nThe Hidden Meta-Insight: Agents Are REP Loops, Not Brains After digesting the Manus post more deeply, I realized there’s a fundamental meta-insight that runs throughout their approach but is never explicitly stated: Agents are REP Loops, not brains.\nThis isn’t a minor technical detail—it’s a complete paradigm shift in how we should think about AI agents. We need to stop thinking of them as autonomous entities with free will and start thinking of them as incredibly powerful REPL systems (Read-Eval-Print Loops):\nRead: The carefully constructed context you provide Eval: Based on that context, the agent decides its next action Print: It outputs the action and results back into the context, starting the next loop You’re not teaching a student—you’re writing an input script for a supercomputer. All your work should revolve around making each step of this loop clear, predictable, and debuggable.\nThe Ultimate Framework: Context Engineering = Memory + Environment + Feedback The Manus approach reveals a systematic framework built around three pillars:\nMemory: How to efficiently store and retrieve successful and failed experiences, working in harmony with KV-Cache Environment: Providing the agent with an interactive, persistent workspace (like a file system) Feedback: Injecting the results of actions (whether successful or failed) as input for the next decision cycle Production Lessons Learned the Hard Way 1. Design for KV-Cache Above All Else In production AI agents, there’s one metric that matters more than anything: KV-Cache hit rate. Every step your agent takes grows the context massively, while outputs (usually tool calls) stay short. At Manus, this input-to-output token ratio is 100:1. Every cache miss means 10x cost explosion.\nThe costly mistakes:\nAdding dynamic timestamps to system prompts kills cache hit rates to zero Unstable JSON serialization with changing key orders silently breaks caching Any character change in prompt prefixes invalidates the entire cache The only way forward:\nKeep prompt prefixes absolutely stable Make context append-only—never modify historical steps Ensure deterministic serialization Treat your context like a database index that needs optimization I’m seeing this firsthand in my own rent roll cleaning tool for senior living properties. The Excel analysis instructions stay stable in the prompt prefix, while only the actual property data changes. This append-only approach dramatically reduces costs compared to reconstructing the entire analytical framework for each file - even though each rent roll looks completely different to the LLM despite following similar patterns to human eyes.\n2. Mask Tools, Don’t Remove Them When an agent’s tool library grows large, it gets “confused” and picks wrong tools. The natural instinct is to dynamically load only relevant tools.\nWhy this backfires:\nAny change to tool definitions breaks KV-Cache for all subsequent requests When historical steps reference “deleted” tools, the model becomes completely confused The surgical approach: Use masking during decoding to constrain tool selection while keeping all tool definitions stable in context. Control the action space through logit masking, not context manipulation.\n3. File System as Infinite Context Even 128K or 1M context windows get overwhelmed by a single webpage or PDF. Plus, model performance degrades in long contexts.\nThe breakthrough insight: Treat the file system as your ultimate context store. It’s infinite, persistent, and the agent can manipulate it directly. When content is too long, remove it from context but preserve the file path. This “recoverable compression” maintains access to information without permanent loss.\n4. Use “Recitation” to Control Attention In complex tasks requiring 50+ tool calls, models easily drift from original goals due to the “lost-in-the-middle” problem.\nThe attention hack: Force the agent to create and continuously update a todo.md file. Each step requires rewriting this file, which effectively “recites” the global plan to the end of context, keeping core objectives in the model’s immediate attention span.\n5. Keep Failures in Context When agents fail, our instinct is to clean up the “embarrassing” records and retry.\nWhy this is counterproductive: You’re paying for the model to repeat the same mistakes. Without failure context, it can’t learn from errors.\nThe learning approach: Preserve error messages, stack traces, and failed attempts as “observation results” in context. When the model sees “I tried A and failed with error X,” it can reflect and choose B instead.\nThe Meta-Lesson: Context Engineering is Experimental Science Perhaps the most important takeaway from the Manus experience is that context engineering is fundamentally experimental. We’re not trying to design perfect context upfront—we’re building systems that can evolve and improve their context management over time.\nThis means prioritizing adaptability over perfection, treating context as a “dynamic, learnable environment.” The REP Loop paradigm reinforces this: each iteration gives you data about what works and what doesn’t, enabling continuous refinement of your context engineering approach.\nThe future belongs to teams that master this experimental mindset, treating every agent interaction as a source of learning about better context design.\nContext Engineering for AI Agents: Lessons from Building Manus ↩︎\n",
+  "wordCount" : "950",
   "inLanguage": "en",
   "datePublished": "2025-07-20T14:30:00-07:00",
   "dateModified": "2025-07-20T14:30:00-07:00",
@@ -191,7 +191,7 @@
     <div class="post-description">
       Key insights from Manus&#39;s experience building AI agents - why context engineering has become the critical skill for 2025
     </div>
-    <div class="post-meta"><span title='2025-07-20 14:30:00 -0700 -0700'>July 20, 2025</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;431 words
+    <div class="post-meta"><span title='2025-07-20 14:30:00 -0700 -0700'>July 20, 2025</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;950 words
 
 </div>
   </header> <div class="toc">
@@ -203,16 +203,18 @@
         <div class="inner"><nav id="TableOfContents">
   <ul>
     <li><a href="#the-core-insight">The Core Insight</a></li>
-    <li><a href="#five-critical-production-lessons">Five Critical Production Lessons</a>
+    <li><a href="#the-hidden-meta-insight-agents-are-rep-loops-not-brains">The Hidden Meta-Insight: Agents Are REP Loops, Not Brains</a></li>
+    <li><a href="#the-ultimate-framework-context-engineering--memory--environment--feedback">The Ultimate Framework: Context Engineering = Memory + Environment + Feedback</a></li>
+    <li><a href="#production-lessons-learned-the-hard-way">Production Lessons Learned the Hard Way</a>
       <ul>
-        <li><a href="#1-kv-cache-optimization-the-hidden-performance-multiplier">1. KV-Cache Optimization: The Hidden Performance Multiplier</a></li>
-        <li><a href="#2-action-space-management-mask-dont-remove">2. Action Space Management: Mask, Don&rsquo;t Remove</a></li>
-        <li><a href="#3-file-system-as-ultimate-context">3. File System as Ultimate Context</a></li>
-        <li><a href="#4-attention-manipulation-through-structure">4. Attention Manipulation Through Structure</a></li>
-        <li><a href="#5-context-as-experimental-science">5. Context as Experimental Science</a></li>
+        <li><a href="#1-design-for-kv-cache-above-all-else">1. Design for KV-Cache Above All Else</a></li>
+        <li><a href="#2-mask-tools-dont-remove-them">2. Mask Tools, Don&rsquo;t Remove Them</a></li>
+        <li><a href="#3-file-system-as-infinite-context">3. File System as Infinite Context</a></li>
+        <li><a href="#4-use-recitation-to-control-attention">4. Use &ldquo;Recitation&rdquo; to Control Attention</a></li>
+        <li><a href="#5-keep-failures-in-context">5. Keep Failures in Context</a></li>
       </ul>
     </li>
-    <li><a href="#to-be-continue">To be continue</a></li>
+    <li><a href="#the-meta-lesson-context-engineering-is-experimental-science">The Meta-Lesson: Context Engineering is Experimental Science</a></li>
   </ul>
 </nav>
         </div>
@@ -223,25 +225,61 @@
 <h2 id="the-core-insight">The Core Insight<a hidden class="anchor" aria-hidden="true" href="#the-core-insight">#</a></h2>
 <p>The Manus post<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> opens with a striking observation: <em>&ldquo;Most agent failures are not model failures anymore, they are context failures.&rdquo;</em> We&rsquo;ve moved past the era where model limitations were the primary bottleneck. Today&rsquo;s models are remarkably capable—the challenge is giving them the right information at the right time.</p>
 <p>They define context engineering as &ldquo;the discipline of designing and building dynamic systems that provides the right information and tools, in the right format, at the right time, to give a LLM everything it needs to accomplish a task.&rdquo; Notice that word: <em>dynamic</em>. This isn&rsquo;t about crafting perfect static prompts—it&rsquo;s about building systems that evolve context throughout an interaction.</p>
-<h2 id="five-critical-production-lessons">Five Critical Production Lessons<a hidden class="anchor" aria-hidden="true" href="#five-critical-production-lessons">#</a></h2>
-<h3 id="1-kv-cache-optimization-the-hidden-performance-multiplier">1. KV-Cache Optimization: The Hidden Performance Multiplier<a hidden class="anchor" aria-hidden="true" href="#1-kv-cache-optimization-the-hidden-performance-multiplier">#</a></h3>
-<p>One of the most practical insights involves Key-Value cache optimization. Keep prompt prefixes stable and make context append-only to dramatically reduce inference costs. When identical context prefixes can be cached and reused, you&rsquo;re not just saving compute—you&rsquo;re enabling entirely new interaction patterns that would otherwise be prohibitively expensive.</p>
-<h3 id="2-action-space-management-mask-dont-remove">2. Action Space Management: Mask, Don&rsquo;t Remove<a hidden class="anchor" aria-hidden="true" href="#2-action-space-management-mask-dont-remove">#</a></h3>
-<p>Rather than dynamically adding and removing tools mid-conversation, use &ldquo;masking&rdquo; to constrain action selection while maintaining context stability. This approach keeps the system predictable while still adapting to current state.</p>
-<h3 id="3-file-system-as-ultimate-context">3. File System as Ultimate Context<a hidden class="anchor" aria-hidden="true" href="#3-file-system-as-ultimate-context">#</a></h3>
-<p>Use the file system as your &ldquo;ultimate context&rdquo; store. This provides a durable, structured way to maintain state that survives beyond individual conversations. It also enables sophisticated compression strategies where detailed information can be dropped while preserving pathways to restore it when needed.</p>
-<h3 id="4-attention-manipulation-through-structure">4. Attention Manipulation Through Structure<a hidden class="anchor" aria-hidden="true" href="#4-attention-manipulation-through-structure">#</a></h3>
-<p>The Manus team introduces practical techniques for guiding model attention:</p>
+<h2 id="the-hidden-meta-insight-agents-are-rep-loops-not-brains">The Hidden Meta-Insight: Agents Are REP Loops, Not Brains<a hidden class="anchor" aria-hidden="true" href="#the-hidden-meta-insight-agents-are-rep-loops-not-brains">#</a></h2>
+<p>After digesting the Manus post more deeply, I realized there&rsquo;s a fundamental meta-insight that runs throughout their approach but is never explicitly stated: <strong>Agents are REP Loops, not brains.</strong></p>
+<p>This isn&rsquo;t a minor technical detail—it&rsquo;s a complete paradigm shift in how we should think about AI agents. We need to stop thinking of them as autonomous entities with free will and start thinking of them as incredibly powerful REPL systems (Read-Eval-Print Loops):</p>
 <ul>
-<li>Todo lists that help models &ldquo;recite objectives&rdquo;</li>
-<li>Keeping failed actions in context to enable learning from mistakes</li>
-<li>Introducing controlled randomness to prevent repetitive behavior loops</li>
+<li><strong>Read</strong>: The carefully constructed context you provide</li>
+<li><strong>Eval</strong>: Based on that context, the agent decides its next action</li>
+<li><strong>Print</strong>: It outputs the action and results back into the context, starting the next loop</li>
 </ul>
-<p>These aren&rsquo;t just prompting tricks—they&rsquo;re systematic approaches to context design that shape how models process and prioritize information.</p>
-<h3 id="5-context-as-experimental-science">5. Context as Experimental Science<a hidden class="anchor" aria-hidden="true" href="#5-context-as-experimental-science">#</a></h3>
-<p>Perhaps the most important meta-lesson: context engineering is fundamentally experimental. Prioritize adaptability over perfection, treating context as a &ldquo;dynamic, learnable environment.&rdquo; We&rsquo;re not trying to design perfect context upfront—we&rsquo;re building systems that can evolve and improve their context management over time.</p>
-<h2 id="to-be-continue">To be continue<a hidden class="anchor" aria-hidden="true" href="#to-be-continue">#</a></h2>
-<p>I like the idea of using file system as context a lot. It gave me quite some thoughts, and I need some more time to wrap this section up.</p>
+<p>You&rsquo;re not teaching a student—you&rsquo;re writing an input script for a supercomputer. All your work should revolve around making each step of this loop clear, predictable, and debuggable.</p>
+<h2 id="the-ultimate-framework-context-engineering--memory--environment--feedback">The Ultimate Framework: Context Engineering = Memory + Environment + Feedback<a hidden class="anchor" aria-hidden="true" href="#the-ultimate-framework-context-engineering--memory--environment--feedback">#</a></h2>
+<p>The Manus approach reveals a systematic framework built around three pillars:</p>
+<ul>
+<li><strong>Memory</strong>: How to efficiently store and retrieve successful and failed experiences, working in harmony with KV-Cache</li>
+<li><strong>Environment</strong>: Providing the agent with an interactive, persistent workspace (like a file system)</li>
+<li><strong>Feedback</strong>: Injecting the results of actions (whether successful or failed) as input for the next decision cycle</li>
+</ul>
+<h2 id="production-lessons-learned-the-hard-way">Production Lessons Learned the Hard Way<a hidden class="anchor" aria-hidden="true" href="#production-lessons-learned-the-hard-way">#</a></h2>
+<h3 id="1-design-for-kv-cache-above-all-else">1. Design for KV-Cache Above All Else<a hidden class="anchor" aria-hidden="true" href="#1-design-for-kv-cache-above-all-else">#</a></h3>
+<p>In production AI agents, there&rsquo;s one metric that matters more than anything: KV-Cache hit rate. Every step your agent takes grows the context massively, while outputs (usually tool calls) stay short. At Manus, this input-to-output token ratio is 100:1. Every cache miss means 10x cost explosion.</p>
+<p><strong>The costly mistakes:</strong></p>
+<ul>
+<li>Adding dynamic timestamps to system prompts kills cache hit rates to zero</li>
+<li>Unstable JSON serialization with changing key orders silently breaks caching</li>
+<li>Any character change in prompt prefixes invalidates the entire cache</li>
+</ul>
+<p><strong>The only way forward:</strong></p>
+<ul>
+<li>Keep prompt prefixes absolutely stable</li>
+<li>Make context append-only—never modify historical steps</li>
+<li>Ensure deterministic serialization</li>
+<li>Treat your context like a database index that needs optimization</li>
+</ul>
+<p>I&rsquo;m seeing this firsthand in my own rent roll cleaning tool for senior living properties. The Excel analysis instructions stay stable in the prompt prefix, while only the actual property data changes. This append-only approach dramatically reduces costs compared to reconstructing the entire analytical framework for each file - even though each rent roll looks completely different to the LLM despite following similar patterns to human eyes.</p>
+<h3 id="2-mask-tools-dont-remove-them">2. Mask Tools, Don&rsquo;t Remove Them<a hidden class="anchor" aria-hidden="true" href="#2-mask-tools-dont-remove-them">#</a></h3>
+<p>When an agent&rsquo;s tool library grows large, it gets &ldquo;confused&rdquo; and picks wrong tools. The natural instinct is to dynamically load only relevant tools.</p>
+<p><strong>Why this backfires:</strong></p>
+<ul>
+<li>Any change to tool definitions breaks KV-Cache for all subsequent requests</li>
+<li>When historical steps reference &ldquo;deleted&rdquo; tools, the model becomes completely confused</li>
+</ul>
+<p><strong>The surgical approach:</strong> Use masking during decoding to constrain tool selection while keeping all tool definitions stable in context. Control the action space through logit masking, not context manipulation.</p>
+<h3 id="3-file-system-as-infinite-context">3. File System as Infinite Context<a hidden class="anchor" aria-hidden="true" href="#3-file-system-as-infinite-context">#</a></h3>
+<p>Even 128K or 1M context windows get overwhelmed by a single webpage or PDF. Plus, model performance degrades in long contexts.</p>
+<p><strong>The breakthrough insight:</strong> Treat the file system as your ultimate context store. It&rsquo;s infinite, persistent, and the agent can manipulate it directly. When content is too long, remove it from context but preserve the file path. This &ldquo;recoverable compression&rdquo; maintains access to information without permanent loss.</p>
+<h3 id="4-use-recitation-to-control-attention">4. Use &ldquo;Recitation&rdquo; to Control Attention<a hidden class="anchor" aria-hidden="true" href="#4-use-recitation-to-control-attention">#</a></h3>
+<p>In complex tasks requiring 50+ tool calls, models easily drift from original goals due to the &ldquo;lost-in-the-middle&rdquo; problem.</p>
+<p><strong>The attention hack:</strong> Force the agent to create and continuously update a todo.md file. Each step requires rewriting this file, which effectively &ldquo;recites&rdquo; the global plan to the end of context, keeping core objectives in the model&rsquo;s immediate attention span.</p>
+<h3 id="5-keep-failures-in-context">5. Keep Failures in Context<a hidden class="anchor" aria-hidden="true" href="#5-keep-failures-in-context">#</a></h3>
+<p>When agents fail, our instinct is to clean up the &ldquo;embarrassing&rdquo; records and retry.</p>
+<p><strong>Why this is counterproductive:</strong> You&rsquo;re paying for the model to repeat the same mistakes. Without failure context, it can&rsquo;t learn from errors.</p>
+<p><strong>The learning approach:</strong> Preserve error messages, stack traces, and failed attempts as &ldquo;observation results&rdquo; in context. When the model sees &ldquo;I tried A and failed with error X,&rdquo; it can reflect and choose B instead.</p>
+<h2 id="the-meta-lesson-context-engineering-is-experimental-science">The Meta-Lesson: Context Engineering is Experimental Science<a hidden class="anchor" aria-hidden="true" href="#the-meta-lesson-context-engineering-is-experimental-science">#</a></h2>
+<p>Perhaps the most important takeaway from the Manus experience is that context engineering is fundamentally experimental. We&rsquo;re not trying to design perfect context upfront—we&rsquo;re building systems that can evolve and improve their context management over time.</p>
+<p>This means prioritizing adaptability over perfection, treating context as a &ldquo;dynamic, learnable environment.&rdquo; The REP Loop paradigm reinforces this: each iteration gives you data about what works and what doesn&rsquo;t, enabling continuous refinement of your context engineering approach.</p>
+<p>The future belongs to teams that master this experimental mindset, treating every agent interaction as a source of learning about better context design.</p>
 <hr>
 <div class="footnotes" role="doc-endnotes">
 <hr>
