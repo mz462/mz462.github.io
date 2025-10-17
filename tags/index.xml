@@ -4,15 +4,64 @@
     <title>Tags on MJ&#39;s Blog</title>
     <link>https://mz462.github.io/tags/</link>
     <description>Recent content in Tags on MJ&#39;s Blog</description>
-    <generator>Hugo -- 0.145.0</generator>
+    <generator>Hugo -- 0.151.2</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 28 Jul 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 17 Oct 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://mz462.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>AI</title>
       <link>https://mz462.github.io/tags/ai/</link>
-      <pubDate>Mon, 28 Jul 2025 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 17 Oct 2025 00:00:00 +0000</pubDate>
       <guid>https://mz462.github.io/tags/ai/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Anthropic</title>
+      <link>https://mz462.github.io/tags/anthropic/</link>
+      <pubDate>Fri, 17 Oct 2025 00:00:00 +0000</pubDate>
+      <guid>https://mz462.github.io/tags/anthropic/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Claude</title>
+      <link>https://mz462.github.io/tags/claude/</link>
+      <pubDate>Fri, 17 Oct 2025 00:00:00 +0000</pubDate>
+      <guid>https://mz462.github.io/tags/claude/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Competitive Analysis</title>
+      <link>https://mz462.github.io/tags/competitive-analysis/</link>
+      <pubDate>Fri, 17 Oct 2025 00:00:00 +0000</pubDate>
+      <guid>https://mz462.github.io/tags/competitive-analysis/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Enterprise AI</title>
+      <link>https://mz462.github.io/tags/enterprise-ai/</link>
+      <pubDate>Fri, 17 Oct 2025 00:00:00 +0000</pubDate>
+      <guid>https://mz462.github.io/tags/enterprise-ai/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>OpenAI</title>
+      <link>https://mz462.github.io/tags/openai/</link>
+      <pubDate>Fri, 17 Oct 2025 00:00:00 +0000</pubDate>
+      <guid>https://mz462.github.io/tags/openai/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Product Management</title>
+      <link>https://mz462.github.io/tags/product-management/</link>
+      <pubDate>Fri, 17 Oct 2025 00:00:00 +0000</pubDate>
+      <guid>https://mz462.github.io/tags/product-management/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Product Strategy</title>
+      <link>https://mz462.github.io/tags/product-strategy/</link>
+      <pubDate>Fri, 17 Oct 2025 00:00:00 +0000</pubDate>
+      <guid>https://mz462.github.io/tags/product-strategy/</guid>
       <description></description>
     </item>
     <item>
@@ -107,13 +156,6 @@
       <description></description>
     </item>
     <item>
-      <title>Enterprise AI</title>
-      <link>https://mz462.github.io/tags/enterprise-ai/</link>
-      <pubDate>Sun, 20 Jul 2025 14:30:00 -0700</pubDate>
-      <guid>https://mz462.github.io/tags/enterprise-ai/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>LLM Optimization</title>
       <link>https://mz462.github.io/tags/llm-optimization/</link>
       <pubDate>Sun, 20 Jul 2025 14:30:00 -0700</pubDate>
@@ -121,24 +163,10 @@
       <description></description>
     </item>
     <item>
-      <title>Product Management</title>
-      <link>https://mz462.github.io/tags/product-management/</link>
-      <pubDate>Sun, 20 Jul 2025 14:30:00 -0700</pubDate>
-      <guid>https://mz462.github.io/tags/product-management/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Architecture</title>
       <link>https://mz462.github.io/tags/architecture/</link>
       <pubDate>Fri, 18 Jul 2025 15:30:00 -0800</pubDate>
       <guid>https://mz462.github.io/tags/architecture/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Claude</title>
-      <link>https://mz462.github.io/tags/claude/</link>
-      <pubDate>Fri, 18 Jul 2025 15:30:00 -0800</pubDate>
-      <guid>https://mz462.github.io/tags/claude/</guid>
       <description></description>
     </item>
     <item>
@@ -209,13 +237,6 @@
       <link>https://mz462.github.io/tags/engineering-culture/</link>
       <pubDate>Wed, 16 Jul 2025 00:00:00 +0000</pubDate>
       <guid>https://mz462.github.io/tags/engineering-culture/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>OpenAI</title>
-      <link>https://mz462.github.io/tags/openai/</link>
-      <pubDate>Wed, 16 Jul 2025 00:00:00 +0000</pubDate>
-      <guid>https://mz462.github.io/tags/openai/</guid>
       <description></description>
     </item>
     <item>

@@ -4,10 +4,17 @@
     <title>Claude on MJ&#39;s Blog</title>
     <link>https://mz462.github.io/tags/claude/</link>
     <description>Recent content in Claude on MJ&#39;s Blog</description>
-    <generator>Hugo -- 0.145.0</generator>
+    <generator>Hugo -- 0.151.2</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 18 Jul 2025 15:30:00 -0800</lastBuildDate>
+    <lastBuildDate>Fri, 17 Oct 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://mz462.github.io/tags/claude/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Why Anthropic Wins with 5% of the Users</title>
+      <link>https://mz462.github.io/posts/anthropic-wins-with-5-percent/</link>
+      <pubDate>Fri, 17 Oct 2025 00:00:00 +0000</pubDate>
+      <guid>https://mz462.github.io/posts/anthropic-wins-with-5-percent/</guid>
+      <description>Claude has only 5% of ChatGPT&amp;#39;s users but generates 40% of OpenAI&amp;#39;s revenue. The secret? Anthropic&amp;#39;s product team doesn&amp;#39;t try to outrun OpenAI—they out-see them by finding combinations everyone else missed.</description>
+    </item>
     <item>
       <title>Blanked Out During Claude&#39;s Demo. How Does It Just Work So Well?</title>
       <link>https://mz462.github.io/posts/blanked-out-claude-demo/</link>
