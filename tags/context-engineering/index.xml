@@ -6,8 +6,15 @@
     <description>Recent content in Context Engineering on MJ&#39;s Blog</description>
     <generator>Hugo -- 0.151.2</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 20 Jul 2025 14:30:00 -0700</lastBuildDate>
+    <lastBuildDate>Mon, 17 Nov 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://mz462.github.io/tags/context-engineering/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>From Two Subscriptions to One Weekend Build: The AI Architecture Pattern Everyone&#39;s Missing</title>
+      <link>https://mz462.github.io/posts/ai-architecture-pattern/</link>
+      <pubDate>Mon, 17 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>https://mz462.github.io/posts/ai-architecture-pattern/</guid>
+      <description>I spent a weekend building what I was paying $200/year for. Here&amp;#39;s what I learned about AI architecture—MCP, Skills, Subagents, and Prompts—and why context window is sacred.</description>
+    </item>
     <item>
       <title>Context Engineering Lessons from Building Manus</title>
       <link>https://mz462.github.io/posts/context-engineering-lessons-from-manus/</link>

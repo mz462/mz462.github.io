@@ -1,26 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Architecture on MJ&#39;s Blog</title>
-    <link>https://mz462.github.io/tags/architecture/</link>
-    <description>Recent content in Architecture on MJ&#39;s Blog</description>
+    <title>MCP on MJ&#39;s Blog</title>
+    <link>https://mz462.github.io/tags/mcp/</link>
+    <description>Recent content in MCP on MJ&#39;s Blog</description>
     <generator>Hugo -- 0.151.2</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 17 Nov 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://mz462.github.io/tags/architecture/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://mz462.github.io/tags/mcp/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>From Two Subscriptions to One Weekend Build: The AI Architecture Pattern Everyone&#39;s Missing</title>
       <link>https://mz462.github.io/posts/ai-architecture-pattern/</link>
       <pubDate>Mon, 17 Nov 2025 00:00:00 +0000</pubDate>
       <guid>https://mz462.github.io/posts/ai-architecture-pattern/</guid>
       <description>I spent a weekend building what I was paying $200/year for. Here&amp;#39;s what I learned about AI architecture—MCP, Skills, Subagents, and Prompts—and why context window is sacred.</description>
-    </item>
-    <item>
-      <title>Blanked Out During Claude&#39;s Demo. How Does It Just Work So Well?</title>
-      <link>https://mz462.github.io/posts/blanked-out-claude-demo/</link>
-      <pubDate>Fri, 18 Jul 2025 15:30:00 -0800</pubDate>
-      <guid>https://mz462.github.io/posts/blanked-out-claude-demo/</guid>
-      <description>From a jarring product demo to reverse engineering insights: why Anthropic&amp;#39;s &amp;#39;one model, many tools&amp;#39; philosophy creates seemingly effortless AI experiences.</description>
     </item>
   </channel>
 </rss>
