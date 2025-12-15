@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>I Vibe Coded an AI App — But There&#39;s No AI Inside | MJ&#39;s Blog</title>
+<meta name="keywords" content="AI, vibe coding, iOS, Claude, Skills, context engineering, Swift">
+<meta name="description" content="I spent two Saturdays building an iOS app with 98% AI-generated code. It exports running data for AI analysis and generates art prompts — but has zero AI features itself. Here&#39;s why that&#39;s the point.">
+<meta name="author" content="">
+<link rel="canonical" href="https://mz462.github.io/posts/vibe-coding-ios-app/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.f49d66caae9ea0fd43f21f29e71a8d3e284517ed770f2aa86fa012953ad3c9ef.css" integrity="sha256-9J1myq6eoP1D8h8p5xqNPihFF&#43;13Dyqob6ASlTrTye8=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://mz462.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://mz462.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://mz462.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://mz462.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://mz462.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://mz462.github.io/posts/vibe-coding-ios-app/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:url" content="https://mz462.github.io/posts/vibe-coding-ios-app/">
+  <meta property="og:site_name" content="MJ&#39;s Blog">
+  <meta property="og:title" content="I Vibe Coded an AI App — But There&#39;s No AI Inside">
+  <meta property="og:description" content="I spent two Saturdays building an iOS app with 98% AI-generated code. It exports running data for AI analysis and generates art prompts — but has zero AI features itself. Here&#39;s why that&#39;s the point.">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-12-14T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-12-14T00:00:00+00:00">
+    <meta property="article:tag" content="AI">
+    <meta property="article:tag" content="Vibe Coding">
+    <meta property="article:tag" content="IOS">
+    <meta property="article:tag" content="Claude">
+    <meta property="article:tag" content="Skills">
+    <meta property="article:tag" content="Context Engineering">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="I Vibe Coded an AI App — But There&#39;s No AI Inside">
+<meta name="twitter:description" content="I spent two Saturdays building an iOS app with 98% AI-generated code. It exports running data for AI analysis and generates art prompts — but has zero AI features itself. Here&#39;s why that&#39;s the point.">
+      <meta name="twitter:site" content="@emjayzo">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://mz462.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "I Vibe Coded an AI App — But There's No AI Inside",
+      "item": "https://mz462.github.io/posts/vibe-coding-ios-app/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "I Vibe Coded an AI App — But There's No AI Inside",
+  "name": "I Vibe Coded an AI App — But There\u0027s No AI Inside",
+  "description": "I spent two Saturdays building an iOS app with 98% AI-generated code. It exports running data for AI analysis and generates art prompts — but has zero AI features itself. Here's why that's the point.",
+  "keywords": [
+    "AI", "vibe coding", "iOS", "Claude", "Skills", "context engineering", "Swift"
+  ],
+  "articleBody": "The Paradox I just shipped an iOS app. It helps runners get AI-powered analysis of their workouts and generate shareable art from their stats.\nBut the app itself has no AI.\nNo GPT integration. No on-device model. No API calls to Claude or Gemini. Zero intelligence inside.\nAnd that’s exactly why it works.\nThe Backstory Last month, I replaced $200/year in fitness subscriptions with a weekend project — an AI system that gave me personalized coaching by connecting Claude to my running database. (That story here.)\nAt the end, I wrote: “I’m exploring building this into an iOS app.”\nTwo Saturdays later, I did. 98% AI-generated code. Zero AI inside.\nWhat the App Actually Does The app has two core features:\n1. Export .fit Files for Analysis The app reads your workouts from Apple Health and exports them as .fit files — the same format Garmin uses. You can then share these files directly to Claude (or any AI), where my running analysis Skill turns raw data into personalized coaching.\nThe app’s role: Extract context from Apple Health.\nClaude’s role: Apply expertise and generate insights.\n2. Generate Art Prompts for Sharing Choose an art style — Ghibli, HD-2D pixel art, Chinese 古风, isometric cityscape — and the app constructs an image generation prompt using your run stats (distance, pace, heart rate, location).\nThen you pick your AI: Gemini, Claude, ChatGPT, or just copy the prompt.\nThe app’s role: Build the prompt with your data.\nYou decide: Which AI generates the image.\nWhy No AI Inside? Here’s the mental model that changed how I think about building apps:\nThe Old Model: App = The Experience Traditional apps try to own everything — the UI, the intelligence, the insights. Data flows into the app. Users live inside the app.\nIf you wanted AI features, you’d integrate OpenAI’s API, pay per token, handle rate limits, build fallbacks.\nThe New Model: App = Context Exporter My app doesn’t try to be smart. It tries to be useful to smart things.\nFor analysis: It exports .fit files so Claude + my Skill can do the heavy lifting. For art: It exports prompts so users can choose their preferred AI. The app is a context bridge — it liberates data trapped in Apple Health and packages it for AI consumption.\nDon’t wrap AI. Export context.\n“Why Not Just Use MCP?” Fair question. In my previous post, I loved MCP (Model Context Protocol) for connecting Claude directly to databases. So why not build an Apple Health MCP server instead of an iOS app?\nBecause MCP can’t reach your iPhone.\nMCP works when data lives in the cloud — Postgres, Notion, Google Drive. It connects Claude to accessible APIs.\nApple Health is different:\nData lives on your device (local HealthKit database) No REST API — Apple doesn’t expose one HealthKit is iOS-only — you need an iOS app to access it My app solves the problem upstream of MCP. It’s the first mile of the context pipeline.\nMCP is USB for cloud data. My app is the SD card reader for your phone.\n┌─────────── MCP World ───────────────┐ │ │ │ Claude ←────MCP────→ Database ✅ │ │ Claude ←────MCP────→ Apple Health ❌│ │ (no API) │ └─────────────────────────────────────┘ ┌─────────── My Solution ─────────────┐ │ │ │ Apple Health │ │ ↓ │ │ iOS App (extracts data) │ │ ↓ │ │ .fit file │ │ ↓ │ │ Share to Claude │ │ ↓ │ │ Claude + Skill = Insights │ └─────────────────────────────────────┘ The Vibe Coding Experience Let’s talk about how I actually built this.\nTools used: Claude Code (Anthropic’s agentic coding tool)\nTime: Two Saturdays\nAI-generated code: ~98%\nI’m not a Swift expert. I hadn’t touched HealthKit before. But Claude Code handled:\nSwiftUI layouts and theming HealthKit authorization and data queries .fit file encoding Prompt construction logic Share sheet integration Multiple art style configurations My job was:\nDescribing what I wanted Testing on device Steering when things went wrong Making product decisions The vibe coding reality: I’d describe a feature, Claude would generate it, I’d test it, we’d iterate. Most of the time, it just worked. When it didn’t, I’d paste the error and Claude would fix it.\nThe moment I knew vibe coding was real: I described the art prompt feature in two sentences, and Claude generated a working style picker with six themes in under a minute. I’d budgeted half a day for that feature.\nThis isn’t “AI wrote my app for me.” It’s more like pair programming with a very fast, very patient partner who knows every API but needs guidance on product direction.\nWhat This Means for Builders There’s a whole category of “context bridge” apps waiting to be built:\nBank transaction exporters for budget analysis Calendar context for meeting prep Health data aggregators for wellness coaching Code context exporters for review and debugging The intelligence layer is becoming commoditized. The context layer is the new moat.\nTry It Yourself The app is called Run Card Generator and should be available on the App Store soon.\nThe running analysis Skill is open source: github.com/mz462/run-skill\nClosing Thought I spent two Saturdays building an iOS app with 98% AI-generated code. It reads from Apple Health, exports workout data, generates art prompts, and supports multiple AI destinations.\nIt has no AI inside.\nAnd that’s exactly why it was so fast to build, so cheap to run, and so flexible to use.\nThe smartest AI app might be the one that doesn’t try to be smart at all.\n",
+  "wordCount" : "919",
+  "inLanguage": "en",
+  "datePublished": "2025-12-14T00:00:00Z",
+  "dateModified": "2025-12-14T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://mz462.github.io/posts/vibe-coding-ios-app/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "MJ's Blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://mz462.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://mz462.github.io/" accesskey="h" title="MJ&#39;s Blog (Alt + H)">MJ&#39;s Blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://mz462.github.io/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://mz462.github.io/search/" title="Search">
+                    <span>Search</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://mz462.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://mz462.github.io/posts/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      I Vibe Coded an AI App — But There&#39;s No AI Inside
+    </h1>
+    <div class="post-description">
+      I spent two Saturdays building an iOS app with 98% AI-generated code. It exports running data for AI analysis and generates art prompts — but has zero AI features itself. Here&#39;s why that&#39;s the point.
+    </div>
+    <div class="post-meta"><span title='2025-12-14 00:00:00 +0000 UTC'>December 14, 2025</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;919 words
+
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#the-paradox" aria-label="The Paradox">The Paradox</a></li>
+                <li>
+                    <a href="#the-backstory" aria-label="The Backstory">The Backstory</a></li>
+                <li>
+                    <a href="#what-the-app-actually-does" aria-label="What the App Actually Does">What the App Actually Does</a><ul>
+                        
+                <li>
+                    <a href="#1-export-fit-files-for-analysis" aria-label="1. Export .fit Files for Analysis">1. Export .fit Files for Analysis</a></li>
+                <li>
+                    <a href="#2-generate-art-prompts-for-sharing" aria-label="2. Generate Art Prompts for Sharing">2. Generate Art Prompts for Sharing</a></li></ul>
+                </li>
+                <li>
+                    <a href="#why-no-ai-inside" aria-label="Why No AI Inside?">Why No AI Inside?</a><ul>
+                        
+                <li>
+                    <a href="#the-old-model-app--the-experience" aria-label="The Old Model: App = The Experience">The Old Model: App = The Experience</a></li>
+                <li>
+                    <a href="#the-new-model-app--context-exporter" aria-label="The New Model: App = Context Exporter">The New Model: App = Context Exporter</a></li></ul>
+                </li>
+                <li>
+                    <a href="#why-not-just-use-mcp" aria-label="&ldquo;Why Not Just Use MCP?&rdquo;">&ldquo;Why Not Just Use MCP?&rdquo;</a></li>
+                <li>
+                    <a href="#the-vibe-coding-experience" aria-label="The Vibe Coding Experience">The Vibe Coding Experience</a></li>
+                <li>
+                    <a href="#what-this-means-for-builders" aria-label="What This Means for Builders">What This Means for Builders</a></li>
+                <li>
+                    <a href="#try-it-yourself" aria-label="Try It Yourself">Try It Yourself</a></li>
+                <li>
+                    <a href="#closing-thought" aria-label="Closing Thought">Closing Thought</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h2 id="the-paradox">The Paradox<a hidden class="anchor" aria-hidden="true" href="#the-paradox">#</a></h2>
+<p>I just shipped an iOS app. It helps runners get AI-powered analysis of their workouts and generate shareable art from their stats.</p>
+<p><strong>But the app itself has no AI.</strong></p>
+<p>No GPT integration. No on-device model. No API calls to Claude or Gemini. Zero intelligence inside.</p>
+<p>And that&rsquo;s exactly why it works.</p>
+<p><img alt="Context Bridge Concept Art" loading="lazy" src="/posts/vibe-coding-ios-app/images/banner.png"></p>
+<hr>
+<h2 id="the-backstory">The Backstory<a hidden class="anchor" aria-hidden="true" href="#the-backstory">#</a></h2>
+<p>Last month, I replaced $200/year in fitness subscriptions with a weekend project — an AI system that gave me personalized coaching by connecting Claude to my running database. (<a href="/posts/ai-architecture-pattern/">That story here.</a>)</p>
+<p>At the end, I wrote: <em>&ldquo;I&rsquo;m exploring building this into an iOS app.&rdquo;</em></p>
+<p>Two Saturdays later, I did. <strong>98% AI-generated code. Zero AI inside.</strong></p>
+<hr>
+<h2 id="what-the-app-actually-does">What the App Actually Does<a hidden class="anchor" aria-hidden="true" href="#what-the-app-actually-does">#</a></h2>
+<p>The app has two core features:</p>
+<h3 id="1-export-fit-files-for-analysis">1. Export .fit Files for Analysis<a hidden class="anchor" aria-hidden="true" href="#1-export-fit-files-for-analysis">#</a></h3>
+<p>The app reads your workouts from Apple Health and exports them as <code>.fit</code> files — the same format Garmin uses. You can then share these files directly to Claude (or any AI), where my running analysis Skill turns raw data into personalized coaching.</p>
+<p><strong>The app&rsquo;s role</strong>: Extract context from Apple Health.<br>
+<strong>Claude&rsquo;s role</strong>: Apply expertise and generate insights.</p>
+<h3 id="2-generate-art-prompts-for-sharing">2. Generate Art Prompts for Sharing<a hidden class="anchor" aria-hidden="true" href="#2-generate-art-prompts-for-sharing">#</a></h3>
+<p>Choose an art style — Ghibli, HD-2D pixel art, Chinese 古风, isometric cityscape — and the app constructs an image generation prompt using your run stats (distance, pace, heart rate, location).</p>
+<p>Then you pick your AI: <strong>Gemini, Claude, ChatGPT, or just copy the prompt.</strong></p>
+<p><img alt="Isometric cityscape art style with run stats" loading="lazy" src="/posts/vibe-coding-ios-app/images/app-banana-style.png"></p>
+<p><strong>The app&rsquo;s role</strong>: Build the prompt with your data.<br>
+<strong>You decide</strong>: Which AI generates the image.</p>
+<p><img alt="Send Prompt modal showing AI options" loading="lazy" src="/posts/vibe-coding-ios-app/images/app-send-prompt.png"></p>
+<hr>
+<h2 id="why-no-ai-inside">Why No AI Inside?<a hidden class="anchor" aria-hidden="true" href="#why-no-ai-inside">#</a></h2>
+<p>Here&rsquo;s the mental model that changed how I think about building apps:</p>
+<h3 id="the-old-model-app--the-experience">The Old Model: App = The Experience<a hidden class="anchor" aria-hidden="true" href="#the-old-model-app--the-experience">#</a></h3>
+<p>Traditional apps try to own everything — the UI, the intelligence, the insights. Data flows <em>into</em> the app. Users live <em>inside</em> the app.</p>
+<p>If you wanted AI features, you&rsquo;d integrate OpenAI&rsquo;s API, pay per token, handle rate limits, build fallbacks.</p>
+<h3 id="the-new-model-app--context-exporter">The New Model: App = Context Exporter<a hidden class="anchor" aria-hidden="true" href="#the-new-model-app--context-exporter">#</a></h3>
+<p>My app doesn&rsquo;t try to be smart. It tries to be <em>useful to smart things</em>.</p>
+<ul>
+<li><strong>For analysis</strong>: It exports <code>.fit</code> files so Claude + my Skill can do the heavy lifting.</li>
+<li><strong>For art</strong>: It exports prompts so users can choose their preferred AI.</li>
+</ul>
+<p>The app is a <strong>context bridge</strong> — it liberates data trapped in Apple Health and packages it for AI consumption.</p>
+<p><strong>Don&rsquo;t wrap AI. Export context.</strong></p>
+<hr>
+<h2 id="why-not-just-use-mcp">&ldquo;Why Not Just Use MCP?&rdquo;<a hidden class="anchor" aria-hidden="true" href="#why-not-just-use-mcp">#</a></h2>
+<p>Fair question. In my previous post, I loved MCP (Model Context Protocol) for connecting Claude directly to databases. So why not build an Apple Health MCP server instead of an iOS app?</p>
+<p><strong>Because MCP can&rsquo;t reach your iPhone.</strong></p>
+<p>MCP works when data lives in the cloud — Postgres, Notion, Google Drive. It connects Claude to accessible APIs.</p>
+<p>Apple Health is different:</p>
+<ul>
+<li>Data lives <strong>on your device</strong> (local HealthKit database)</li>
+<li><strong>No REST API</strong> — Apple doesn&rsquo;t expose one</li>
+<li><strong>HealthKit is iOS-only</strong> — you need an iOS app to access it</li>
+</ul>
+<p>My app solves the problem <em>upstream</em> of MCP. It&rsquo;s the first mile of the context pipeline.</p>
+<p><strong>MCP is USB for cloud data. My app is the SD card reader for your phone.</strong></p>
+<pre tabindex="0"><code>┌─────────── MCP World ───────────────┐
+│                                     │
+│  Claude ←────MCP────→ Database  ✅  │
+│  Claude ←────MCP────→ Apple Health ❌│
+│                       (no API)      │
+└─────────────────────────────────────┘
+
+┌─────────── My Solution ─────────────┐
+│                                     │
+│  Apple Health                       │
+│       ↓                             │
+│  iOS App (extracts data)            │
+│       ↓                             │
+│  .fit file                          │
+│       ↓                             │
+│  Share to Claude                    │
+│       ↓                             │
+│  Claude + Skill = Insights          │
+└─────────────────────────────────────┘
+</code></pre><hr>
+<h2 id="the-vibe-coding-experience">The Vibe Coding Experience<a hidden class="anchor" aria-hidden="true" href="#the-vibe-coding-experience">#</a></h2>
+<p>Let&rsquo;s talk about how I actually built this.</p>
+<p><strong>Tools used</strong>: Claude Code (Anthropic&rsquo;s agentic coding tool)<br>
+<strong>Time</strong>: Two Saturdays<br>
+<strong>AI-generated code</strong>: ~98%</p>
+<p>I&rsquo;m not a Swift expert. I hadn&rsquo;t touched HealthKit before. But Claude Code handled:</p>
+<ul>
+<li>SwiftUI layouts and theming</li>
+<li>HealthKit authorization and data queries</li>
+<li><code>.fit</code> file encoding</li>
+<li>Prompt construction logic</li>
+<li>Share sheet integration</li>
+<li>Multiple art style configurations</li>
+</ul>
+<p>My job was:</p>
+<ul>
+<li>Describing what I wanted</li>
+<li>Testing on device</li>
+<li>Steering when things went wrong</li>
+<li>Making product decisions</li>
+</ul>
+<p><strong>The vibe coding reality</strong>: I&rsquo;d describe a feature, Claude would generate it, I&rsquo;d test it, we&rsquo;d iterate. Most of the time, it just worked. When it didn&rsquo;t, I&rsquo;d paste the error and Claude would fix it.</p>
+<p>The moment I knew vibe coding was real: I described the art prompt feature in two sentences, and Claude generated a working style picker with six themes in under a minute. I&rsquo;d budgeted half a day for that feature.</p>
+<p>This isn&rsquo;t &ldquo;AI wrote my app for me.&rdquo; It&rsquo;s more like pair programming with a very fast, very patient partner who knows every API but needs guidance on product direction.</p>
+<hr>
+<h2 id="what-this-means-for-builders">What This Means for Builders<a hidden class="anchor" aria-hidden="true" href="#what-this-means-for-builders">#</a></h2>
+<p>There&rsquo;s a whole category of &ldquo;context bridge&rdquo; apps waiting to be built:</p>
+<ul>
+<li>Bank transaction exporters for budget analysis</li>
+<li>Calendar context for meeting prep</li>
+<li>Health data aggregators for wellness coaching</li>
+<li>Code context exporters for review and debugging</li>
+</ul>
+<p>The intelligence layer is becoming commoditized. <strong>The context layer is the new moat.</strong></p>
+<hr>
+<h2 id="try-it-yourself">Try It Yourself<a hidden class="anchor" aria-hidden="true" href="#try-it-yourself">#</a></h2>
+<p>The app is called <strong><a href="https://apps.apple.com/us/app/run-card-generator/id6446992529">Run Card Generator</a></strong> and should be available on the App Store soon.</p>
+<p>The running analysis Skill is open source: <a href="https://github.com/mz462/run-skill">github.com/mz462/run-skill</a></p>
+<hr>
+<h2 id="closing-thought">Closing Thought<a hidden class="anchor" aria-hidden="true" href="#closing-thought">#</a></h2>
+<p>I spent two Saturdays building an iOS app with 98% AI-generated code. It reads from Apple Health, exports workout data, generates art prompts, and supports multiple AI destinations.</p>
+<p>It has no AI inside.</p>
+<p>And that&rsquo;s exactly why it was so fast to build, so cheap to run, and so flexible to use.</p>
+<p><strong>The smartest AI app might be the one that doesn&rsquo;t try to be smart at all.</strong></p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://mz462.github.io/tags/ai/">AI</a></li>
+      <li><a href="https://mz462.github.io/tags/vibe-coding/">Vibe Coding</a></li>
+      <li><a href="https://mz462.github.io/tags/ios/">IOS</a></li>
+      <li><a href="https://mz462.github.io/tags/claude/">Claude</a></li>
+      <li><a href="https://mz462.github.io/tags/skills/">Skills</a></li>
+      <li><a href="https://mz462.github.io/tags/context-engineering/">Context Engineering</a></li>
+      <li><a href="https://mz462.github.io/tags/swift/">Swift</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="next" href="https://mz462.github.io/posts/ai-architecture-pattern/">
+    <span class="title">Next »</span>
+    <br>
+    <span>From Two Subscriptions to One Weekend Build: The AI Architecture Pattern Everyone&#39;s Missing</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2025 <a href="https://mz462.github.io/">MJ&#39;s Blog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

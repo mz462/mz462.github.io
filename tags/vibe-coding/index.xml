@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Vibe Coding on MJ&#39;s Blog</title>
+    <link>https://mz462.github.io/tags/vibe-coding/</link>
+    <description>Recent content in Vibe Coding on MJ&#39;s Blog</description>
+    <generator>Hugo -- 0.151.2</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 14 Dec 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://mz462.github.io/tags/vibe-coding/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>I Vibe Coded an AI App — But There&#39;s No AI Inside</title>
+      <link>https://mz462.github.io/posts/vibe-coding-ios-app/</link>
+      <pubDate>Sun, 14 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>https://mz462.github.io/posts/vibe-coding-ios-app/</guid>
+      <description>I spent two Saturdays building an iOS app with 98% AI-generated code. It exports running data for AI analysis and generates art prompts — but has zero AI features itself. Here&amp;#39;s why that&amp;#39;s the point.</description>
+    </item>
+  </channel>
+</rss>
