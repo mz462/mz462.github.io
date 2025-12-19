@@ -106,8 +106,8 @@
   "keywords": [
     "AI", "vibe coding", "iOS", "Claude", "Skills", "context engineering", "Swift"
   ],
-  "articleBody": "The Paradox I just shipped an iOS app. It helps runners get AI-powered analysis of their workouts and generate shareable art from their stats.\nBut the app itself has no AI.\nNo GPT integration. No on-device model. No API calls to Claude or Gemini. Zero intelligence inside.\nAnd that’s exactly why it works.\nThe Backstory Last month, I replaced $200/year in fitness subscriptions with a weekend project — an AI system that gave me personalized coaching by connecting Claude to my running database. (That story here.)\nAt the end, I wrote: “I’m exploring building this into an iOS app.”\nTwo Saturdays later, I did. 98% AI-generated code. Zero AI inside.\nWhat the App Actually Does The app has two core features:\n1. Export .fit Files for Analysis The app reads your workouts from Apple Health and exports them as .fit files — the same format Garmin uses. You can then share these files directly to Claude (or any AI), where my running analysis Skill turns raw data into personalized coaching.\nThe app’s role: Extract context from Apple Health.\nClaude’s role: Apply expertise and generate insights.\n2. Generate Art Prompts for Sharing Choose an art style — Ghibli, HD-2D pixel art, Chinese 古风, isometric cityscape — and the app constructs an image generation prompt using your run stats (distance, pace, heart rate, location).\nThen you pick your AI: Gemini, Claude, ChatGPT, or just copy the prompt.\nThe app’s role: Build the prompt with your data.\nYou decide: Which AI generates the image.\nWhy No AI Inside? Here’s the mental model that changed how I think about building apps:\nThe Old Model: App = The Experience Traditional apps try to own everything — the UI, the intelligence, the insights. Data flows into the app. Users live inside the app.\nIf you wanted AI features, you’d integrate OpenAI’s API, pay per token, handle rate limits, build fallbacks.\nThe New Model: App = Context Exporter My app doesn’t try to be smart. It tries to be useful to smart things.\nFor analysis: It exports .fit files so Claude + my Skill can do the heavy lifting. For art: It exports prompts so users can choose their preferred AI. The app is a context bridge — it liberates data trapped in Apple Health and packages it for AI consumption.\nDon’t wrap AI. Export context.\n“Why Not Just Use MCP?” Fair question. In my previous post, I loved MCP (Model Context Protocol) for connecting Claude directly to databases. So why not build an Apple Health MCP server instead of an iOS app?\nBecause MCP can’t reach your iPhone.\nMCP works when data lives in the cloud — Postgres, Notion, Google Drive. It connects Claude to accessible APIs.\nApple Health is different:\nData lives on your device (local HealthKit database) No REST API — Apple doesn’t expose one HealthKit is iOS-only — you need an iOS app to access it My app solves the problem upstream of MCP. It’s the first mile of the context pipeline.\nMCP is USB for cloud data. My app is the SD card reader for your phone.\n┌─────────── MCP World ───────────────┐ │ │ │ Claude ←────MCP────→ Database ✅ │ │ Claude ←────MCP────→ Apple Health ❌│ │ (no API) │ └─────────────────────────────────────┘ ┌─────────── My Solution ─────────────┐ │ │ │ Apple Health │ │ ↓ │ │ iOS App (extracts data) │ │ ↓ │ │ .fit file │ │ ↓ │ │ Share to Claude │ │ ↓ │ │ Claude + Skill = Insights │ └─────────────────────────────────────┘ The Vibe Coding Experience Let’s talk about how I actually built this.\nTools used: Claude Code (Anthropic’s agentic coding tool)\nTime: Two Saturdays\nAI-generated code: ~98%\nI’m not a Swift expert. I hadn’t touched HealthKit before. But Claude Code handled:\nSwiftUI layouts and theming HealthKit authorization and data queries .fit file encoding Prompt construction logic Share sheet integration Multiple art style configurations My job was:\nDescribing what I wanted Testing on device Steering when things went wrong Making product decisions The vibe coding reality: I’d describe a feature, Claude would generate it, I’d test it, we’d iterate. Most of the time, it just worked. When it didn’t, I’d paste the error and Claude would fix it.\nThe moment I knew vibe coding was real: I described the art prompt feature in two sentences, and Claude generated a working style picker with six themes in under a minute. I’d budgeted half a day for that feature.\nThis isn’t “AI wrote my app for me.” It’s more like pair programming with a very fast, very patient partner who knows every API but needs guidance on product direction.\nWhat This Means for Builders There’s a whole category of “context bridge” apps waiting to be built:\nBank transaction exporters for budget analysis Calendar context for meeting prep Health data aggregators for wellness coaching Code context exporters for review and debugging The intelligence layer is becoming commoditized. The context layer is the new moat.\nTry It Yourself The app is called Run Card Generator and should be available on the App Store soon.\nThe running analysis Skill is open source: github.com/mz462/run-skill\nClosing Thought I spent two Saturdays building an iOS app with 98% AI-generated code. It reads from Apple Health, exports workout data, generates art prompts, and supports multiple AI destinations.\nIt has no AI inside.\nAnd that’s exactly why it was so fast to build, so cheap to run, and so flexible to use.\nThe smartest AI app might be the one that doesn’t try to be smart at all.\n",
-  "wordCount" : "919",
+  "articleBody": "The Paradox I just shipped an iOS app. It helps runners get AI-powered analysis of their workouts and generate shareable art from their stats.\nBut the app itself has no AI.\nNo GPT integration. No on-device model. No API calls to Claude or Gemini. Zero intelligence inside.\nAnd that’s exactly why it works.\nThe Backstory Last month, I replaced $200/year in fitness subscriptions with a weekend project — an AI system that gave me personalized coaching by connecting Claude to my running database. (That story here.)\nAt the end, I wrote: “I’m exploring building this into an iOS app.”\nTwo Saturdays later, I did. 98% AI-generated code. Zero AI inside.\nWhat the App Actually Does The app has two core features:\n1. Export .fit Files for Analysis The app reads your workouts from Apple Health and exports them as .fit files — a universal workout format that Garmin, Strava, and other fitness platforms understand. You can then share these files directly to Claude (or any AI), where my custom running analysis prompt turns raw data into personalized coaching.\nThe app’s role: Extract context from Apple Health.\nClaude’s role: Apply expertise and generate insights.\n2. Generate Art Prompts for Sharing Choose an art style — Ghibli, HD-2D pixel art, Chinese 古风, isometric cityscape — and the app constructs an image generation prompt using your run stats (distance, pace, heart rate, location).\nThen you pick your AI: Gemini, Claude, ChatGPT, or just copy the prompt.\nThe app’s role: Build the prompt with your data.\nYou decide: Which AI generates the image.\nWhy No AI Inside? Here’s the mental model that changed how I think about building apps:\nThe Old Model: App = The Experience Traditional apps try to own everything — the UI, the intelligence, the insights. Data flows into the app. Users live inside the app.\nIf you wanted AI features, you’d integrate OpenAI’s API, pay per token, handle rate limits, build fallbacks.\nThe New Model: App = Context Exporter My app doesn’t try to be smart. It tries to be useful to smart things.\nFor analysis: It exports .fit files so Claude can do the heavy lifting. For art: It exports prompts so users can choose their preferred AI. The app is a context bridge — it liberates data trapped in Apple Health and packages it for AI consumption.\nDon’t wrap AI. Export context.\n“Why Not Just Connect Claude Directly?” Fair question. There are tools that let AI assistants connect directly to your data — databases, cloud documents, that kind of thing. So why build an app at all?\nBecause your health data is locked on your phone.\nMost of your digital life lives in the cloud, accessible through APIs. But Apple Health is different:\nYour workout data lives locally on your iPhone Apple doesn’t let external tools access it directly You need an iOS app to unlock that data Think of it this way: AI can read files you share with it, but it can’t reach into your pocket and grab your phone.\nMy app is the bridge. It extracts the data Apple protects, packages it in a format AI understands, and hands it off. The AI does the thinking. The app does the unlocking.\nThe Vibe Coding Experience Let’s talk about how I actually built this.\nTools used: Claude Code (Anthropic’s agentic coding tool)\nTime: Two Saturdays\nAI-generated code: ~98%\nI’m not a Swift developer. I’d never built an iOS app before. But Claude Code handled:\nAll the visual design and screen layouts Connecting to Apple Health and reading workout data Converting workouts to the .fit format Building the art prompt generator The “share to…” functionality All six art style themes My job was:\nDescribing what I wanted Testing on device Steering when things went wrong Making product decisions The vibe coding reality: I’d describe a feature, Claude would generate it, I’d test it, we’d iterate. Most of the time, it just worked. When it didn’t, I’d paste the error and Claude would fix it.\nThe frustrating part: Apple’s App Store review. My first submission got rejected — they wanted more explanation of how the app uses health data. Fair enough. But it meant rewriting privacy descriptions, waiting for re-review, and refreshing my email for days. The AI couldn’t help with that.\nThe moment I knew vibe coding was real: I described the art prompt feature in two sentences, and Claude generated a working style picker with six themes in under a minute. I’d budgeted half a day for that feature.\nThis isn’t “AI wrote my app for me.” It’s more like pair programming with a very fast, very patient partner who knows every API but needs guidance on product direction.\nWhat This Means for Builders There’s a whole category of “context bridge” apps waiting to be built:\nBank transaction exporters for budget analysis Calendar context for meeting prep Health data aggregators for wellness coaching Code context exporters for review and debugging The intelligence layer is becoming commoditized. The context layer is the new moat.\nTry It Yourself The app is called Run Card Generator — it’s free on the App Store.\nThe running analysis prompt (a Claude “Skill” you can install) is open source: github.com/mz462/run-skill\nClosing Thought I spent two Saturdays building an iOS app with 98% AI-generated code. It reads from Apple Health, exports workout data, generates art prompts, and supports multiple AI destinations.\nIt has no AI inside.\nAnd that’s exactly why it was so fast to build, so cheap to run, and so flexible to use.\nThe smartest AI app might be the one that doesn’t try to be smart at all.\n",
+  "wordCount" : "938",
   "inLanguage": "en",
   "datePublished": "2025-12-14T00:00:00Z",
   "dateModified": "2025-12-14T00:00:00Z",
@@ -191,7 +191,7 @@
     <div class="post-description">
       I spent two Saturdays building an iOS app with 98% AI-generated code. It exports running data for AI analysis and generates art prompts — but has zero AI features itself. Here&#39;s why that&#39;s the point.
     </div>
-    <div class="post-meta"><span title='2025-12-14 00:00:00 +0000 UTC'>December 14, 2025</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;919 words
+    <div class="post-meta"><span title='2025-12-14 00:00:00 +0000 UTC'>December 14, 2025</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;938 words
 
 </div>
   </header> <div class="toc">
@@ -222,7 +222,7 @@
                     <a href="#the-new-model-app--context-exporter" aria-label="The New Model: App = Context Exporter">The New Model: App = Context Exporter</a></li></ul>
                 </li>
                 <li>
-                    <a href="#why-not-just-use-mcp" aria-label="&ldquo;Why Not Just Use MCP?&rdquo;">&ldquo;Why Not Just Use MCP?&rdquo;</a></li>
+                    <a href="#why-not-just-connect-claude-directly" aria-label="&ldquo;Why Not Just Connect Claude Directly?&rdquo;">&ldquo;Why Not Just Connect Claude Directly?&rdquo;</a></li>
                 <li>
                     <a href="#the-vibe-coding-experience" aria-label="The Vibe Coding Experience">The Vibe Coding Experience</a></li>
                 <li>
@@ -252,7 +252,7 @@
 <h2 id="what-the-app-actually-does">What the App Actually Does<a hidden class="anchor" aria-hidden="true" href="#what-the-app-actually-does">#</a></h2>
 <p>The app has two core features:</p>
 <h3 id="1-export-fit-files-for-analysis">1. Export .fit Files for Analysis<a hidden class="anchor" aria-hidden="true" href="#1-export-fit-files-for-analysis">#</a></h3>
-<p>The app reads your workouts from Apple Health and exports them as <code>.fit</code> files — the same format Garmin uses. You can then share these files directly to Claude (or any AI), where my running analysis Skill turns raw data into personalized coaching.</p>
+<p>The app reads your workouts from Apple Health and exports them as <code>.fit</code> files — a universal workout format that Garmin, Strava, and other fitness platforms understand. You can then share these files directly to Claude (or any AI), where my custom running analysis prompt turns raw data into personalized coaching.</p>
 <p><strong>The app&rsquo;s role</strong>: Extract context from Apple Health.<br>
 <strong>Claude&rsquo;s role</strong>: Apply expertise and generate insights.</p>
 <h3 id="2-generate-art-prompts-for-sharing">2. Generate Art Prompts for Sharing<a hidden class="anchor" aria-hidden="true" href="#2-generate-art-prompts-for-sharing">#</a></h3>
@@ -271,57 +271,37 @@
 <h3 id="the-new-model-app--context-exporter">The New Model: App = Context Exporter<a hidden class="anchor" aria-hidden="true" href="#the-new-model-app--context-exporter">#</a></h3>
 <p>My app doesn&rsquo;t try to be smart. It tries to be <em>useful to smart things</em>.</p>
 <ul>
-<li><strong>For analysis</strong>: It exports <code>.fit</code> files so Claude + my Skill can do the heavy lifting.</li>
+<li><strong>For analysis</strong>: It exports <code>.fit</code> files so Claude can do the heavy lifting.</li>
 <li><strong>For art</strong>: It exports prompts so users can choose their preferred AI.</li>
 </ul>
 <p>The app is a <strong>context bridge</strong> — it liberates data trapped in Apple Health and packages it for AI consumption.</p>
 <p><strong>Don&rsquo;t wrap AI. Export context.</strong></p>
 <hr>
-<h2 id="why-not-just-use-mcp">&ldquo;Why Not Just Use MCP?&rdquo;<a hidden class="anchor" aria-hidden="true" href="#why-not-just-use-mcp">#</a></h2>
-<p>Fair question. In my previous post, I loved MCP (Model Context Protocol) for connecting Claude directly to databases. So why not build an Apple Health MCP server instead of an iOS app?</p>
-<p><strong>Because MCP can&rsquo;t reach your iPhone.</strong></p>
-<p>MCP works when data lives in the cloud — Postgres, Notion, Google Drive. It connects Claude to accessible APIs.</p>
-<p>Apple Health is different:</p>
+<h2 id="why-not-just-connect-claude-directly">&ldquo;Why Not Just Connect Claude Directly?&rdquo;<a hidden class="anchor" aria-hidden="true" href="#why-not-just-connect-claude-directly">#</a></h2>
+<p>Fair question. There are tools that let AI assistants connect directly to your data — databases, cloud documents, that kind of thing. So why build an app at all?</p>
+<p><strong>Because your health data is locked on your phone.</strong></p>
+<p>Most of your digital life lives in the cloud, accessible through APIs. But Apple Health is different:</p>
 <ul>
-<li>Data lives <strong>on your device</strong> (local HealthKit database)</li>
-<li><strong>No REST API</strong> — Apple doesn&rsquo;t expose one</li>
-<li><strong>HealthKit is iOS-only</strong> — you need an iOS app to access it</li>
+<li>Your workout data lives <strong>locally on your iPhone</strong></li>
+<li>Apple doesn&rsquo;t let external tools access it directly</li>
+<li>You need an iOS app to unlock that data</li>
 </ul>
-<p>My app solves the problem <em>upstream</em> of MCP. It&rsquo;s the first mile of the context pipeline.</p>
-<p><strong>MCP is USB for cloud data. My app is the SD card reader for your phone.</strong></p>
-<pre tabindex="0"><code>┌─────────── MCP World ───────────────┐
-│                                     │
-│  Claude ←────MCP────→ Database  ✅  │
-│  Claude ←────MCP────→ Apple Health ❌│
-│                       (no API)      │
-└─────────────────────────────────────┘
-
-┌─────────── My Solution ─────────────┐
-│                                     │
-│  Apple Health                       │
-│       ↓                             │
-│  iOS App (extracts data)            │
-│       ↓                             │
-│  .fit file                          │
-│       ↓                             │
-│  Share to Claude                    │
-│       ↓                             │
-│  Claude + Skill = Insights          │
-└─────────────────────────────────────┘
-</code></pre><hr>
+<p>Think of it this way: AI can read files you share with it, but it can&rsquo;t reach into your pocket and grab your phone.</p>
+<p><strong>My app is the bridge.</strong> It extracts the data Apple protects, packages it in a format AI understands, and hands it off. The AI does the thinking. The app does the unlocking.</p>
+<hr>
 <h2 id="the-vibe-coding-experience">The Vibe Coding Experience<a hidden class="anchor" aria-hidden="true" href="#the-vibe-coding-experience">#</a></h2>
 <p>Let&rsquo;s talk about how I actually built this.</p>
 <p><strong>Tools used</strong>: Claude Code (Anthropic&rsquo;s agentic coding tool)<br>
 <strong>Time</strong>: Two Saturdays<br>
 <strong>AI-generated code</strong>: ~98%</p>
-<p>I&rsquo;m not a Swift expert. I hadn&rsquo;t touched HealthKit before. But Claude Code handled:</p>
+<p>I&rsquo;m not a Swift developer. I&rsquo;d never built an iOS app before. But Claude Code handled:</p>
 <ul>
-<li>SwiftUI layouts and theming</li>
-<li>HealthKit authorization and data queries</li>
-<li><code>.fit</code> file encoding</li>
-<li>Prompt construction logic</li>
-<li>Share sheet integration</li>
-<li>Multiple art style configurations</li>
+<li>All the visual design and screen layouts</li>
+<li>Connecting to Apple Health and reading workout data</li>
+<li>Converting workouts to the <code>.fit</code> format</li>
+<li>Building the art prompt generator</li>
+<li>The &ldquo;share to&hellip;&rdquo; functionality</li>
+<li>All six art style themes</li>
 </ul>
 <p>My job was:</p>
 <ul>
@@ -331,6 +311,7 @@
 <li>Making product decisions</li>
 </ul>
 <p><strong>The vibe coding reality</strong>: I&rsquo;d describe a feature, Claude would generate it, I&rsquo;d test it, we&rsquo;d iterate. Most of the time, it just worked. When it didn&rsquo;t, I&rsquo;d paste the error and Claude would fix it.</p>
+<p><strong>The frustrating part</strong>: Apple&rsquo;s App Store review. My first submission got rejected — they wanted more explanation of how the app uses health data. Fair enough. But it meant rewriting privacy descriptions, waiting for re-review, and refreshing my email for days. The AI couldn&rsquo;t help with that.</p>
 <p>The moment I knew vibe coding was real: I described the art prompt feature in two sentences, and Claude generated a working style picker with six themes in under a minute. I&rsquo;d budgeted half a day for that feature.</p>
 <p>This isn&rsquo;t &ldquo;AI wrote my app for me.&rdquo; It&rsquo;s more like pair programming with a very fast, very patient partner who knows every API but needs guidance on product direction.</p>
 <hr>
@@ -345,8 +326,8 @@
 <p>The intelligence layer is becoming commoditized. <strong>The context layer is the new moat.</strong></p>
 <hr>
 <h2 id="try-it-yourself">Try It Yourself<a hidden class="anchor" aria-hidden="true" href="#try-it-yourself">#</a></h2>
-<p>The app is called <strong><a href="https://apps.apple.com/us/app/run-card-generator/id6446992529">Run Card Generator</a></strong> and should be available on the App Store soon.</p>
-<p>The running analysis Skill is open source: <a href="https://github.com/mz462/run-skill">github.com/mz462/run-skill</a></p>
+<p>The app is called <strong><a href="https://apps.apple.com/app/run-card-generator/id6756200075">Run Card Generator</a></strong> — it&rsquo;s free on the App Store.</p>
+<p>The running analysis prompt (a Claude &ldquo;Skill&rdquo; you can install) is open source: <a href="https://github.com/mz462/run-skill">github.com/mz462/run-skill</a></p>
 <hr>
 <h2 id="closing-thought">Closing Thought<a hidden class="anchor" aria-hidden="true" href="#closing-thought">#</a></h2>
 <p>I spent two Saturdays building an iOS app with 98% AI-generated code. It reads from Apple Health, exports workout data, generates art prompts, and supports multiple AI destinations.</p>
