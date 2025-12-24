@@ -1,26 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>MCP on MJ&#39;s Blog</title>
-    <link>https://mz462.github.io/tags/mcp/</link>
-    <description>Recent content in MCP on MJ&#39;s Blog</description>
+    <title>Automation on MJ&#39;s Blog</title>
+    <link>https://mz462.github.io/tags/automation/</link>
+    <description>Recent content in Automation on MJ&#39;s Blog</description>
     <generator>Hugo -- 0.151.2</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 23 Dec 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://mz462.github.io/tags/mcp/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://mz462.github.io/tags/automation/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>What Technical Stack Would I Choose If I&#39;m Starting My Own GP in This AI Era?</title>
       <link>https://mz462.github.io/posts/ai-era-gp-tech-stack/</link>
       <pubDate>Tue, 23 Dec 2025 00:00:00 +0000</pubDate>
       <guid>https://mz462.github.io/posts/ai-era-gp-tech-stack/</guid>
       <description>After helping three friends build their GP tech stacks from scratch, here&amp;#39;s how I&amp;#39;d approach it today—with AI agents, open APIs, and conversation at the center.</description>
-    </item>
-    <item>
-      <title>From Two Subscriptions to One Weekend Build: The AI Architecture Pattern Everyone&#39;s Missing</title>
-      <link>https://mz462.github.io/posts/ai-architecture-pattern/</link>
-      <pubDate>Mon, 17 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>https://mz462.github.io/posts/ai-architecture-pattern/</guid>
-      <description>I spent a weekend building what I was paying $200/year for. Here&amp;#39;s what I learned about AI architecture—MCP, Skills, Subagents, and Prompts—and why context window is sacred.</description>
     </item>
   </channel>
 </rss>
