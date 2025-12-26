@@ -141,5 +141,23 @@
       <guid>https://mz462.github.io/posts/my-first-post/</guid>
       <description>My reasons for starting a blog: navigating the age of AI, fostering independent thought, improving communication, and documenting my learning journey.</description>
     </item>
+    <item>
+      <title>About</title>
+      <link>https://mz462.github.io/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://mz462.github.io/about/</guid>
+      <description>&lt;h2 id=&#34;im-mjan-ai-product-manager-who-builds&#34;&gt;I&amp;rsquo;m MJ—an AI product manager who builds.&lt;/h2&gt;
+&lt;p&gt;I think deeply about how AI products actually work: why LLMs hallucinate, how context engineering shapes behavior, and what separates successful AI adoption from expensive experiments.&lt;/p&gt;
+&lt;p&gt;This blog is where I work through ideas in public—grounded in real experience shipping AI products and helping teams navigate the messy reality of enterprise AI adoption.&lt;/p&gt;
+&lt;h3 id=&#34;what-i-write-about&#34;&gt;What I write about&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Context engineering&lt;/strong&gt; — how the context you provide shapes LLM behavior&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;AI product management&lt;/strong&gt; — the craft of shipping AI products that actually work&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Enterprise AI adoption&lt;/strong&gt; — what it takes to move from pilot to production&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;LLM behavior&lt;/strong&gt; — understanding why models do what they do&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;what-i-build&#34;&gt;What I build&lt;/h3&gt;
+&lt;p&gt;When I&amp;rsquo;m not writing, I&amp;rsquo;m building:&lt;/p&gt;</description>
+    </item>
   </channel>
 </rss>
