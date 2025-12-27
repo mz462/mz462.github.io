@@ -552,8 +552,50 @@
 }
 
 /* ============================================
+   PUSH CONTENT WHEN SIDEBAR OPEN
+   ============================================ */
+
+/* Target main content areas - PaperMod specific */
+body.mjlm-open .main,
+body.mjlm-open .header,
+body.mjlm-open .footer {
+  transform: translateX(-190px);
+  transition: transform 0.35s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+/* Ensure content has transition even when closing */
+.main,
+.header,
+.footer {
+  transition: transform 0.35s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+/* Hide toggle button when sidebar is open */
+body.mjlm-open .mjlm-toggle {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-20px);
+}
+
+/* ============================================
    MOBILE RESPONSIVE
    ============================================ */
+
+@media (max-width: 768px) {
+  /* Don't push content on tablets and below - overlay instead */
+  body.mjlm-open .main,
+  body.mjlm-open .header,
+  body.mjlm-open .footer {
+    transform: none;
+  }
+
+  /* Show toggle on mobile even when open */
+  body.mjlm-open .mjlm-toggle {
+    opacity: 1;
+    pointer-events: auto;
+    transform: none;
+  }
+}
 
 @media (max-width: 480px) {
   .mjlm-sidebar {

@@ -123,9 +123,11 @@
     const sidebar = document.getElementById("mjlm-sidebar");
     if (isOpen) {
       sidebar.classList.add("open");
+      document.body.classList.add("mjlm-open");
       document.getElementById("mjlm-input").focus();
     } else {
       sidebar.classList.remove("open");
+      document.body.classList.remove("mjlm-open");
     }
   }
 
