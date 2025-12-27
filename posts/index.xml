@@ -141,5 +141,12 @@
       <guid>https://mz462.github.io/posts/my-first-post/</guid>
       <description>My reasons for starting a blog: navigating the age of AI, fostering independent thought, improving communication, and documenting my learning journey.</description>
     </item>
+    <item>
+      <title>About MJ</title>
+      <link>https://mz462.github.io/posts/about-mj/</link>
+      <pubDate>Wed, 01 Jan 2020 00:00:00 +0000</pubDate>
+      <guid>https://mz462.github.io/posts/about-mj/</guid>
+      <description>Background and experience of MJ Zou</description>
+    </item>
   </channel>
 </rss>
