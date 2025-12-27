@@ -8,7 +8,7 @@
 
   // Configuration
   const CONFIG = {
-    apiUrl: "https://mjlm-api.mz462.workers.dev/api/chat",
+    apiUrl: "https://mjlm-api.kelvinzou.workers.dev/api/chat",
     storageKey: "mjlm-history",
     maxHistory: 10,
   };
