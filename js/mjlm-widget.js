@@ -15,9 +15,9 @@
 
   // Initial suggested questions
   const INITIAL_QUESTIONS = [
-    "What does MJ think about context engineering?",
-    "What are MJ's views on AI product management?",
-    "Tell me about LLM limitations MJ has written about",
+    "What's the reality behind AI productivity claims?",
+    "How does context engineering actually work?",
+    "What separates successful AI products from failures?",
   ];
 
   // State
