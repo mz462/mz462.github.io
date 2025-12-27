@@ -30,7 +30,82 @@
   --mjlm-assistant-bg: rgb(38, 39, 42);
 }
 
-/* Toggle Button - positioned below header */
+/* ============================================
+   MICRO ANIMATIONS
+   ============================================ */
+
+/* Subtle pulse for toggle button icon */
+@keyframes mjlm-pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.1); opacity: 0.8; }
+}
+
+/* Message entrance animation */
+@keyframes mjlm-message-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Slide in from right for sidebar */
+@keyframes mjlm-slide-in {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+/* Fade in animation */
+@keyframes mjlm-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Staggered entrance */
+@keyframes mjlm-stagger-in {
+  from {
+    opacity: 0;
+    transform: translateX(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Improved bounce for loading dots */
+@keyframes mjlm-bounce {
+  0%, 80%, 100% {
+    transform: scale(0.6);
+    opacity: 0.4;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Send button press effect */
+@keyframes mjlm-press {
+  0% { transform: scale(1); }
+  50% { transform: scale(0.92); }
+  100% { transform: scale(1); }
+}
+
+/* Icon sparkle */
+@keyframes mjlm-sparkle {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  25% { transform: rotate(-5deg) scale(1.1); }
+  75% { transform: rotate(5deg) scale(1.1); }
+}
+
+/* ============================================
+   TOGGLE BUTTON
+   ============================================ */
+
 .mjlm-toggle {
   position: fixed;
   top: 70px;
@@ -47,22 +122,35 @@
   font-size: 13px;
   font-weight: 500;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   font-family: inherit;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .mjlm-toggle:hover {
   border-color: var(--mjlm-accent);
-  box-shadow: 0 2px 12px rgba(249, 115, 22, 0.15);
+  box-shadow: 0 4px 16px rgba(249, 115, 22, 0.2);
+  transform: translateY(-1px);
+}
+
+.mjlm-toggle:active {
+  transform: translateY(0) scale(0.98);
 }
 
 .mjlm-toggle-icon {
   color: var(--mjlm-accent);
   font-size: 14px;
+  animation: mjlm-pulse 3s ease-in-out infinite;
 }
 
-/* Sidebar Panel */
+.mjlm-toggle:hover .mjlm-toggle-icon {
+  animation: mjlm-sparkle 0.5s ease-in-out;
+}
+
+/* ============================================
+   SIDEBAR PANEL
+   ============================================ */
+
 .mjlm-sidebar {
   position: fixed;
   top: 0;
@@ -75,16 +163,19 @@
   z-index: 1000;
   display: flex;
   flex-direction: column;
-  transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: right 0.35s cubic-bezier(0.32, 0.72, 0, 1);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
+  box-shadow: -8px 0 30px rgba(0, 0, 0, 0.12);
 }
 
 .mjlm-sidebar.open {
   right: 0;
 }
 
-/* Header */
+/* ============================================
+   HEADER
+   ============================================ */
+
 .mjlm-header {
   display: flex;
   justify-content: space-between;
@@ -105,6 +196,11 @@
 
 .mjlm-title span {
   color: var(--mjlm-accent);
+  transition: transform 0.3s ease;
+}
+
+.mjlm-sidebar.open .mjlm-title span {
+  animation: mjlm-sparkle 0.6s ease-in-out 0.3s;
 }
 
 .mjlm-header-actions {
@@ -119,16 +215,24 @@
   cursor: pointer;
   padding: 6px;
   font-size: 18px;
-  transition: color 0.2s;
-  border-radius: 4px;
+  transition: all 0.2s ease;
+  border-radius: 6px;
 }
 
 .mjlm-header-btn:hover {
   color: var(--mjlm-text);
   background: var(--mjlm-bg-secondary);
+  transform: scale(1.1);
 }
 
-/* Messages Container */
+.mjlm-header-btn:active {
+  transform: scale(0.95);
+}
+
+/* ============================================
+   MESSAGES CONTAINER
+   ============================================ */
+
 .mjlm-messages {
   flex: 1;
   overflow-y: auto;
@@ -138,9 +242,13 @@
   gap: 16px;
 }
 
-/* Welcome State */
+/* ============================================
+   WELCOME STATE
+   ============================================ */
+
 .mjlm-welcome {
   padding: 20px 0;
+  animation: mjlm-fade-in 0.4s ease-out;
 }
 
 .mjlm-welcome h3 {
@@ -150,7 +258,10 @@
   margin: 0 0 16px 0;
 }
 
-/* Suggested Questions - Initial state */
+/* ============================================
+   SUGGESTED QUESTIONS
+   ============================================ */
+
 .mjlm-suggestions {
   display: flex;
   flex-direction: column;
@@ -169,12 +280,23 @@
   font-size: 14px;
   text-align: left;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: mjlm-stagger-in 0.4s ease-out backwards;
 }
+
+.mjlm-suggestion:nth-child(1) { animation-delay: 0.1s; }
+.mjlm-suggestion:nth-child(2) { animation-delay: 0.2s; }
+.mjlm-suggestion:nth-child(3) { animation-delay: 0.3s; }
 
 .mjlm-suggestion:hover {
   border-color: var(--mjlm-accent);
   background: var(--mjlm-bg);
+  transform: translateX(4px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.mjlm-suggestion:active {
+  transform: translateX(2px) scale(0.99);
 }
 
 .mjlm-suggestion-icon {
@@ -182,15 +304,24 @@
   flex-shrink: 0;
   font-size: 12px;
   margin-top: 2px;
+  transition: transform 0.2s ease;
 }
 
-/* Message Bubbles */
+.mjlm-suggestion:hover .mjlm-suggestion-icon {
+  transform: translateX(2px);
+}
+
+/* ============================================
+   MESSAGE BUBBLES
+   ============================================ */
+
 .mjlm-message {
   max-width: 90%;
   padding: 12px 16px;
   border-radius: 14px;
   font-size: 14px;
   line-height: 1.6;
+  animation: mjlm-message-in 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .mjlm-message.user {
@@ -243,10 +374,14 @@
   font-family: 'SF Mono', Monaco, monospace;
 }
 
-/* Sources */
+/* ============================================
+   SOURCES
+   ============================================ */
+
 .mjlm-sources {
   padding: 12px 16px;
   font-size: 12px;
+  animation: mjlm-fade-in 0.4s ease-out 0.2s backwards;
 }
 
 .mjlm-sources-title {
@@ -259,37 +394,42 @@
   color: var(--mjlm-accent);
   text-decoration: none;
   font-size: 13px;
+  transition: all 0.2s ease;
 }
 
 .mjlm-source-link:hover {
   text-decoration: underline;
+  filter: brightness(1.1);
 }
 
-/* Loading State */
+/* ============================================
+   LOADING STATE
+   ============================================ */
+
 .mjlm-loading {
   display: flex;
-  gap: 4px;
+  gap: 5px;
   padding: 12px 16px;
   align-self: flex-start;
+  animation: mjlm-fade-in 0.3s ease-out;
 }
 
 .mjlm-loading-dot {
   width: 8px;
   height: 8px;
-  background: var(--mjlm-text-muted);
+  background: var(--mjlm-accent);
   border-radius: 50%;
-  animation: mjlm-bounce 1.4s infinite ease-in-out both;
+  animation: mjlm-bounce 1.2s infinite ease-in-out;
 }
 
-.mjlm-loading-dot:nth-child(1) { animation-delay: -0.32s; }
-.mjlm-loading-dot:nth-child(2) { animation-delay: -0.16s; }
+.mjlm-loading-dot:nth-child(1) { animation-delay: 0s; }
+.mjlm-loading-dot:nth-child(2) { animation-delay: 0.15s; }
+.mjlm-loading-dot:nth-child(3) { animation-delay: 0.3s; }
 
-@keyframes mjlm-bounce {
-  0%, 80%, 100% { transform: scale(0); }
-  40% { transform: scale(1); }
-}
+/* ============================================
+   INPUT AREA
+   ============================================ */
 
-/* Input Area */
 .mjlm-input-area {
   padding: 12px 16px 16px;
   border-top: 1px solid var(--mjlm-border);
@@ -313,15 +453,23 @@
   resize: none;
   font-family: inherit;
   max-height: 120px;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .mjlm-input:focus {
   outline: none;
   border-color: var(--mjlm-accent);
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.15);
+  background: var(--mjlm-bg);
 }
 
 .mjlm-input::placeholder {
   color: var(--mjlm-text-muted);
+  transition: opacity 0.2s ease;
+}
+
+.mjlm-input:focus::placeholder {
+  opacity: 0.6;
 }
 
 .mjlm-send {
@@ -335,7 +483,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.2s;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   flex-shrink: 0;
   font-size: 16px;
 }
@@ -347,10 +495,18 @@
 
 .mjlm-send:hover:not(:disabled) {
   background: var(--mjlm-accent-hover);
-  transform: scale(1.05);
+  transform: scale(1.08);
+  box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
 }
 
-/* Follow-up Questions - Subtle text links like Rachel's */
+.mjlm-send:active:not(:disabled) {
+  animation: mjlm-press 0.15s ease-out;
+}
+
+/* ============================================
+   FOLLOW-UP QUESTIONS
+   ============================================ */
+
 .mjlm-followups {
   margin-top: 8px;
   display: flex;
@@ -370,24 +526,35 @@
   font-size: 13px;
   text-align: left;
   cursor: pointer;
-  transition: color 0.2s;
+  transition: all 0.2s ease;
+  animation: mjlm-stagger-in 0.35s ease-out backwards;
 }
+
+.mjlm-followup:nth-child(1) { animation-delay: 0.15s; }
+.mjlm-followup:nth-child(2) { animation-delay: 0.25s; }
+.mjlm-followup:nth-child(3) { animation-delay: 0.35s; }
 
 .mjlm-followup:hover {
   color: var(--mjlm-accent);
+  transform: translateX(4px);
 }
 
 .mjlm-followup::before {
   content: '↳';
   color: var(--mjlm-text-muted);
   font-size: 12px;
+  transition: all 0.2s ease;
 }
 
 .mjlm-followup:hover::before {
   color: var(--mjlm-accent);
+  transform: translateX(2px);
 }
 
-/* Mobile Responsive */
+/* ============================================
+   MOBILE RESPONSIVE
+   ============================================ */
+
 @media (max-width: 480px) {
   .mjlm-sidebar {
     width: 100vw;
@@ -402,7 +569,10 @@
   }
 }
 
-/* Scrollbar styling */
+/* ============================================
+   SCROLLBAR STYLING
+   ============================================ */
+
 .mjlm-messages::-webkit-scrollbar {
   width: 6px;
 }
@@ -414,8 +584,28 @@
 .mjlm-messages::-webkit-scrollbar-thumb {
   background: var(--mjlm-border);
   border-radius: 3px;
+  transition: background 0.2s ease;
 }
 
 .mjlm-messages::-webkit-scrollbar-thumb:hover {
   background: var(--mjlm-text-muted);
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .mjlm-toggle,
+  .mjlm-toggle-icon,
+  .mjlm-sidebar,
+  .mjlm-message,
+  .mjlm-suggestion,
+  .mjlm-followup,
+  .mjlm-loading-dot,
+  .mjlm-send,
+  .mjlm-header-btn {
+    animation: none !important;
+    transition: none !important;
+  }
 }
