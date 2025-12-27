@@ -100,6 +100,8 @@
     document.getElementById("mjlm-send").onclick = sendMessage;
 
     const input = document.getElementById("mjlm-input");
+    const sendBtn = document.getElementById("mjlm-send");
+
     input.onkeydown = (e) => {
       if (e.key === "Enter" && !e.shiftKey) {
         e.preventDefault();
@@ -107,14 +109,102 @@
       }
     };
 
-    // Auto-resize textarea
+    // Auto-resize textarea + send button state + caret tracking
     input.oninput = () => {
       input.style.height = "auto";
       input.style.height = Math.min(input.scrollHeight, 120) + "px";
+
+      // Toggle send button "has-text" state
+      if (input.value.trim()) {
+        sendBtn.classList.add("has-text");
+      } else {
+        sendBtn.classList.remove("has-text");
+      }
+
+      // Update fake caret position
+      updateCaretPosition();
+    };
+
+    // Track caret on selection change
+    input.onselect = updateCaretPosition;
+    input.onclick = updateCaretPosition;
+    input.onkeyup = updateCaretPosition;
+
+    // Focus/blur effects
+    input.onfocus = () => {
+      const caret = document.getElementById("mjlm-caret");
+      if (caret) caret.classList.add("visible");
+      updateCaretPosition();
+    };
+
+    input.onblur = () => {
+      const caret = document.getElementById("mjlm-caret");
+      if (caret) caret.classList.remove("visible");
     };
 
     // Initial render
     renderMessages();
+
+    // Setup fancy caret
+    setupFancyCaret();
+  }
+
+  // Setup fancy caret with glow effect
+  function setupFancyCaret() {
+    const inputWrapper = document.querySelector(".mjlm-input-wrapper");
+
+    // Create caret element
+    const caret = document.createElement("div");
+    caret.className = "mjlm-caret";
+    caret.id = "mjlm-caret";
+    caret.innerHTML = '<div class="mjlm-caret-glow"></div>';
+
+    // Create mirror element for measuring text
+    const mirror = document.createElement("span");
+    mirror.className = "mjlm-input-mirror";
+    mirror.id = "mjlm-input-mirror";
+
+    inputWrapper.appendChild(caret);
+    inputWrapper.appendChild(mirror);
+  }
+
+  // Update fake caret position
+  function updateCaretPosition() {
+    const input = document.getElementById("mjlm-input");
+    const mirror = document.getElementById("mjlm-input-mirror");
+    const caret = document.getElementById("mjlm-caret");
+
+    if (!input || !mirror || !caret) return;
+
+    // Get text up to cursor
+    const cursorPos = input.selectionStart;
+    const textBeforeCursor = input.value.substring(0, cursorPos);
+
+    // Update mirror with text (replace spaces with non-breaking spaces for measurement)
+    mirror.textContent = textBeforeCursor.replace(/ /g, "\u00a0") || "\u200b";
+
+    // Get input styles
+    const inputStyle = window.getComputedStyle(input);
+    mirror.style.font = inputStyle.font;
+    mirror.style.letterSpacing = inputStyle.letterSpacing;
+    mirror.style.padding = inputStyle.padding;
+
+    // Calculate position
+    const inputRect = input.getBoundingClientRect();
+    const mirrorRect = mirror.getBoundingClientRect();
+    const wrapperRect = input.parentElement.getBoundingClientRect();
+
+    // Position caret
+    let left = mirror.offsetWidth + parseInt(inputStyle.paddingLeft);
+    const maxLeft = input.offsetWidth - parseInt(inputStyle.paddingRight) - 2;
+
+    // Clamp to input bounds
+    left = Math.min(left, maxLeft);
+    left = Math.max(left, parseInt(inputStyle.paddingLeft));
+
+    caret.style.left = left + "px";
+    caret.style.top = parseInt(inputStyle.paddingTop) + "px";
+    caret.style.height = parseInt(inputStyle.lineHeight) || 20 + "px";
   }
 
   // Toggle sidebar
