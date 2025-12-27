@@ -116,6 +116,23 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Why I Had to Rewrite My MCP Server from Python to TypeScript
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>I had a working Python MCP server with 24 tools for accessing Fannie Mae mortgage data. I wanted to deploy it remotely so Claude could access it from anywhere—not just my local machine.
+Cloudflare Workers seemed perfect. They’d just announced Python support. Easy, right?
+It wasn’t.
+The Python Attempt My server used httpx for API calls and the mcp SDK with FastMCP. Standard stuff:
+@mcp.tool() async def get_loan_limits_by_location(state: str, county: str) -&gt; dict: return await client.make_request(f&#34;/v1/loan-limits/state/{state}/county/{county}&#34;) I configured wrangler.jsonc for Python Workers, ran pywrangler deploy, and… the health check worked!
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-12-27 00:00:00 +0000 UTC'>December 27, 2025</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;555 words</footer>
+  <a class="entry-link" aria-label="post link to Why I Had to Rewrite My MCP Server from Python to TypeScript" href="https://mz462.github.io/posts/mcp-python-to-typescript/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">The Manus Paradox: What the Fastest-Growing AI Company Reveals About Agentic AI
     </h2>
   </header>

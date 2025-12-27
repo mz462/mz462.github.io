@@ -131,6 +131,23 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Why I Had to Rewrite My MCP Server from Python to TypeScript
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>I had a working Python MCP server with 24 tools for accessing Fannie Mae mortgage data. I wanted to deploy it remotely so Claude could access it from anywhere—not just my local machine.
+Cloudflare Workers seemed perfect. They’d just announced Python support. Easy, right?
+It wasn’t.
+The Python Attempt My server used httpx for API calls and the mcp SDK with FastMCP. Standard stuff:
+@mcp.tool() async def get_loan_limits_by_location(state: str, county: str) -&gt; dict: return await client.make_request(f&#34;/v1/loan-limits/state/{state}/county/{county}&#34;) I configured wrangler.jsonc for Python Workers, ran pywrangler deploy, and… the health check worked!
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-12-27 00:00:00 +0000 UTC'>December 27, 2025</span>&nbsp;·&nbsp;3 min&nbsp;·&nbsp;555 words</footer>
+  <a class="entry-link" aria-label="post link to Why I Had to Rewrite My MCP Server from Python to TypeScript" href="https://mz462.github.io/posts/mcp-python-to-typescript/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">What Technical Stack Would I Choose If I&#39;m Starting My Own GP in This AI Era?
     </h2>
   </header>
@@ -261,20 +278,6 @@ The Anthropic team was walking through their enterprise offerings: Projects, Kno
   </div>
   <footer class="entry-footer"><span title='2025-07-18 15:30:00 -0800 -0800'>July 18, 2025</span>&nbsp;·&nbsp;7 min&nbsp;·&nbsp;1310 words</footer>
   <a class="entry-link" aria-label="post link to Blanked Out During Claude&#39;s Demo. How Does It Just Work So Well?" href="https://mz462.github.io/posts/blanked-out-claude-demo/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">The Perfect Storm: How China Created the AI Talent Pipeline Dominating Silicon Valley
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Mark Zuckerberg is paying $100 million signing bonuses for AI researchers. Not $100,000—$100 million.1 And when you look at who Meta is hiring, a pattern emerges that reveals one of the most fascinating talent pipelines in modern technology.
-Seven of Meta’s eleven publicly listed Superintelligence Labs recruits graduated from prestigious Chinese universities before pursuing advanced degrees in the US.2 Shengjia Zhao, Jiahui Yu, Shuchao Bi, Hongyu Ren—these aren’t just individual success stories. They represent a systematic phenomenon that’s reshaping the global AI landscape.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2025-07-16 00:00:00 -0500 -0500'>July 16, 2025</span>&nbsp;·&nbsp;9 min&nbsp;·&nbsp;1729 words</footer>
-  <a class="entry-link" aria-label="post link to The Perfect Storm: How China Created the AI Talent Pipeline Dominating Silicon Valley" href="https://mz462.github.io/posts/china-ai-talent-pipeline/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
