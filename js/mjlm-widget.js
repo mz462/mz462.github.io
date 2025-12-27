@@ -262,8 +262,14 @@
       renderSuggestions(currentSuggestions, true);
     }
 
-    // Scroll to bottom
-    container.scrollTop = container.scrollHeight;
+    // Scroll to the last assistant message so user can read from the start
+    const assistantMessages = container.querySelectorAll(".mjlm-message.assistant");
+    if (assistantMessages.length > 0) {
+      const lastAssistant = assistantMessages[assistantMessages.length - 1];
+      lastAssistant.scrollIntoView({ behavior: "smooth", block: "start" });
+    } else {
+      container.scrollTop = container.scrollHeight;
+    }
   }
 
   // Render suggestion buttons
