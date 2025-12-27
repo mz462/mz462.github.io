@@ -85,6 +85,9 @@
             id="mjlm-input"
             placeholder="Ask about MJ's posts..."
             rows="1"
+            enterkeyhint="send"
+            autocomplete="off"
+            autocorrect="on"
           ></textarea>
           <button class="mjlm-send" id="mjlm-send" title="Send">↑</button>
         </div>
@@ -102,8 +105,10 @@
     const input = document.getElementById("mjlm-input");
     const sendBtn = document.getElementById("mjlm-send");
 
+    // Handle Enter key - use both e.key and e.keyCode for mobile compatibility
     input.onkeydown = (e) => {
-      if (e.key === "Enter" && !e.shiftKey) {
+      const isEnter = e.key === "Enter" || e.keyCode === 13;
+      if (isEnter && !e.shiftKey) {
         e.preventDefault();
         sendMessage();
       }
@@ -135,6 +140,13 @@
       const caret = document.getElementById("mjlm-caret");
       if (caret) caret.classList.add("visible");
       updateCaretPosition();
+
+      // On mobile, scroll input into view when keyboard opens
+      if (window.innerWidth <= 480) {
+        setTimeout(() => {
+          input.scrollIntoView({ behavior: "smooth", block: "end" });
+        }, 300); // Delay to let keyboard animation complete
+      }
     };
 
     input.onblur = () => {
