@@ -337,6 +337,86 @@
 
 <link rel="stylesheet" href="/css/mjlm-widget.css?v=11">
 <script src="/js/mjlm-widget.js?v=11" defer></script>
+
+<div class="reading-list">
+  <div class="reading-list-title">Reading List</div>
+  <ul class="reading-list-items">
+    <li><a href="https://example.com/article-1" target="_blank">Example Article 1</a></li>
+    <li><a href="https://example.com/article-2" target="_blank">Example Article 2</a></li>
+    <li><a href="https://example.com/article-3" target="_blank">Example Article 3</a></li>
+  </ul>
+</div>
+
+<style>
+ 
+.reading-list {
+  position: fixed;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 100;
+  background: #fff9c4;
+  border: 1px solid #f0e68c;
+  border-radius: 4px;
+  padding: 12px 14px;
+  width: 180px;
+  box-shadow: 2px 3px 8px rgba(0, 0, 0, 0.1);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.dark .reading-list {
+  background: #3d3a2e;
+  border-color: #4a4639;
+}
+
+.reading-list-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #5d4e37;
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px dashed #e0d68c;
+}
+
+.dark .reading-list-title {
+  color: #d4c9a8;
+  border-bottom-color: #5a5443;
+}
+
+.reading-list-items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 12px;
+}
+
+.reading-list-items li {
+  margin: 6px 0;
+  line-height: 1.4;
+}
+
+.reading-list-items a {
+  color: #6b5a3e;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.dark .reading-list-items a {
+  color: #c4b896;
+}
+
+.reading-list-items a:hover {
+  color: #f97316;
+  text-decoration: underline;
+}
+
+ 
+@media (max-width: 1200px) {
+  .reading-list {
+    display: none;
+  }
+}
+</style>
 </body>
 
 </html>
