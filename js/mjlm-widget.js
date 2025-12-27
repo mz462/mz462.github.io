@@ -181,30 +181,25 @@
     const textBeforeCursor = input.value.substring(0, cursorPos);
 
     // Update mirror with text (replace spaces with non-breaking spaces for measurement)
-    mirror.textContent = textBeforeCursor.replace(/ /g, "\u00a0") || "\u200b";
+    mirror.textContent = textBeforeCursor.replace(/ /g, "\u00a0") || "";
 
-    // Get input styles
+    // Copy input font styles to mirror
     const inputStyle = window.getComputedStyle(input);
     mirror.style.font = inputStyle.font;
     mirror.style.letterSpacing = inputStyle.letterSpacing;
-    mirror.style.padding = inputStyle.padding;
 
-    // Calculate position
-    const inputRect = input.getBoundingClientRect();
-    const mirrorRect = mirror.getBoundingClientRect();
-    const wrapperRect = input.parentElement.getBoundingClientRect();
+    // Calculate position - padding + text width
+    const paddingLeft = parseFloat(inputStyle.paddingLeft) || 14;
+    const textWidth = mirror.scrollWidth;
 
-    // Position caret
-    let left = mirror.offsetWidth + parseInt(inputStyle.paddingLeft);
-    const maxLeft = input.offsetWidth - parseInt(inputStyle.paddingRight) - 2;
+    let left = paddingLeft + textWidth;
 
-    // Clamp to input bounds
+    // Clamp to input bounds (leave room for padding on right)
+    const maxLeft = input.offsetWidth - 20;
     left = Math.min(left, maxLeft);
-    left = Math.max(left, parseInt(inputStyle.paddingLeft));
+    left = Math.max(left, paddingLeft);
 
     caret.style.left = left + "px";
-    caret.style.top = parseInt(inputStyle.paddingTop) + "px";
-    caret.style.height = parseInt(inputStyle.lineHeight) || 20 + "px";
   }
 
   // Toggle sidebar

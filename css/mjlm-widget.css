@@ -439,7 +439,7 @@
 .mjlm-input-wrapper {
   display: flex;
   gap: 8px;
-  align-items: flex-end;
+  align-items: center;
   position: relative;
 }
 
@@ -481,14 +481,15 @@
 .mjlm-caret {
   position: absolute;
   width: 2px;
-  height: 18px;
+  height: 16px;
   background: var(--mjlm-accent);
   border-radius: 1px;
   pointer-events: none;
   opacity: 0;
-  transition: left 0.08s cubic-bezier(0.4, 0, 0.2, 1),
-              opacity 0.15s ease;
-  z-index: 10;
+  transition: left 0.06s ease-out, opacity 0.15s ease;
+  z-index: 5;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .mjlm-caret.visible {
@@ -499,57 +500,31 @@
 .mjlm-caret-glow {
   position: absolute;
   top: -2px;
-  left: -4px;
-  right: -4px;
+  left: -3px;
+  right: -3px;
   bottom: -2px;
   background: var(--mjlm-accent);
   border-radius: 4px;
-  filter: blur(6px);
-  opacity: 0.5;
-  animation: mjlm-caret-glow-pulse 1.5s ease-in-out infinite;
-}
-
-/* Comet tail effect - trails behind on fast movement */
-.mjlm-caret::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -8px;
-  width: 10px;
-  height: 100%;
-  background: linear-gradient(to right, transparent, var(--mjlm-accent));
-  opacity: 0;
-  transition: opacity 0.1s ease;
-  border-radius: 1px;
-}
-
-.mjlm-caret.visible::before {
-  opacity: 0.3;
+  filter: blur(4px);
+  opacity: 0.4;
 }
 
 @keyframes mjlm-caret-blink {
   0%, 100% { opacity: 1; }
-  50% { opacity: 0.4; }
+  50% { opacity: 0.3; }
 }
 
-@keyframes mjlm-caret-glow-pulse {
-  0%, 100% {
-    opacity: 0.4;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.7;
-    transform: scale(1.2);
-  }
-}
-
-/* Mirror element for text measurement */
+/* Mirror element for text measurement - must be invisible */
 .mjlm-input-mirror {
   position: absolute;
+  top: 0;
+  left: 0;
   visibility: hidden;
   white-space: pre;
   font-size: 14px;
   pointer-events: none;
+  height: 0;
+  overflow: hidden;
 }
 
 /* ============================================
