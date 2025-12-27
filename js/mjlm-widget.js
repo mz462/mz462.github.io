@@ -148,7 +148,9 @@
     // Render conversation
     let html = "";
     for (const msg of history) {
-      html += `<div class="mjlm-message ${msg.role}">${escapeHtml(msg.content)}</div>`;
+      // Use markdown parsing for assistant messages, plain escape for user messages
+      const content = msg.role === "assistant" ? parseMarkdown(msg.content) : escapeHtml(msg.content);
+      html += `<div class="mjlm-message ${msg.role}">${content}</div>`;
 
       // Show sources after assistant messages
       if (msg.role === "assistant" && msg.sources && msg.sources.length > 0) {
@@ -278,6 +280,46 @@
     const div = document.createElement("div");
     div.textContent = text;
     return div.innerHTML;
+  }
+
+  // Helper: parse basic markdown to HTML
+  function parseMarkdown(text) {
+    // First escape HTML to prevent XSS
+    let html = escapeHtml(text);
+
+    // Convert **bold** to <strong>
+    html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+
+    // Convert *italic* to <em>
+    html = html.replace(/\*(.+?)\*/g, '<em>$1</em>');
+
+    // Convert `code` to <code>
+    html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
+
+    // Convert unordered lists (lines starting with - or *)
+    html = html.replace(/^[\-\*]\s+(.+)$/gm, '<li>$1</li>');
+    html = html.replace(/(<li>.*<\/li>\n?)+/g, '<ul>$&</ul>');
+
+    // Convert numbered lists
+    html = html.replace(/^\d+\.\s+(.+)$/gm, '<li>$1</li>');
+
+    // Convert paragraphs (double newlines)
+    html = html.replace(/\n\n+/g, '</p><p>');
+
+    // Convert single newlines to <br> (but not inside lists)
+    html = html.replace(/(?<!<\/li>)\n(?!<)/g, '<br>');
+
+    // Wrap in paragraph if not already wrapped
+    if (!html.startsWith('<')) {
+      html = '<p>' + html + '</p>';
+    }
+
+    // Clean up empty paragraphs
+    html = html.replace(/<p>\s*<\/p>/g, '');
+    html = html.replace(/<p><ul>/g, '<ul>');
+    html = html.replace(/<\/ul><\/p>/g, '</ul>');
+
+    return html;
   }
 
   // Global function for suggestion clicks

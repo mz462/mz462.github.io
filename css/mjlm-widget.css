@@ -1,44 +1,65 @@
 /* MJLM Chat Widget - Slide-in Sidebar */
 
+/* Theme-aware variables using PaperMod CSS vars */
 :root {
-  --mjlm-bg: #1a1a1a;
-  --mjlm-bg-secondary: #252525;
-  --mjlm-text: #e8e6e3;
-  --mjlm-text-muted: #888;
   --mjlm-accent: #f97316;
-  --mjlm-border: #333;
-  --mjlm-user-bg: #2d2d2d;
-  --mjlm-assistant-bg: #1f1f1f;
+  --mjlm-accent-hover: #ea580c;
 }
 
-/* Toggle Button */
+/* Light mode (default) */
+.mjlm-sidebar,
+.mjlm-toggle {
+  --mjlm-bg: #fafafa;
+  --mjlm-bg-secondary: #f0f0f0;
+  --mjlm-text: #1e1e1e;
+  --mjlm-text-muted: #6c6c6c;
+  --mjlm-border: #e0e0e0;
+  --mjlm-user-bg: #e8e8e8;
+  --mjlm-assistant-bg: #ffffff;
+}
+
+/* Dark mode */
+.dark .mjlm-sidebar,
+.dark .mjlm-toggle {
+  --mjlm-bg: rgb(29, 30, 32);
+  --mjlm-bg-secondary: rgb(46, 46, 51);
+  --mjlm-text: rgb(218, 218, 219);
+  --mjlm-text-muted: rgb(155, 156, 157);
+  --mjlm-border: rgb(51, 51, 51);
+  --mjlm-user-bg: rgb(55, 56, 62);
+  --mjlm-assistant-bg: rgb(38, 39, 42);
+}
+
+/* Toggle Button - positioned below header */
 .mjlm-toggle {
   position: fixed;
-  top: 16px;
-  right: 16px;
-  z-index: 9998;
+  top: 70px;
+  right: 20px;
+  z-index: 100;
   display: flex;
   align-items: center;
   gap: 6px;
   padding: 8px 14px;
-  background: var(--mjlm-bg-secondary);
+  background: var(--mjlm-bg);
   border: 1px solid var(--mjlm-border);
   border-radius: 20px;
   color: var(--mjlm-text);
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.2s ease;
   font-family: inherit;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .mjlm-toggle:hover {
-  background: var(--mjlm-bg);
   border-color: var(--mjlm-accent);
+  box-shadow: 0 2px 12px rgba(249, 115, 22, 0.15);
 }
 
 .mjlm-toggle-icon {
-  font-size: 16px;
+  color: var(--mjlm-accent);
+  font-size: 14px;
 }
 
 /* Sidebar Panel */
@@ -51,11 +72,12 @@
   height: 100vh;
   background: var(--mjlm-bg);
   border-left: 1px solid var(--mjlm-border);
-  z-index: 9999;
+  z-index: 1000;
   display: flex;
   flex-direction: column;
-  transition: right 0.3s ease;
+  transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
 }
 
 .mjlm-sidebar.open {
@@ -69,20 +91,25 @@
   align-items: center;
   padding: 16px 20px;
   border-bottom: 1px solid var(--mjlm-border);
+  background: var(--mjlm-bg);
 }
 
 .mjlm-title {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 600;
   color: var(--mjlm-text);
 }
 
+.mjlm-title span {
+  color: var(--mjlm-accent);
+}
+
 .mjlm-header-actions {
   display: flex;
-  gap: 8px;
+  gap: 4px;
 }
 
 .mjlm-header-btn {
@@ -90,13 +117,15 @@
   border: none;
   color: var(--mjlm-text-muted);
   cursor: pointer;
-  padding: 4px;
+  padding: 6px;
   font-size: 18px;
   transition: color 0.2s;
+  border-radius: 4px;
 }
 
 .mjlm-header-btn:hover {
   color: var(--mjlm-text);
+  background: var(--mjlm-bg-secondary);
 }
 
 /* Messages Container */
@@ -111,7 +140,7 @@
 
 /* Welcome State */
 .mjlm-welcome {
-  padding: 20px;
+  padding: 20px 0;
 }
 
 .mjlm-welcome h3 {
@@ -121,7 +150,7 @@
   margin: 0 0 16px 0;
 }
 
-/* Suggested Questions */
+/* Suggested Questions - Initial state */
 .mjlm-suggestions {
   display: flex;
   flex-direction: column;
@@ -132,10 +161,10 @@
   display: flex;
   align-items: flex-start;
   gap: 8px;
-  padding: 12px;
+  padding: 12px 14px;
   background: var(--mjlm-bg-secondary);
   border: 1px solid var(--mjlm-border);
-  border-radius: 8px;
+  border-radius: 10px;
   color: var(--mjlm-text);
   font-size: 14px;
   text-align: left;
@@ -151,21 +180,24 @@
 .mjlm-suggestion-icon {
   color: var(--mjlm-accent);
   flex-shrink: 0;
+  font-size: 12px;
+  margin-top: 2px;
 }
 
 /* Message Bubbles */
 .mjlm-message {
   max-width: 90%;
   padding: 12px 16px;
-  border-radius: 12px;
+  border-radius: 14px;
   font-size: 14px;
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
 .mjlm-message.user {
   align-self: flex-end;
   background: var(--mjlm-user-bg);
   color: var(--mjlm-text);
+  border-radius: 14px 14px 4px 14px;
 }
 
 .mjlm-message.assistant {
@@ -173,32 +205,60 @@
   background: var(--mjlm-assistant-bg);
   color: var(--mjlm-text);
   border: 1px solid var(--mjlm-border);
+  border-radius: 14px 14px 14px 4px;
 }
 
+/* Markdown formatting in assistant messages */
 .mjlm-message.assistant p {
-  margin: 0 0 8px 0;
+  margin: 0 0 10px 0;
 }
 
 .mjlm-message.assistant p:last-child {
   margin-bottom: 0;
 }
 
+.mjlm-message.assistant strong {
+  font-weight: 600;
+}
+
+.mjlm-message.assistant em {
+  font-style: italic;
+}
+
+.mjlm-message.assistant ul,
+.mjlm-message.assistant ol {
+  margin: 8px 0;
+  padding-left: 20px;
+}
+
+.mjlm-message.assistant li {
+  margin: 4px 0;
+}
+
+.mjlm-message.assistant code {
+  background: var(--mjlm-bg-secondary);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: 'SF Mono', Monaco, monospace;
+}
+
 /* Sources */
 .mjlm-sources {
-  margin-top: 12px;
-  padding-top: 12px;
-  border-top: 1px solid var(--mjlm-border);
+  padding: 12px 16px;
   font-size: 12px;
 }
 
 .mjlm-sources-title {
   color: var(--mjlm-text-muted);
-  margin-bottom: 4px;
+  margin-bottom: 6px;
+  font-weight: 500;
 }
 
 .mjlm-source-link {
   color: var(--mjlm-accent);
   text-decoration: none;
+  font-size: 13px;
 }
 
 .mjlm-source-link:hover {
@@ -210,6 +270,7 @@
   display: flex;
   gap: 4px;
   padding: 12px 16px;
+  align-self: flex-start;
 }
 
 .mjlm-loading-dot {
@@ -230,8 +291,9 @@
 
 /* Input Area */
 .mjlm-input-area {
-  padding: 16px;
+  padding: 12px 16px 16px;
   border-top: 1px solid var(--mjlm-border);
+  background: var(--mjlm-bg);
 }
 
 .mjlm-input-wrapper {
@@ -242,10 +304,10 @@
 
 .mjlm-input {
   flex: 1;
-  padding: 12px 16px;
+  padding: 10px 14px;
   background: var(--mjlm-bg-secondary);
   border: 1px solid var(--mjlm-border);
-  border-radius: 20px;
+  border-radius: 18px;
   color: var(--mjlm-text);
   font-size: 14px;
   resize: none;
@@ -263,8 +325,8 @@
 }
 
 .mjlm-send {
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   background: var(--mjlm-accent);
   border: none;
   border-radius: 50%;
@@ -273,8 +335,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: opacity 0.2s;
+  transition: all 0.2s;
   flex-shrink: 0;
+  font-size: 16px;
 }
 
 .mjlm-send:disabled {
@@ -283,32 +346,45 @@
 }
 
 .mjlm-send:hover:not(:disabled) {
-  opacity: 0.9;
+  background: var(--mjlm-accent-hover);
+  transform: scale(1.05);
 }
 
-/* Dynamic Follow-up Questions */
+/* Follow-up Questions - Subtle text links like Rachel's */
 .mjlm-followups {
-  margin-top: 12px;
+  margin-top: 8px;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 4px;
+  padding-left: 4px;
 }
 
 .mjlm-followup {
-  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 0;
   background: transparent;
-  border: 1px solid var(--mjlm-border);
-  border-radius: 16px;
-  color: var(--mjlm-accent);
+  border: none;
+  color: var(--mjlm-text-muted);
   font-size: 13px;
   text-align: left;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: color 0.2s;
 }
 
 .mjlm-followup:hover {
-  background: var(--mjlm-bg-secondary);
-  border-color: var(--mjlm-accent);
+  color: var(--mjlm-accent);
+}
+
+.mjlm-followup::before {
+  content: '↳';
+  color: var(--mjlm-text-muted);
+  font-size: 12px;
+}
+
+.mjlm-followup:hover::before {
+  color: var(--mjlm-accent);
 }
 
 /* Mobile Responsive */
@@ -319,7 +395,27 @@
   }
 
   .mjlm-toggle {
-    padding: 6px 12px;
-    font-size: 13px;
+    top: auto;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 16px;
   }
+}
+
+/* Scrollbar styling */
+.mjlm-messages::-webkit-scrollbar {
+  width: 6px;
+}
+
+.mjlm-messages::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.mjlm-messages::-webkit-scrollbar-thumb {
+  background: var(--mjlm-border);
+  border-radius: 3px;
+}
+
+.mjlm-messages::-webkit-scrollbar-thumb:hover {
+  background: var(--mjlm-text-muted);
 }
