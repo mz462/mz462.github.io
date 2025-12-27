@@ -627,6 +627,11 @@
    PUSH CONTENT WHEN SIDEBAR OPEN
    ============================================ */
 
+/* Prevent horizontal scroll when sidebar open */
+body.mjlm-open {
+  overflow-x: hidden;
+}
+
 /* Target main content areas - PaperMod specific */
 body.mjlm-open .main,
 body.mjlm-open .header,
