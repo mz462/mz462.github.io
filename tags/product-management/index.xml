@@ -85,5 +85,12 @@
       <guid>https://mz462.github.io/posts/three-months-later/</guid>
       <description>A three-month reflection on AI developments, the shift from prompt to context engineering, and how Product Management taught me to debug human communication.</description>
     </item>
+    <item>
+      <title>I&#39;m Quitting Claude (But Not What You Think)</title>
+      <link>https://mz462.github.io/posts/quitting-claude/</link>
+      <pubDate>Fri, 10 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>https://mz462.github.io/posts/quitting-claude/</guid>
+      <description>After losing six months of Claude context to an account reset, I rebuilt my AI workflow on local files. Here&amp;#39;s why context ownership matters more than convenience.</description>
+    </item>
   </channel>
 </rss>
