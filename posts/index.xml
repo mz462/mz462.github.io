@@ -6,8 +6,15 @@
     <description>Recent content in Posts on MJ&#39;s Blog</description>
     <generator>Hugo -- 0.151.2</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 27 Dec 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 10 Jan 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://mz462.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>I&#39;m Quitting Claude (But Not What You Think)</title>
+      <link>https://mz462.github.io/posts/quitting-claude/</link>
+      <pubDate>Sat, 10 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://mz462.github.io/posts/quitting-claude/</guid>
+      <description>After losing six months of Claude context to an account reset, I rebuilt my AI workflow on local files. Here&amp;#39;s why context ownership matters more than convenience.</description>
+    </item>
     <item>
       <title>Why I Had to Rewrite My MCP Server from Python to TypeScript</title>
       <link>https://mz462.github.io/posts/mcp-python-to-typescript/</link>
@@ -147,13 +154,6 @@
       <pubDate>Sat, 05 Apr 2025 00:00:00 +0000</pubDate>
       <guid>https://mz462.github.io/posts/my-first-post/</guid>
       <description>My reasons for starting a blog: navigating the age of AI, fostering independent thought, improving communication, and documenting my learning journey.</description>
-    </item>
-    <item>
-      <title>I&#39;m Quitting Claude (But Not What You Think)</title>
-      <link>https://mz462.github.io/posts/quitting-claude/</link>
-      <pubDate>Fri, 10 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>https://mz462.github.io/posts/quitting-claude/</guid>
-      <description>After losing six months of Claude context to an account reset, I rebuilt my AI workflow on local files. Here&amp;#39;s why context ownership matters more than convenience.</description>
     </item>
     <item>
       <title>About MJ</title>
