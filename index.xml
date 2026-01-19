@@ -6,8 +6,15 @@
     <description>Recent content on MJ&#39;s Blog</description>
     <generator>Hugo -- 0.151.2</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 10 Jan 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 19 Jan 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://mz462.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Anthropic Just Ate My Startup</title>
+      <link>https://mz462.github.io/posts/anthropic-ate-my-startup/</link>
+      <pubDate>Mon, 19 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://mz462.github.io/posts/anthropic-ate-my-startup/</guid>
+      <description>I built an iOS app to bridge Apple Health data to AI. Two weeks later, Anthropic shipped the same feature natively. Here&amp;#39;s what I learned about building in the AI era.</description>
+    </item>
     <item>
       <title>I&#39;m Quitting Claude (But Not What You Think)</title>
       <link>https://mz462.github.io/posts/quitting-claude/</link>

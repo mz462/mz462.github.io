@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Anthropic Just Ate My Startup | MJ&#39;s Blog</title>
+<meta name="keywords" content="AI, startups, context engineering, product management, Claude">
+<meta name="description" content="I built an iOS app to bridge Apple Health data to AI. Two weeks later, Anthropic shipped the same feature natively. Here&#39;s what I learned about building in the AI era.">
+<meta name="author" content="">
+<link rel="canonical" href="https://mz462.github.io/posts/anthropic-ate-my-startup/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.ec355d25f1a23fe8840e141d5d41cf48cee7e99c0b88570ffe30ec035fdb5633.css" integrity="sha256-7DVdJfGiP&#43;iEDhQdXUHPSM7n6ZwLiFcP/jDsA1/bVjM=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://mz462.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://mz462.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://mz462.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://mz462.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://mz462.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://mz462.github.io/posts/anthropic-ate-my-startup/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=JetBrains+Mono:wght@400;500&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&display=swap"><meta name="theme-color" content="#0f0f11" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#faf9f7" media="(prefers-color-scheme: light)"><style>
+    html {
+        scroll-behavior: smooth;
+    }
+</style>
+<meta property="og:url" content="https://mz462.github.io/posts/anthropic-ate-my-startup/">
+  <meta property="og:site_name" content="MJ&#39;s Blog">
+  <meta property="og:title" content="Anthropic Just Ate My Startup">
+  <meta property="og:description" content="I built an iOS app to bridge Apple Health data to AI. Two weeks later, Anthropic shipped the same feature natively. Here&#39;s what I learned about building in the AI era.">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-01-19T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-01-19T00:00:00+00:00">
+    <meta property="article:tag" content="AI">
+    <meta property="article:tag" content="Startups">
+    <meta property="article:tag" content="Context Engineering">
+    <meta property="article:tag" content="Product Management">
+    <meta property="article:tag" content="Claude">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Anthropic Just Ate My Startup">
+<meta name="twitter:description" content="I built an iOS app to bridge Apple Health data to AI. Two weeks later, Anthropic shipped the same feature natively. Here&#39;s what I learned about building in the AI era.">
+      <meta name="twitter:site" content="@emjayzo">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://mz462.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Anthropic Just Ate My Startup",
+      "item": "https://mz462.github.io/posts/anthropic-ate-my-startup/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Anthropic Just Ate My Startup",
+  "name": "Anthropic Just Ate My Startup",
+  "description": "I built an iOS app to bridge Apple Health data to AI. Two weeks later, Anthropic shipped the same feature natively. Here's what I learned about building in the AI era.",
+  "keywords": [
+    "AI", "startups", "context engineering", "product management", "Claude"
+  ],
+  "articleBody": "Last week, I felt validated and threatened in the same moment.\nI’d spent December and January writing about context engineering. How to unlock data for AI. How to own your context locally. Why the intelligence layer matters less than the context layer. I built an iOS app. I migrated my entire workflow. I wrote about both.\nThen Anthropic shipped everything I’d been building. In the same week.\nThis isn’t a complaint. It’s a reckoning. Being right about the future doesn’t protect you from it.\nWhat I Built In December, I shipped Run Card Generator, a free iOS app that exports your workouts from Apple Health as .fit files for AI analysis. Apple Health data is locked on your phone. You can’t connect Claude or ChatGPT to it directly. So I built a bridge. The app unlocks your health data and packages it for AI consumption. No AI inside. Just context liberation.\nThe thesis: don’t wrap AI, export context. The intelligence layer is commoditized. The context layer is the moat.\nIn January, I lost six months of Claude context to an account reset. Project memories, custom Skills, accumulated preferences. All gone. I rebuilt my workflow on Claude Code, where context lives locally in CLAUDE.md files I own and version control.\nSame thesis, different angle: context is the asset. The interface is just the delivery mechanism.\nI believed this deeply.\nThen Anthropic shipped it.\nWhat Anthropic Shipped On January 12th, two days after my Claude Code post, Anthropic announced two products:\nClaude HealthKit Integration Native integration with Apple Health and Android Health Connect, rolling out in beta to Pro and Max subscribers. Claude can now summarize your medical history, explain test results, and detect fitness patterns.\nMy context bridge app extracted health data for AI analysis. Anthropic just built that bridge into the platform.\nClaude Cowork A new desktop tool described as “Claude Code for the rest of your work.” Non-technical users can now designate a folder and let Claude read, modify, and create files through a simple chat interface. No command line. No technical expertise.\nMy argument for Claude Code was about context ownership. Local files, version control, transparent memory. Anthropic just democratized that to everyone.\nThe timeline:\nDecember 14: I publish “context bridges are the future” January 10: I publish “own your context locally” January 12: Anthropic ships both concepts natively The Fortune headline didn’t mince words: “Anthropic launches Cowork, a file-managing AI agent that could threaten dozens of startups.”\nI wasn’t just validated. I was one of those startups.\nThe Speed Asymmetry Here’s what shook me most: Cowork was built in a week and a half.\nNot months. Not a quarter. Ten days.\nAccording to Boris Cherny, who leads Claude Code at Anthropic, Cowork was largely built using Claude Code itself. The same agentic coding tool that I use for my own projects. They used it to ship a competitor to my workflow in under two weeks.\nThis is the new math:\nTraditional software cycle: months to years Startup speed: weeks to months Platform with AI tooling: days to weeks The gap-to-absorption timeline has collapsed. When platforms can vibe-code features as fast as you can, what’s left?\nWhat’s NOT Defensible Anymore I used to think certain things were hard to replicate.\nFeatures. Absorbed. Anything you build as a standalone feature can be integrated natively.\nNative integrations. Absorbed. I thought Apple Health access required an iOS app. It does, but Anthropic has an iOS app too.\n“Context bridges.” Absorbed. The very concept I championed is now a platform capability.\nWorkflow improvements. Absorbed. Cowork is literally “Claude Code for everyone.”\nThe moat I thought I was building wasn’t a moat. It was a product roadmap suggestion.\nWhat Might Still Be Defensible I don’t want to be nihilistic about this. Some things might still matter.\nClaude’s HealthKit integration is general-purpose. A specialized running coach with periodization knowledge, injury prevention protocols, and training plan adaptation might still add value. Cowork is a horizontal tool—vertical workflows with opinionated design might maintain an edge. But I’m watching that bar rise too, and I genuinely don’t know how long those edges last.\nMaybe the real shift is this: if you know your competitive advantage has a half-life measured in weeks, you optimize differently. You build to learn, not to last. You extract value through speed, not through moat-building.\nAnd maybe—just maybe—the actual moat is knowing which problem to solve next. Platforms absorb features, but they can’t absorb your ability to identify the next gap before they do. The question is whether you can stay one step ahead indefinitely.\nCompeting with the Context Provider Here’s what keeps me up at night.\nMy thesis still holds: “context is the asset.” The value isn’t in the AI model. It’s in the accumulated context that makes AI useful for your specific situation.\nBut I’m now competing with whoever controls the context sources.\nApple Health data? Anthropic has direct access now. Local file system? Anthropic gives everyone access now. Medical records? Those are next.\nWhat I thought startups could own, Anthropic is integrating directly. They’re not just providing the AI. They’re connecting to the data sources themselves.\nSimon Willison’s take captures this well: Cowork is “a general agent that looks well positioned to bring the wildly powerful capabilities of Claude Code to a wider audience.” He predicts Gemini and OpenAI will follow suit.\nThis isn’t one platform absorbing features. It’s all major platforms converging on the same playbook.\nWhat I’d Tell a PM Building in AI Today If you’re a product manager navigating this landscape, here’s what I’ve learned.\nBuild for speed-to-value, not moat-building. Assume anything you build can be absorbed in weeks. The question isn’t “will they copy this?” It’s “will I have extracted enough value before it happens?”\nTreat features as experiments, not assets. My iOS app taught me more about context bridges and vibe-coding limits than six months of theorizing. The learning compounds even if the product doesn’t last.\nWatch what you’re actually building. Are you scouting the platform’s roadmap, or building your own? Sometimes the honest answer is the former. That’s not necessarily bad. Just know it.\nOwn what you can. This is still worth doing. My CLAUDE.md files, my local Skills, my version-controlled workflows. Anthropic can’t absorb those. The ownership principle survives even when the product doesn’t.\nWould I Still Build It? Yes.\nThe iOS app took two Saturdays. I learned SwiftUI, HealthKit integration, App Store submission, and the limits of vibe-coding. I wrote about it, shared it, and got feedback. The value I extracted exceeded the investment, even knowing Anthropic would ship something similar.\nWould I still write those posts? Also yes.\nBeing right and being first aren’t the same thing. And being absorbed isn’t the same as being wrong.\nThe ideas still matter. Context bridges, context ownership, the asset layer underneath the intelligence layer. They just matter at the platform level now, not the startup level.\nSometimes you build to learn. Sometimes you write to think. And sometimes, two weeks later, you discover you were building a product roadmap for someone else.\nI’m still glad I built it. I’m just more clear-eyed about what “building in AI” actually means now. The validation stings less than you’d think. The threat feels more manageable than it did last week.\nTurns out, being absorbed is just another kind of feedback.\nThe products I built: Run Card Generator (iOS app) and run-skill (Claude Skill). Still free, still useful. Even if Anthropic ate my lunch.\n",
+  "wordCount" : "1246",
+  "inLanguage": "en",
+  "datePublished": "2026-01-19T00:00:00Z",
+  "dateModified": "2026-01-19T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://mz462.github.io/posts/anthropic-ate-my-startup/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "MJ's Blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://mz462.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class=" dark" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://mz462.github.io/" accesskey="h" title="MJ&#39;s Blog (Alt + H)">MJ&#39;s Blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://mz462.github.io/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://mz462.github.io/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://trade.mjzou.com/" title="Portfolio">
+                    <span>Portfolio</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+            <li>
+                <a href="https://run.mjzou.com/" title="Running">
+                    <span>Running</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://mz462.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://mz462.github.io/posts/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Anthropic Just Ate My Startup
+    </h1>
+    <div class="post-description">
+      I built an iOS app to bridge Apple Health data to AI. Two weeks later, Anthropic shipped the same feature natively. Here&#39;s what I learned about building in the AI era.
+    </div>
+    <div class="post-meta"><span title='2026-01-19 00:00:00 +0000 UTC'>January 19, 2026</span>&nbsp;·&nbsp;6 min&nbsp;·&nbsp;1246 words
+
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#what-i-built" aria-label="What I Built">What I Built</a></li>
+                <li>
+                    <a href="#what-anthropic-shipped" aria-label="What Anthropic Shipped">What Anthropic Shipped</a><ul>
+                        
+                <li>
+                    <a href="#claude-healthkit-integration" aria-label="Claude HealthKit Integration">Claude HealthKit Integration</a></li>
+                <li>
+                    <a href="#claude-cowork" aria-label="Claude Cowork">Claude Cowork</a></li></ul>
+                </li>
+                <li>
+                    <a href="#the-speed-asymmetry" aria-label="The Speed Asymmetry">The Speed Asymmetry</a></li>
+                <li>
+                    <a href="#whats-not-defensible-anymore" aria-label="What&rsquo;s NOT Defensible Anymore">What&rsquo;s NOT Defensible Anymore</a></li>
+                <li>
+                    <a href="#what-might-still-be-defensible" aria-label="What Might Still Be Defensible">What Might Still Be Defensible</a></li>
+                <li>
+                    <a href="#competing-with-the-context-provider" aria-label="Competing with the Context Provider">Competing with the Context Provider</a></li>
+                <li>
+                    <a href="#what-id-tell-a-pm-building-in-ai-today" aria-label="What I&rsquo;d Tell a PM Building in AI Today">What I&rsquo;d Tell a PM Building in AI Today</a></li>
+                <li>
+                    <a href="#would-i-still-build-it" aria-label="Would I Still Build It?">Would I Still Build It?</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><p>Last week, I felt validated and threatened in the same moment.</p>
+<p>I&rsquo;d spent December and January writing about context engineering. How to unlock data for AI. How to own your context locally. Why the intelligence layer matters less than the context layer. I built an iOS app. I migrated my entire workflow. I wrote about both.</p>
+<p>Then Anthropic shipped everything I&rsquo;d been building. In the same week.</p>
+<p>This isn&rsquo;t a complaint. It&rsquo;s a reckoning. Being right about the future doesn&rsquo;t protect you from it.</p>
+<p><img alt="Validation vs threat" loading="lazy" src="/posts/anthropic-ate-my-startup/images/illustration-validation-threat.png"></p>
+<hr>
+<h2 id="what-i-built">What I Built<a hidden class="anchor" aria-hidden="true" href="#what-i-built">#</a></h2>
+<p>In December, I shipped <a href="/posts/vibe-coding-ios-app/">Run Card Generator</a>, a free iOS app that exports your workouts from Apple Health as <code>.fit</code> files for AI analysis. Apple Health data is locked on your phone. You can&rsquo;t connect Claude or ChatGPT to it directly. So I built a bridge. The app unlocks your health data and packages it for AI consumption. No AI inside. Just context liberation.</p>
+<p><img alt="Context bridge" loading="lazy" src="/posts/anthropic-ate-my-startup/images/illustration-context-bridge.png"></p>
+<p>The thesis: <strong>don&rsquo;t wrap AI, export context. The intelligence layer is commoditized. The context layer is the moat.</strong></p>
+<p>In January, <a href="/posts/quitting-claude/">I lost six months of Claude context</a> to an account reset. Project memories, custom Skills, accumulated preferences. All gone. I rebuilt my workflow on Claude Code, where context lives locally in <code>CLAUDE.md</code> files I own and version control.</p>
+<p>Same thesis, different angle: <strong>context is the asset. The interface is just the delivery mechanism.</strong></p>
+<p>I believed this deeply.</p>
+<p>Then Anthropic shipped it.</p>
+<hr>
+<h2 id="what-anthropic-shipped">What Anthropic Shipped<a hidden class="anchor" aria-hidden="true" href="#what-anthropic-shipped">#</a></h2>
+<p>On January 12th, two days after my Claude Code post, Anthropic announced two products:</p>
+<h3 id="claude-healthkit-integration">Claude HealthKit Integration<a hidden class="anchor" aria-hidden="true" href="#claude-healthkit-integration">#</a></h3>
+<p><a href="https://www.anthropic.com/news/healthcare-life-sciences">Native integration</a> with Apple Health and Android Health Connect, rolling out in beta to Pro and Max subscribers. Claude can now summarize your medical history, explain test results, and detect fitness patterns.</p>
+<p>My context bridge app extracted health data for AI analysis. Anthropic just built that bridge into the platform.</p>
+<h3 id="claude-cowork">Claude Cowork<a hidden class="anchor" aria-hidden="true" href="#claude-cowork">#</a></h3>
+<p><a href="https://www.anthropic.com/news/introducing-anthropic-labs">A new desktop tool</a> described as &ldquo;Claude Code for the rest of your work.&rdquo; Non-technical users can now designate a folder and let Claude read, modify, and create files through a simple chat interface. No command line. No technical expertise.</p>
+<p>My argument for Claude Code was about context ownership. Local files, version control, transparent memory. Anthropic just democratized that to everyone.</p>
+<p><img alt="Platform absorption" loading="lazy" src="/posts/anthropic-ate-my-startup/images/illustration-platform-absorption.png"></p>
+<p><strong>The timeline:</strong></p>
+<ul>
+<li>December 14: I publish &ldquo;context bridges are the future&rdquo;</li>
+<li>January 10: I publish &ldquo;own your context locally&rdquo;</li>
+<li>January 12: Anthropic ships both concepts natively</li>
+</ul>
+<p>The <a href="https://fortune.com/2026/01/13/anthropic-claude-cowork-ai-agent-file-managing-threaten-startups/">Fortune headline</a> didn&rsquo;t mince words: &ldquo;Anthropic launches Cowork, a file-managing AI agent that could threaten dozens of startups.&rdquo;</p>
+<p>I wasn&rsquo;t just validated. I was one of those startups.</p>
+<hr>
+<h2 id="the-speed-asymmetry">The Speed Asymmetry<a hidden class="anchor" aria-hidden="true" href="#the-speed-asymmetry">#</a></h2>
+<p>Here&rsquo;s what shook me most: Cowork was built in a week and a half.</p>
+<p>Not months. Not a quarter. Ten days.</p>
+<p>According to Boris Cherny, who leads Claude Code at Anthropic, <a href="https://www.axios.com/2026/01/13/anthropic-claude-code-cowork-vibe-coding">Cowork was largely built using Claude Code itself</a>. The same agentic coding tool that I use for my own projects. They used it to ship a competitor to my workflow in under two weeks.</p>
+<p>This is the new math:</p>
+<ul>
+<li><strong>Traditional software cycle</strong>: months to years</li>
+<li><strong>Startup speed</strong>: weeks to months</li>
+<li><strong>Platform with AI tooling</strong>: days to weeks</li>
+</ul>
+<p><img alt="Speed asymmetry" loading="lazy" src="/posts/anthropic-ate-my-startup/images/illustration-speed-asymmetry.png"></p>
+<p>The gap-to-absorption timeline has collapsed. When platforms can vibe-code features as fast as you can, what&rsquo;s left?</p>
+<hr>
+<h2 id="whats-not-defensible-anymore">What&rsquo;s NOT Defensible Anymore<a hidden class="anchor" aria-hidden="true" href="#whats-not-defensible-anymore">#</a></h2>
+<p>I used to think certain things were hard to replicate.</p>
+<p><strong>Features.</strong> Absorbed. Anything you build as a standalone feature can be integrated natively.</p>
+<p><strong>Native integrations.</strong> Absorbed. I thought Apple Health access required an iOS app. It does, but Anthropic has an iOS app too.</p>
+<p><strong>&ldquo;Context bridges.&rdquo;</strong> Absorbed. The very concept I championed is now a platform capability.</p>
+<p><strong>Workflow improvements.</strong> Absorbed. Cowork is literally &ldquo;Claude Code for everyone.&rdquo;</p>
+<p><img alt="Moat collapsing" loading="lazy" src="/posts/anthropic-ate-my-startup/images/illustration-moat-collapsing.png"></p>
+<p>The moat I thought I was building wasn&rsquo;t a moat. It was a product roadmap suggestion.</p>
+<hr>
+<h2 id="what-might-still-be-defensible">What Might Still Be Defensible<a hidden class="anchor" aria-hidden="true" href="#what-might-still-be-defensible">#</a></h2>
+<p>I don&rsquo;t want to be nihilistic about this. Some things might still matter.</p>
+<p>Claude&rsquo;s HealthKit integration is general-purpose. A specialized running coach with periodization knowledge, injury prevention protocols, and training plan adaptation might still add value. Cowork is a horizontal tool—vertical workflows with opinionated design might maintain an edge. But I&rsquo;m watching that bar rise too, and I genuinely don&rsquo;t know how long those edges last.</p>
+<p><img alt="Vertical edge" loading="lazy" src="/posts/anthropic-ate-my-startup/images/illustration-vertical-edge.png"></p>
+<p>Maybe the real shift is this: if you know your competitive advantage has a half-life measured in weeks, you optimize differently. You build to learn, not to last. You extract value through speed, not through moat-building.</p>
+<p>And maybe—just maybe—the actual moat is knowing which problem to solve next. Platforms absorb features, but they can&rsquo;t absorb your ability to identify the next gap before they do. The question is whether you can stay one step ahead indefinitely.</p>
+<hr>
+<h2 id="competing-with-the-context-provider">Competing with the Context Provider<a hidden class="anchor" aria-hidden="true" href="#competing-with-the-context-provider">#</a></h2>
+<p>Here&rsquo;s what keeps me up at night.</p>
+<p>My thesis still holds: &ldquo;context is the asset.&rdquo; The value isn&rsquo;t in the AI model. It&rsquo;s in the accumulated context that makes AI useful for <em>your</em> specific situation.</p>
+<p>But I&rsquo;m now competing with whoever controls the context sources.</p>
+<p>Apple Health data? Anthropic has direct access now. Local file system? Anthropic gives everyone access now. Medical records? <a href="https://www.anthropic.com/news/healthcare-life-sciences">Those are next</a>.</p>
+<p>What I thought startups could own, Anthropic is integrating directly. They&rsquo;re not just providing the AI. They&rsquo;re connecting to the data sources themselves.</p>
+<p><img alt="Context provider control" loading="lazy" src="/posts/anthropic-ate-my-startup/images/illustration-context-provider.png"></p>
+<p><a href="https://simonwillison.net/2026/Jan/12/claude-cowork/">Simon Willison&rsquo;s take</a> captures this well: Cowork is &ldquo;a general agent that looks well positioned to bring the wildly powerful capabilities of Claude Code to a wider audience.&rdquo; He predicts Gemini and OpenAI will follow suit.</p>
+<p>This isn&rsquo;t one platform absorbing features. It&rsquo;s all major platforms converging on the same playbook.</p>
+<hr>
+<h2 id="what-id-tell-a-pm-building-in-ai-today">What I&rsquo;d Tell a PM Building in AI Today<a hidden class="anchor" aria-hidden="true" href="#what-id-tell-a-pm-building-in-ai-today">#</a></h2>
+<p>If you&rsquo;re a product manager navigating this landscape, here&rsquo;s what I&rsquo;ve learned.</p>
+<p><strong>Build for speed-to-value, not moat-building.</strong> Assume anything you build can be absorbed in weeks. The question isn&rsquo;t &ldquo;will they copy this?&rdquo; It&rsquo;s &ldquo;will I have extracted enough value before it happens?&rdquo;</p>
+<p><strong>Treat features as experiments, not assets.</strong> My iOS app taught me more about context bridges and vibe-coding limits than six months of theorizing. The learning compounds even if the product doesn&rsquo;t last.</p>
+<p><strong>Watch what you&rsquo;re actually building.</strong> Are you scouting the platform&rsquo;s roadmap, or building your own? Sometimes the honest answer is the former. That&rsquo;s not necessarily bad. Just know it.</p>
+<p><strong>Own what you can.</strong> This is still worth doing. My <code>CLAUDE.md</code> files, my local Skills, my version-controlled workflows. Anthropic can&rsquo;t absorb those. The ownership principle survives even when the product doesn&rsquo;t.</p>
+<p><img alt="PM advice dashboard" loading="lazy" src="/posts/anthropic-ate-my-startup/images/illustration-pm-advice.png"></p>
+<hr>
+<h2 id="would-i-still-build-it">Would I Still Build It?<a hidden class="anchor" aria-hidden="true" href="#would-i-still-build-it">#</a></h2>
+<p>Yes.</p>
+<p>The iOS app took two Saturdays. I learned SwiftUI, HealthKit integration, App Store submission, and the limits of vibe-coding. I wrote about it, shared it, and got feedback. The value I extracted exceeded the investment, even knowing Anthropic would ship something similar.</p>
+<p><img alt="Build to learn" loading="lazy" src="/posts/anthropic-ate-my-startup/images/illustration-build-to-learn.png"></p>
+<p>Would I still write those posts? Also yes.</p>
+<p>Being right and being first aren&rsquo;t the same thing. And being absorbed isn&rsquo;t the same as being wrong.</p>
+<p>The ideas still matter. Context bridges, context ownership, the asset layer underneath the intelligence layer. They just matter at the platform level now, not the startup level.</p>
+<p>Sometimes you build to learn. Sometimes you write to think. And sometimes, two weeks later, you discover you were building a product roadmap for someone else.</p>
+<p>I&rsquo;m still glad I built it. I&rsquo;m just more clear-eyed about what &ldquo;building in AI&rdquo; actually means now. The validation stings less than you&rsquo;d think. The threat feels more manageable than it did last week.</p>
+<p>Turns out, being absorbed is just another kind of feedback.</p>
+<hr>
+<p><em>The products I built: <a href="https://apps.apple.com/app/run-card-generator/id6756200075">Run Card Generator</a> (iOS app) and <a href="https://github.com/mz462/run-skill">run-skill</a> (Claude Skill). Still free, still useful. Even if Anthropic ate my lunch.</em></p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://mz462.github.io/tags/ai/">AI</a></li>
+      <li><a href="https://mz462.github.io/tags/startups/">Startups</a></li>
+      <li><a href="https://mz462.github.io/tags/context-engineering/">Context Engineering</a></li>
+      <li><a href="https://mz462.github.io/tags/product-management/">Product Management</a></li>
+      <li><a href="https://mz462.github.io/tags/claude/">Claude</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="next" href="https://mz462.github.io/posts/quitting-claude/">
+    <span class="title">Next »</span>
+    <br>
+    <span>I&#39;m Quitting Claude (But Not What You Think)</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://mz462.github.io/">MJ&#39;s Blog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+
+<link rel="stylesheet" href="/css/mjlm-widget.css?v=11">
+<script src="/js/mjlm-widget.js?v=11" defer></script>
+
+<div class="reading-list">
+  <div class="reading-list-title">Reading List</div>
+  <ul class="reading-list-items">
+    <li><a href="https://karpathy.bearblog.dev/year-in-review-2025/" target="_blank">Karpathy: Year in Review 2025</a></li>
+    <li><a href="https://www.producttalk.org/claude-code-what-it-is-and-how-its-different/" target="_blank">Product Talk: Claude Code</a></li>
+    <li><a href="https://www.arxiv.org/abs/2512.07796" target="_blank">arXiv: 2512.07796</a></li>
+  </ul>
+</div>
+
+<style>
+ 
+.reading-list {
+  position: fixed;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 100;
+  background: #fff9c4;
+  border: 1px solid #f0e68c;
+  border-radius: 4px;
+  padding: 12px 14px;
+  width: 180px;
+  box-shadow: 2px 3px 8px rgba(0, 0, 0, 0.1);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.dark .reading-list {
+  background: #3d3a2e;
+  border-color: #4a4639;
+}
+
+.reading-list-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #5d4e37;
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px dashed #e0d68c;
+}
+
+.dark .reading-list-title {
+  color: #d4c9a8;
+  border-bottom-color: #5a5443;
+}
+
+.reading-list-items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 12px;
+}
+
+.reading-list-items li {
+  margin: 6px 0;
+  line-height: 1.4;
+}
+
+.reading-list-items a {
+  color: #6b5a3e;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.dark .reading-list-items a {
+  color: #c4b896;
+}
+
+.reading-list-items a:hover {
+  color: #f97316;
+  text-decoration: underline;
+}
+
+ 
+@media (max-width: 1200px) {
+  .reading-list {
+    display: none;
+  }
+}
+</style>
+</body>
+
+</html>
