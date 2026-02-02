@@ -6,8 +6,15 @@
     <description>Recent content on MJ&#39;s Blog</description>
     <generator>Hugo -- 0.151.2</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 19 Jan 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 01 Feb 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://mz462.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Last Human Complaint About Bureaucracy</title>
+      <link>https://mz462.github.io/posts/the-last-human-complaint-about-bureaucracy/</link>
+      <pubDate>Sun, 01 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>https://mz462.github.io/posts/the-last-human-complaint-about-bureaucracy/</guid>
+      <description>Bureaucracy persists because it’s organizational memory. AI will digest that memory—and mutate the iron cage into something faster and harder to appeal.</description>
+    </item>
     <item>
       <title>Anthropic Just Ate My Startup</title>
       <link>https://mz462.github.io/posts/anthropic-ate-my-startup/</link>
