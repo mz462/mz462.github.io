@@ -1,33 +1,33 @@
 /* Podcast Floating Mini-Bar Player */
 
 :root {
-  --podcast-accent: #c4841d;
-  --podcast-accent-hover: #a67018;
+  --podcast-accent: #6B6B6B;
+  --podcast-accent-hover: #4A4A4A;
   --podcast-bar-height: 60px;
   --podcast-easing: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Theme-aware colors using PaperMod vars */
+/* Theme-aware colors */
 .podcast-bar,
 .podcast-pill,
 .podcast-playlist {
-  --podcast-bg: #fafafa;
-  --podcast-bg-secondary: #f0f0f0;
-  --podcast-text: #1e1e1e;
-  --podcast-text-muted: #6c6c6c;
-  --podcast-border: #e0e0e0;
+  --podcast-bg: #FDFBF7;
+  --podcast-bg-secondary: #F0EEEB;
+  --podcast-text: #1A1A1A;
+  --podcast-text-muted: #6B6B6B;
+  --podcast-border: #E0DCD6;
 }
 
 .dark .podcast-bar,
 .dark .podcast-pill,
 .dark .podcast-playlist {
-  --podcast-accent: #e5a83b;
-  --podcast-accent-hover: #c28e32;
-  --podcast-bg: rgb(29, 30, 32);
-  --podcast-bg-secondary: rgb(46, 46, 51);
-  --podcast-text: rgb(218, 218, 219);
-  --podcast-text-muted: rgb(155, 156, 157);
-  --podcast-border: rgb(51, 51, 51);
+  --podcast-accent: #8A8A8A;
+  --podcast-accent-hover: #A0A0A0;
+  --podcast-bg: #121212;
+  --podcast-bg-secondary: #1A1A1A;
+  --podcast-text: #E8E6E3;
+  --podcast-text-muted: #8A8A8A;
+  --podcast-border: #2A2A2A;
 }
 
 /* ============================================
@@ -60,7 +60,7 @@ body.podcast-active .top-link {
   align-items: center;
   padding: 0 16px;
   gap: 12px;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   transition: transform 0.3s var(--podcast-easing);
   padding-bottom: env(safe-area-inset-bottom, 0px);
 }
@@ -87,16 +87,15 @@ body.podcast-active .top-link {
   color: var(--podcast-text);
   cursor: pointer;
   padding: 6px;
-  border-radius: 50%;
+  border-radius: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.15s var(--podcast-easing);
+  transition: color 0.15s var(--podcast-easing);
 }
 
 .podcast-btn:hover {
-  background: var(--podcast-bg-secondary);
-  color: var(--podcast-accent);
+  color: var(--podcast-text-muted);
 }
 
 .podcast-btn:active {
@@ -171,7 +170,7 @@ body.podcast-active .top-link {
   flex: 1;
   height: 4px;
   background: var(--podcast-border);
-  border-radius: 2px;
+  border-radius: 0;
   cursor: pointer;
   position: relative;
   min-width: 60px;
@@ -183,8 +182,8 @@ body.podcast-active .top-link {
 
 .podcast-progress-fill {
   height: 100%;
-  background: var(--podcast-accent);
-  border-radius: 2px;
+  background: var(--podcast-text);
+  border-radius: 0;
   width: 0%;
   position: relative;
   transition: none;
@@ -203,7 +202,7 @@ body.podcast-active .top-link {
   transform-origin: center;
   width: 10px;
   height: 10px;
-  background: var(--podcast-accent);
+  background: var(--podcast-text);
   border-radius: 50%;
   opacity: 0;
   transition: opacity 0.15s, transform 0.15s;
@@ -226,7 +225,7 @@ body.podcast-active .top-link {
   width: 70px;
   height: 4px;
   background: var(--podcast-border);
-  border-radius: 2px;
+  border-radius: 0;
   outline: none;
   cursor: pointer;
 }
@@ -235,7 +234,7 @@ body.podcast-active .top-link {
   -webkit-appearance: none;
   width: 12px;
   height: 12px;
-  background: var(--podcast-accent);
+  background: var(--podcast-text);
   border-radius: 50%;
   cursor: pointer;
 }
@@ -243,7 +242,7 @@ body.podcast-active .top-link {
 .podcast-volume-slider::-moz-range-thumb {
   width: 12px;
   height: 12px;
-  background: var(--podcast-accent);
+  background: var(--podcast-text);
   border-radius: 50%;
   border: none;
   cursor: pointer;
@@ -309,7 +308,7 @@ body.podcast-active .top-link {
   align-items: center;
   gap: 12px;
   padding: 10px 8px;
-  border-radius: 8px;
+  border-radius: 0;
   cursor: pointer;
   transition: background 0.15s var(--podcast-easing);
 }
@@ -319,13 +318,13 @@ body.podcast-active .top-link {
 }
 
 .podcast-playlist-item.active {
-  background: var(--podcast-bg-secondary);
+  background: transparent;
 }
 
 .podcast-playlist-item-icon {
   width: 32px;
   height: 32px;
-  border-radius: 6px;
+  border-radius: 0;
   background: var(--podcast-bg-secondary);
   display: flex;
   align-items: center;
@@ -335,8 +334,8 @@ body.podcast-active .top-link {
 }
 
 .podcast-playlist-item.active .podcast-playlist-item-icon {
-  background: var(--podcast-accent);
-  color: white;
+  background: var(--podcast-text);
+  color: var(--podcast-bg);
 }
 
 .podcast-playlist-item-icon svg {
@@ -360,7 +359,8 @@ body.podcast-active .top-link {
 }
 
 .podcast-playlist-item.active .podcast-playlist-item-title {
-  color: var(--podcast-accent);
+  font-weight: 700;
+  color: var(--podcast-text);
 }
 
 .podcast-playlist-item-desc {
@@ -379,7 +379,7 @@ body.podcast-active .top-link {
 }
 
 /* ============================================
-   MINIMIZED STATE - CIRCULAR PILL
+   MINIMIZED STATE - PILL
    ============================================ */
 
 .podcast-pill {
@@ -393,16 +393,14 @@ body.podcast-active .top-link {
   padding: 8px 14px 8px 8px;
   background: var(--podcast-bg);
   border: 1px solid var(--podcast-border);
-  border-radius: 24px;
+  border-radius: 0;
   cursor: pointer;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
-  transition: all 0.2s var(--podcast-easing);
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  transition: border-color 0.2s var(--podcast-easing);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 .podcast-pill:hover {
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.16);
-  transform: translateY(-2px);
+  border-color: var(--podcast-text);
 }
 
 .podcast-pill.visible {
@@ -412,12 +410,12 @@ body.podcast-active .top-link {
 .podcast-pill-play {
   width: 32px;
   height: 32px;
-  background: var(--podcast-accent);
+  background: var(--podcast-text);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: var(--podcast-bg);
   flex-shrink: 0;
 }
 

@@ -1,50 +1,44 @@
 /* MJLM Chat Widget - Slide-in Sidebar */
 
-/* Theme-aware variables using PaperMod CSS vars */
+/* Theme-aware variables - monochrome */
 :root {
-  --mjlm-accent: #c4841d;
-  --mjlm-accent-hover: #a67018;
+  --mjlm-accent: #6B6B6B;
+  --mjlm-accent-hover: #4A4A4A;
 }
 
 .dark .mjlm-sidebar,
 .dark .mjlm-toggle {
-  --mjlm-accent: #e5a83b;
-  --mjlm-accent-hover: #c28e32;
+  --mjlm-accent: #8A8A8A;
+  --mjlm-accent-hover: #A0A0A0;
 }
 
 /* Light mode (default) */
 .mjlm-sidebar,
 .mjlm-toggle {
-  --mjlm-bg: #fafafa;
-  --mjlm-bg-secondary: #f0f0f0;
-  --mjlm-text: #1e1e1e;
-  --mjlm-text-muted: #6c6c6c;
-  --mjlm-border: #e0e0e0;
-  --mjlm-user-bg: #e8e8e8;
-  --mjlm-assistant-bg: #ffffff;
+  --mjlm-bg: #FDFBF7;
+  --mjlm-bg-secondary: #F0EEEB;
+  --mjlm-text: #1A1A1A;
+  --mjlm-text-muted: #6B6B6B;
+  --mjlm-border: #E0DCD6;
+  --mjlm-user-bg: #E8E6E3;
+  --mjlm-assistant-bg: #FDFBF7;
 }
 
 /* Dark mode */
 .dark .mjlm-sidebar,
 .dark .mjlm-toggle {
-  --mjlm-bg: rgb(29, 30, 32);
-  --mjlm-bg-secondary: rgb(46, 46, 51);
-  --mjlm-text: rgb(218, 218, 219);
-  --mjlm-text-muted: rgb(155, 156, 157);
-  --mjlm-border: rgb(51, 51, 51);
-  --mjlm-user-bg: rgb(55, 56, 62);
-  --mjlm-assistant-bg: rgb(38, 39, 42);
+  --mjlm-bg: #121212;
+  --mjlm-bg-secondary: #1A1A1A;
+  --mjlm-text: #E8E6E3;
+  --mjlm-text-muted: #8A8A8A;
+  --mjlm-border: #2A2A2A;
+  --mjlm-user-bg: #2A2A2A;
+  --mjlm-assistant-bg: #1A1A1A;
 }
 
 /* ============================================
    MICRO ANIMATIONS
    ============================================ */
-
-/* Subtle pulse for toggle button icon */
-@keyframes mjlm-pulse {
-  0%, 100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.1); opacity: 0.8; }
-}
 
 /* Message entrance animation */
 @keyframes mjlm-message-in {
@@ -82,7 +76,7 @@
   }
 }
 
-/* Improved bounce for loading dots */
+/* Loading dots bounce */
 @keyframes mjlm-bounce {
   0%, 80%, 100% {
     transform: scale(0.6);
@@ -101,13 +95,6 @@
   100% { transform: scale(1); }
 }
 
-/* Icon sparkle */
-@keyframes mjlm-sparkle {
-  0%, 100% { transform: rotate(0deg) scale(1); }
-  25% { transform: rotate(-5deg) scale(1.1); }
-  75% { transform: rotate(5deg) scale(1.1); }
-}
-
 /* ============================================
    TOGGLE BUTTON
    ============================================ */
@@ -123,34 +110,26 @@
   padding: 8px 14px;
   background: var(--mjlm-bg);
   border: 1px solid var(--mjlm-border);
-  border-radius: 20px;
+  border-radius: 0;
   color: var(--mjlm-text);
   font-size: 13px;
   font-weight: 500;
   cursor: pointer;
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: border-color 0.2s ease;
   font-family: inherit;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .mjlm-toggle:hover {
-  border-color: var(--mjlm-accent);
-  box-shadow: 0 4px 16px rgba(196, 132, 29, 0.25);
-  transform: translateY(-1px);
+  border-color: var(--mjlm-text);
 }
 
 .mjlm-toggle:active {
-  transform: translateY(0) scale(0.98);
+  transform: scale(0.98);
 }
 
 .mjlm-toggle-icon {
-  color: var(--mjlm-accent);
+  color: var(--mjlm-text-muted);
   font-size: 14px;
-  animation: mjlm-pulse 3s ease-in-out infinite;
-}
-
-.mjlm-toggle:hover .mjlm-toggle-icon {
-  animation: mjlm-sparkle 0.5s ease-in-out;
 }
 
 /* ============================================
@@ -170,8 +149,7 @@
   display: flex;
   flex-direction: column;
   transition: right 0.35s cubic-bezier(0.32, 0.72, 0, 1);
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  box-shadow: -8px 0 30px rgba(0, 0, 0, 0.12);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 .mjlm-sidebar.open {
@@ -201,12 +179,7 @@
 }
 
 .mjlm-title span {
-  color: var(--mjlm-accent);
-  transition: transform 0.3s ease;
-}
-
-.mjlm-sidebar.open .mjlm-title span {
-  animation: mjlm-sparkle 0.6s ease-in-out 0.3s;
+  color: var(--mjlm-text-muted);
 }
 
 .mjlm-header-actions {
@@ -221,14 +194,12 @@
   cursor: pointer;
   padding: 6px;
   font-size: 18px;
-  transition: all 0.2s ease;
-  border-radius: 6px;
+  transition: color 0.2s ease;
+  border-radius: 0;
 }
 
 .mjlm-header-btn:hover {
   color: var(--mjlm-text);
-  background: var(--mjlm-bg-secondary);
-  transform: scale(1.1);
 }
 
 .mjlm-header-btn:active {
@@ -279,14 +250,14 @@
   align-items: flex-start;
   gap: 8px;
   padding: 12px 14px;
-  background: var(--mjlm-bg-secondary);
+  background: transparent;
   border: 1px solid var(--mjlm-border);
-  border-radius: 10px;
+  border-radius: 0;
   color: var(--mjlm-text);
   font-size: 14px;
   text-align: left;
   cursor: pointer;
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: border-color 0.2s ease;
   animation: mjlm-stagger-in 0.4s ease-out backwards;
 }
 
@@ -295,26 +266,18 @@
 .mjlm-suggestion:nth-child(3) { animation-delay: 0.3s; }
 
 .mjlm-suggestion:hover {
-  border-color: var(--mjlm-accent);
-  background: var(--mjlm-bg);
-  transform: translateX(4px);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  border-color: var(--mjlm-text);
 }
 
 .mjlm-suggestion:active {
-  transform: translateX(2px) scale(0.99);
+  transform: scale(0.99);
 }
 
 .mjlm-suggestion-icon {
-  color: var(--mjlm-accent);
+  color: var(--mjlm-text-muted);
   flex-shrink: 0;
   font-size: 12px;
   margin-top: 2px;
-  transition: transform 0.2s ease;
-}
-
-.mjlm-suggestion:hover .mjlm-suggestion-icon {
-  transform: translateX(2px);
 }
 
 /* ============================================
@@ -324,7 +287,7 @@
 .mjlm-message {
   max-width: 90%;
   padding: 12px 16px;
-  border-radius: 14px;
+  border-radius: 0;
   font-size: 14px;
   line-height: 1.6;
   animation: mjlm-message-in 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -334,7 +297,6 @@
   align-self: flex-end;
   background: var(--mjlm-user-bg);
   color: var(--mjlm-text);
-  border-radius: 14px 14px 4px 14px;
 }
 
 .mjlm-message.assistant {
@@ -342,7 +304,6 @@
   background: var(--mjlm-assistant-bg);
   color: var(--mjlm-text);
   border: 1px solid var(--mjlm-border);
-  border-radius: 14px 14px 14px 4px;
 }
 
 /* Markdown formatting in assistant messages */
@@ -375,9 +336,9 @@
 .mjlm-message.assistant code {
   background: var(--mjlm-bg-secondary);
   padding: 2px 6px;
-  border-radius: 4px;
+  border-radius: 3px;
   font-size: 13px;
-  font-family: 'SF Mono', Monaco, monospace;
+  font-family: 'JetBrains Mono', 'SF Mono', Monaco, monospace;
 }
 
 /* ============================================
@@ -397,15 +358,15 @@
 }
 
 .mjlm-source-link {
-  color: var(--mjlm-accent);
-  text-decoration: none;
+  color: var(--mjlm-text);
+  text-decoration: underline;
+  text-decoration-color: var(--mjlm-text-muted);
   font-size: 13px;
-  transition: all 0.2s ease;
+  transition: text-decoration-color 0.2s ease;
 }
 
 .mjlm-source-link:hover {
-  text-decoration: underline;
-  filter: brightness(1.1);
+  text-decoration-color: var(--mjlm-text);
 }
 
 /* ============================================
@@ -423,7 +384,7 @@
 .mjlm-loading-dot {
   width: 8px;
   height: 8px;
-  background: var(--mjlm-accent);
+  background: var(--mjlm-text-muted);
   border-radius: 50%;
   animation: mjlm-bounce 1.2s infinite ease-in-out;
 }
@@ -454,20 +415,19 @@
   padding: 10px 14px;
   background: var(--mjlm-bg-secondary);
   border: 1px solid var(--mjlm-border);
-  border-radius: 18px;
+  border-radius: 0;
   color: var(--mjlm-text);
   font-size: 14px;
   resize: none;
   font-family: inherit;
   max-height: 120px;
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-  caret-color: transparent; /* Hide native caret */
+  transition: border-color 0.2s ease;
+  caret-color: transparent;
 }
 
 .mjlm-input:focus {
   outline: none;
-  border-color: var(--mjlm-accent);
-  box-shadow: 0 0 0 3px rgba(196, 132, 29, 0.2);
+  border-color: var(--mjlm-text);
   background: var(--mjlm-bg);
 }
 
@@ -481,14 +441,14 @@
 }
 
 /* ============================================
-   FANCY CARET WITH GLOW
+   FANCY CARET
    ============================================ */
 
 .mjlm-caret {
   position: absolute;
   width: 2px;
   height: 16px;
-  background: var(--mjlm-accent);
+  background: var(--mjlm-text);
   border-radius: 1px;
   pointer-events: none;
   opacity: 0;
@@ -504,15 +464,7 @@
 }
 
 .mjlm-caret-glow {
-  position: absolute;
-  top: -2px;
-  left: -3px;
-  right: -3px;
-  bottom: -2px;
-  background: var(--mjlm-accent);
-  border-radius: 4px;
-  filter: blur(4px);
-  opacity: 0.4;
+  display: none;
 }
 
 @keyframes mjlm-caret-blink {
@@ -542,28 +494,21 @@
   height: 36px;
   background: var(--mjlm-border);
   border: none;
-  border-radius: 50%;
+  border-radius: 0;
   color: var(--mjlm-text-muted);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.2s ease;
   flex-shrink: 0;
   font-size: 16px;
 }
 
 /* When there's text - activate the button */
 .mjlm-send.has-text {
-  background: var(--mjlm-accent);
-  color: white;
-  animation: mjlm-send-ready 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-@keyframes mjlm-send-ready {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.15); }
-  100% { transform: scale(1); }
+  background: var(--mjlm-text);
+  color: var(--mjlm-bg);
 }
 
 .mjlm-send:disabled {
@@ -572,9 +517,7 @@
 }
 
 .mjlm-send.has-text:hover:not(:disabled) {
-  background: var(--mjlm-accent-hover);
-  transform: scale(1.08);
-  box-shadow: 0 4px 12px rgba(196, 132, 29, 0.35);
+  opacity: 0.8;
 }
 
 .mjlm-send:active:not(:disabled) {
@@ -604,7 +547,7 @@
   font-size: 13px;
   text-align: left;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: color 0.2s ease;
   animation: mjlm-stagger-in 0.35s ease-out backwards;
 }
 
@@ -613,20 +556,18 @@
 .mjlm-followup:nth-child(3) { animation-delay: 0.35s; }
 
 .mjlm-followup:hover {
-  color: var(--mjlm-accent);
-  transform: translateX(4px);
+  color: var(--mjlm-text);
 }
 
 .mjlm-followup::before {
-  content: '↳';
+  content: '\2192';
   color: var(--mjlm-text-muted);
   font-size: 12px;
-  transition: all 0.2s ease;
+  transition: color 0.2s ease;
 }
 
 .mjlm-followup:hover::before {
-  color: var(--mjlm-accent);
-  transform: translateX(2px);
+  color: var(--mjlm-text);
 }
 
 /* ============================================

@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=55547&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Software’s YouTube Moment vs. the Absorption Moment | MJ&#39;s Blog</title>
+<meta name="keywords" content="AI, startups, product management, context engineering">
+<meta name="description" content="The same tools that democratize building also compress the time it takes platforms to absorb shallow apps. The convergence point is vertical depth: real domain knowledge, workflows, and feedback loops.">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:55547/posts/youtube-moment-vs-absorption/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.17053cdc243854f5e788a0f20263f770915ab6eb9dbaa65f03db8cbd4c5fad06.css" integrity="sha256-FwU83CQ4VPXniKDyAmP3cJFatuuduqZfA9uMvUxfrQY=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:55547/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:55547/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:55547/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:55547/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:55547/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:55547/posts/youtube-moment-vs-absorption/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"><meta name="theme-color" content="#121212" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FDFBF7" media="(prefers-color-scheme: light)"><style>
+    html {
+        scroll-behavior: smooth;
+    }
+</style>
+
+</head>
+
+<body class=" dark" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:55547/" accesskey="h" title="MJ&#39;s Blog (Alt + H)">MJ&#39;s Blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:55547/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:55547/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://trade.mjzou.com/" title="Portfolio">
+                    <span>Portfolio</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+            <li>
+                <a href="https://run.mjzou.com/" title="Running">
+                    <span>Running</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="http://localhost:55547/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:55547/posts/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Software’s YouTube Moment vs. the Absorption Moment
+      <span class="entry-hint" title="Draft">
+        <svg xmlns="http://www.w3.org/2000/svg" height="35" viewBox="0 -960 960 960" fill="currentColor">
+          <path
+            d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
+        </svg>
+      </span>
+    </h1>
+    <div class="post-description">
+      The same tools that democratize building also compress the time it takes platforms to absorb shallow apps. The convergence point is vertical depth: real domain knowledge, workflows, and feedback loops.
+    </div>
+    <div class="post-meta"><span title='2026-01-20 00:00:00 +0000 UTC'>January 20, 2026</span>&nbsp;·&nbsp;8 min&nbsp;·&nbsp;1497 words
+
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#the-core-difference-creation-vs-capture" aria-label="The Core Difference: Creation vs. Capture">The Core Difference: Creation vs. Capture</a></li>
+                <li>
+                    <a href="#why-anthropic-labs-makes-the-absorption-moment-more-inevitable" aria-label="Why Anthropic Labs Makes the Absorption Moment More Inevitable">Why Anthropic Labs Makes the Absorption Moment More Inevitable</a></li>
+                <li>
+                    <a href="#the-convergence-depth-or-capability-vs-practice" aria-label="The Convergence: Depth (Or: Capability vs. Practice)">The Convergence: Depth (Or: Capability vs. Practice)</a></li>
+                <li>
+                    <a href="#a-concrete-example-running-analysis-vs-running-coaching" aria-label="A Concrete Example: “Running Analysis” vs. “Running Coaching”">A Concrete Example: “Running Analysis” vs. “Running Coaching”</a></li>
+                <li>
+                    <a href="#the-three-way-convergence-creators-platforms-capital" aria-label="The Three-Way Convergence: Creators, Platforms, Capital">The Three-Way Convergence: Creators, Platforms, Capital</a></li>
+                <li>
+                    <a href="#the-new-creator-economy-for-software-and-why-it-wont-look-like-youtube" aria-label="The New Creator Economy for Software (And Why It Won’t Look Like YouTube)">The New Creator Economy for Software (And Why It Won’t Look Like YouTube)</a></li>
+                <li>
+                    <a href="#references" aria-label="References">References</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><p>This week I read two essays that felt like they were describing the same reality from opposite ends of the telescope.</p>
+<p>One was Anish A’s “Software’s YouTube Moment is happening now”: the barrier to building software has collapsed, and we’re about to see a long-tail creator explosion the way YouTube unlocked a long tail of video creators. <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
+<p>The other was mine: <a href="https://blog.mjzou.com/posts/anthropic-ate-my-startup/">“Anthropic Just Ate My Startup”</a>, which is <em>optimism with a shadow</em>: I built a tiny “context bridge” iOS app to export Apple Health workouts for AI analysis, and two weeks later Anthropic shipped the same bridge natively (plus a desktop agent that turns “local context” into a default capability). When platforms can ship in days, the gap between “cool demo” and “native feature” collapses. <sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></p>
+<p>Both posts are true. They just optimize for different questions.</p>
+<ul>
+<li>The YouTube frame asks: <em>What happens when everyone can create software?</em></li>
+<li>The absorption frame asks: <em>Who captures the value when creation is cheap and distribution sits with the platform?</em></li>
+</ul>
+<p>This post is an attempt to reconcile them—and to name the convergence point I think matters most: <strong>depth</strong>.</p>
+<hr>
+<h2 id="the-core-difference-creation-vs-capture">The Core Difference: Creation vs. Capture<a hidden class="anchor" aria-hidden="true" href="#the-core-difference-creation-vs-capture">#</a></h2>
+<p>The YouTube analogy is about <em>creation</em>.</p>
+<p>LLMs + “agentic” dev tools compress the cycle from idea → prototype → working app. That’s real, and it’s not going away. The “builder” population expands dramatically. Some of what gets built will be silly and personal. Some will be useful. Some will be art. <sup id="fnref1:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
+<p>The absorption story is about <em>capture</em>.</p>
+<p>When the platform owns the primary interface (chat), the primary distribution (default assistant), and increasingly the primary context sources (files, email, health data, etc.), a big chunk of what the long tail creates gets pulled “down” into the core product. Not because the platform is evil, but because the platform can ship the generic version faster than anyone can build a defensible moat around it.</p>
+<p>If YouTube was the distribution for video, the LLM is increasingly the distribution for software—because chat is becoming the default entry point for work, and the assistant sits upstream of many workflows.</p>
+<p>That changes which creations become businesses.</p>
+<hr>
+<h2 id="why-anthropic-labs-makes-the-absorption-moment-more-inevitable">Why Anthropic Labs Makes the Absorption Moment More Inevitable<a hidden class="anchor" aria-hidden="true" href="#why-anthropic-labs-makes-the-absorption-moment-more-inevitable">#</a></h2>
+<p>The missing ingredient in the YouTube analogy is the rate at which “the platform” can now iterate.</p>
+<p>Anthropic describes a product motion that looks like: experiment at the frontier → test with early users → scale what works. <sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup></p>
+<p>That’s not just “R&amp;D.” It’s an <em>ideation engine attached to distribution</em>.</p>
+<blockquote>
+<p>“Today we’re building on this approach with the expansion of Labs, a team focused on incubating experimental products at the frontier of Claude’s capabilities.” <sup id="fnref1:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup></p>
+</blockquote>
+<p>So when the long tail builds something shallow-but-delightful, platforms don’t have to watch from the sidelines anymore. They can:</p>
+<ol>
+<li>Notice it (social proof is public).</li>
+<li>Rebuild the generic version quickly (their internal tools are also agentic).</li>
+<li>Ship it to millions as a default capability.</li>
+</ol>
+<p>This is why the absorption timeline collapses.</p>
+<hr>
+<h2 id="the-convergence-depth-or-capability-vs-practice">The Convergence: Depth (Or: Capability vs. Practice)<a hidden class="anchor" aria-hidden="true" href="#the-convergence-depth-or-capability-vs-practice">#</a></h2>
+<p>Here’s where I think these two posts converge:</p>
+<p><strong>The long tail will absolutely create a lot more software.</strong></p>
+<p>But <strong>most of that software won’t become durable businesses</strong> unless it crosses a depth threshold that platforms can’t (or won’t) absorb cheaply.</p>
+<p>The cleanest way I’ve found to name that threshold is:</p>
+<p><strong>Am I building a capability, or am I encoding a practice?</strong></p>
+<ul>
+<li>A <em>capability</em> is something the platform can make general-purpose: “connect to X,” “summarize Y,” “generate Z,” “agentically edit files.”</li>
+<li>A <em>practice</em> is what experts actually do with that capability over time: triage, calibration, exceptions, nuance, accountability, and continuous improvement.</li>
+</ul>
+<p>Practices also have a shape: they’re loops. Read the situation, decide, act, observe, update. In agent terms, it’s a REP loop (read → eval → print) where each iteration produces new data—and the “depth” comes from what you preserve, measure, and improve over time. <sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup></p>
+<p>“Vertical” doesn’t just mean “niche.” It means building the messy stack behind a real workflow:</p>
+<ol>
+<li><strong>Domain semantics</strong>: not just “summarize my MRI,” but knowing what matters, what’s dangerous, what’s normal, what’s missing, and what to do next.</li>
+<li><strong>Opinionated workflow</strong>: a sequence of steps that maps to how work actually gets done (including handoffs, deadlines, and human judgment).</li>
+<li><strong>Feedback loops</strong>: a way to get better over time (labels, outcomes, corrections, audits)—not just a one-off generation.</li>
+<li><strong>Trust and constraints</strong>: compliance, liability, privacy, safety, explainability, and predictable behavior under stress.</li>
+<li><strong>Integration cost</strong>: the “last mile” of making it real inside an org—permissions, data models, exception handling, edge cases, reporting.</li>
+</ol>
+<p>If your product is mostly a UI over a generic capability (“take input → call model → show output”), it’s probably absorbable.</p>
+<p>If your product is a <em>system</em> that embeds expertise into a workflow with feedback loops and constraints, it’s much harder to absorb as a feature—because the “feature” isn’t the UI. The feature is the accumulated understanding of the domain, the process, and the failure modes.</p>
+<p>This is where my context thesis survives the absorption moment:</p>
+<ul>
+<li><strong>Generic context bridges</strong> become platform features.</li>
+<li><strong>Unique context + unique workflow + unique feedback</strong> can still be an advantage.</li>
+</ul>
+<p>This is also a refinement of something I wrote while building Run Card Generator: “the context layer is the new moat.” I still believe context matters—but now I think context <em>without</em> practice is just a feature request. <sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup></p>
+<hr>
+<h2 id="a-concrete-example-running-analysis-vs-running-coaching">A Concrete Example: “Running Analysis” vs. “Running Coaching”<a hidden class="anchor" aria-hidden="true" href="#a-concrete-example-running-analysis-vs-running-coaching">#</a></h2>
+<p>Here’s the distinction in the domain that triggered this whole train of thought.</p>
+<p>The shallow, absorbable product looks like: “Upload your <code>.fit</code> file, and I’ll summarize your run.”</p>
+<p>The deep, durable product looks like: “I’m your running coach.”</p>
+<p>That second thing is not a prettier UI. It’s an end-to-end practice:</p>
+<ul>
+<li>It needs a training philosophy (base, build, peak, taper) and a model of adaptation and fatigue.</li>
+<li>It needs guardrails for injury risk and constraints for age, goals, and history.</li>
+<li>It needs longitudinal feedback: what you planned vs. what you did vs. what happened to your body.</li>
+<li>It needs accountability and trust: when to say “stop,” when to recommend seeing a clinician, when to defer.</li>
+</ul>
+<p>A platform can absorb “summarize workouts.” It’s much harder to absorb the practice of coaching without owning the domain, the outcomes, and the liability surface.</p>
+<hr>
+<h2 id="the-three-way-convergence-creators-platforms-capital">The Three-Way Convergence: Creators, Platforms, Capital<a hidden class="anchor" aria-hidden="true" href="#the-three-way-convergence-creators-platforms-capital">#</a></h2>
+<p>Put the pieces together and you get a three-way dynamic:</p>
+<ol>
+<li><strong>Creators</strong> generate an explosion of shallow prototypes (because they can).</li>
+<li><strong>Platforms</strong> absorb the shallow, general-purpose capabilities (because they must).</li>
+<li><strong>Capital</strong> funds the few survivors that prove depth and durability (because that’s where outsized returns live).</li>
+</ol>
+<p>This is also why the “YouTube moment” framing is so common in VC-adjacent writing. It’s not just a prediction; it’s a sourcing lens.</p>
+<ul>
+<li>It pulls more builders into the arena (more attempts, more shots on goal).</li>
+<li>It increases discovery surface area (more public demos, more early traction signals).</li>
+<li>It creates a clean narrative for the selection problem: back the few things that graduate from “cool capability” into “repeatable practice.”</li>
+</ul>
+<p>This is why “depth” is the convergence point. It’s the part that:</p>
+<ul>
+<li>creators can’t fake with a weekend demo,</li>
+<li>platforms can’t cheaply absorb as a generic feature,</li>
+<li>and investors can underwrite once it shows real traction and constraints.</li>
+</ul>
+<hr>
+<h2 id="the-new-creator-economy-for-software-and-why-it-wont-look-like-youtube">The New Creator Economy for Software (And Why It Won’t Look Like YouTube)<a hidden class="anchor" aria-hidden="true" href="#the-new-creator-economy-for-software-and-why-it-wont-look-like-youtube">#</a></h2>
+<p>So yes: we’re entering Software’s YouTube moment.</p>
+<p>But we’re also entering Software’s absorption moment.</p>
+<p>Those two forces together imply a different outcome than “millions of indie developers build billion-dollar companies”:</p>
+<ul>
+<li>There will be <em>far</em> more software created.</li>
+<li>There will be <em>far</em> more software that is used once and then disappears.</li>
+<li>There will be a small set of “durable” vertical systems that turn creation into capture—not by being first, but by being deep.</li>
+</ul>
+<p>YouTube creators captured distribution by building audiences on the platform that distributed them.</p>
+<p>Software creators don’t get that luxury. The platform is increasingly the agent, the UI, and the default starting point.</p>
+<p>So the way you capture value shifts:</p>
+<p><strong>Build depth, not just demos. Build practices, not just capabilities.</strong></p>
+<p>And build with the assumption that if it’s shallow, it’s already on the platform’s roadmap—because the platform can now <em>vibe-code its own roadmap</em>.</p>
+<p>If you’re building, here’s the checklist I’d keep on the wall:</p>
+<ul>
+<li>If it’s a capability, assume it gets absorbed.</li>
+<li>If it’s a practice, prove it with a loop (data → decision → outcome → correction).</li>
+<li>If it compounds, treat it like a deposit—know where it lives, and whether you can withdraw it. <sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup></li>
+<li>If it’s a business, earn distribution somewhere the model doesn’t own by default.</li>
+</ul>
+<p>The YouTube moment is real. The absorption moment is real too. Depth is where they meet.</p>
+<hr>
+<h2 id="references">References<a hidden class="anchor" aria-hidden="true" href="#references">#</a></h2>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>Anish A, “Software’s YouTube Moment is happening now,” a16z.news (Jan 2026). <a href="https://www.a16z.news/p/softwares-youtube-moment-is-happening">https://www.a16z.news/p/softwares-youtube-moment-is-happening</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>MJ Zou, “Anthropic Just Ate My Startup,” blog.mjzou.com (Jan 2026). <a href="https://blog.mjzou.com/posts/anthropic-ate-my-startup/">https://blog.mjzou.com/posts/anthropic-ate-my-startup/</a>&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p>Anthropic, “Introducing Labs,” anthropic.com (Jan 2026). <a href="https://www.anthropic.com/news/introducing-anthropic-labs">https://www.anthropic.com/news/introducing-anthropic-labs</a>&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4">
+<p>MJ Zou, “Context Engineering Lessons from Building Manus,” blog.mjzou.com (Jul 2025). /posts/context-engineering-lessons-from-manus/&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:5">
+<p>MJ Zou, “I Vibe Coded an AI App — But There&rsquo;s No AI Inside,” blog.mjzou.com (Dec 2025). /posts/vibe-coding-ios-app/&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:6">
+<p>MJ Zou, “I&rsquo;m Quitting Claude (But Not What You Think),” blog.mjzou.com (Jan 2026). /posts/quitting-claude/&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:55547/tags/ai/">AI</a></li>
+      <li><a href="http://localhost:55547/tags/startups/">Startups</a></li>
+      <li><a href="http://localhost:55547/tags/product-management/">Product Management</a></li>
+      <li><a href="http://localhost:55547/tags/context-engineering/">Context Engineering</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="http://localhost:55547/posts/the-last-human-complaint-about-bureaucracy/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>The Last Human Complaint About Bureaucracy</span>
+  </a>
+  <a class="next" href="http://localhost:55547/posts/anthropic-ate-my-startup/">
+    <span class="title">Next »</span>
+    <br>
+    <span>Anthropic Just Ate My Startup</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://localhost:55547/">MJ&#39;s Blog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+
+<link rel="stylesheet" href="/css/mjlm-widget.css?v=13">
+<script src="/js/mjlm-widget.js?v=11" defer></script>
+
+<link rel="stylesheet" href="/css/podcast-player.css?v=2">
+<script src="/js/podcast-player.js?v=1" defer></script>
+
+<link rel="stylesheet" href="/css/reading-list.css?v=1">
+<aside class="reading-list" role="complementary" aria-label="Reading list">
+  <div class="reading-list-title">Reading List</div>
+  <ul class="reading-list-items">
+    <li><a href="https://karpathy.bearblog.dev/year-in-review-2025/" target="_blank" rel="noopener noreferrer">Karpathy: Year in Review 2025</a></li>
+    <li><a href="https://www.producttalk.org/claude-code-what-it-is-and-how-its-different/" target="_blank" rel="noopener noreferrer">Product Talk: Claude Code</a></li>
+    <li><a href="https://www.arxiv.org/abs/2512.07796" target="_blank" rel="noopener noreferrer">arXiv: 2512.07796</a></li>
+  </ul>
+</aside>
+</body>
+
+</html>

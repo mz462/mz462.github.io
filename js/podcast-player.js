@@ -12,25 +12,11 @@
 
   var PLAYLIST = [
     {
-      id: "ep1",
-      title: "AI Product Management 101",
-      description: "Getting started with AI PM",
-      src: "https://your-r2-bucket.r2.dev/episodes/ep1.mp3",
-      duration: "12:34",
-    },
-    {
-      id: "ep2",
-      title: "Context Engineering Deep Dive",
-      description: "How context windows really work",
-      src: "https://your-r2-bucket.r2.dev/episodes/ep2.mp3",
-      duration: "18:45",
-    },
-    {
-      id: "ep3",
-      title: "Enterprise AI Adoption",
-      description: "Lessons from the field",
-      src: "https://your-r2-bucket.r2.dev/episodes/ep3.mp3",
-      duration: "22:10",
+      id: "2026-02-06",
+      title: "AI Pulse - Feb 6, 2026",
+      description: "AI Pulse daily briefing",
+      src: "https://pub-64eca94564a64eef9d486ccb65cea4a4.r2.dev/episodes/2026-02-06/ai-pulse-2026-02-06.mp3",
+      duration: "--:--",
     },
   ];
 
