@@ -2,8 +2,14 @@
 
 /* Theme-aware variables using PaperMod CSS vars */
 :root {
-  --mjlm-accent: #f97316;
-  --mjlm-accent-hover: #ea580c;
+  --mjlm-accent: #c4841d;
+  --mjlm-accent-hover: #a67018;
+}
+
+.dark .mjlm-sidebar,
+.dark .mjlm-toggle {
+  --mjlm-accent: #e5a83b;
+  --mjlm-accent-hover: #c28e32;
 }
 
 /* Light mode (default) */
@@ -129,7 +135,7 @@
 
 .mjlm-toggle:hover {
   border-color: var(--mjlm-accent);
-  box-shadow: 0 4px 16px rgba(249, 115, 22, 0.2);
+  box-shadow: 0 4px 16px rgba(196, 132, 29, 0.25);
   transform: translateY(-1px);
 }
 
@@ -461,7 +467,7 @@
 .mjlm-input:focus {
   outline: none;
   border-color: var(--mjlm-accent);
-  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.15);
+  box-shadow: 0 0 0 3px rgba(196, 132, 29, 0.2);
   background: var(--mjlm-bg);
 }
 
@@ -568,7 +574,7 @@
 .mjlm-send.has-text:hover:not(:disabled) {
   background: var(--mjlm-accent-hover);
   transform: scale(1.08);
-  box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
+  box-shadow: 0 4px 12px rgba(196, 132, 29, 0.35);
 }
 
 .mjlm-send:active:not(:disabled) {

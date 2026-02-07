@@ -1,0 +1,519 @@
+/* Podcast Floating Mini-Bar Player */
+
+:root {
+  --podcast-accent: #c4841d;
+  --podcast-accent-hover: #a67018;
+  --podcast-bar-height: 60px;
+  --podcast-easing: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Theme-aware colors using PaperMod vars */
+.podcast-bar,
+.podcast-pill,
+.podcast-playlist {
+  --podcast-bg: #fafafa;
+  --podcast-bg-secondary: #f0f0f0;
+  --podcast-text: #1e1e1e;
+  --podcast-text-muted: #6c6c6c;
+  --podcast-border: #e0e0e0;
+}
+
+.dark .podcast-bar,
+.dark .podcast-pill,
+.dark .podcast-playlist {
+  --podcast-accent: #e5a83b;
+  --podcast-accent-hover: #c28e32;
+  --podcast-bg: rgb(29, 30, 32);
+  --podcast-bg-secondary: rgb(46, 46, 51);
+  --podcast-text: rgb(218, 218, 219);
+  --podcast-text-muted: rgb(155, 156, 157);
+  --podcast-border: rgb(51, 51, 51);
+}
+
+/* ============================================
+   BODY OFFSET WHEN PLAYER ACTIVE
+   ============================================ */
+
+body.podcast-active {
+  padding-bottom: var(--podcast-bar-height);
+}
+
+/* Bump PaperMod scroll-to-top button up */
+body.podcast-active .top-link {
+  bottom: calc(60px + var(--podcast-bar-height));
+}
+
+/* ============================================
+   FIXED BOTTOM BAR
+   ============================================ */
+
+.podcast-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: var(--podcast-bar-height);
+  background: var(--podcast-bg);
+  border-top: 1px solid var(--podcast-border);
+  z-index: 500;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  gap: 12px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  transition: transform 0.3s var(--podcast-easing);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+.podcast-bar.hidden {
+  transform: translateY(100%);
+  pointer-events: none;
+}
+
+/* ============================================
+   PLAYBACK CONTROLS
+   ============================================ */
+
+.podcast-controls {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.podcast-btn {
+  background: none;
+  border: none;
+  color: var(--podcast-text);
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s var(--podcast-easing);
+}
+
+.podcast-btn:hover {
+  background: var(--podcast-bg-secondary);
+  color: var(--podcast-accent);
+}
+
+.podcast-btn:active {
+  transform: scale(0.92);
+}
+
+.podcast-btn svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+.podcast-btn-play svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* ============================================
+   TRACK INFO
+   ============================================ */
+
+.podcast-track-info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  flex-shrink: 1;
+  max-width: 200px;
+}
+
+.podcast-track-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--podcast-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.3;
+}
+
+.podcast-track-desc {
+  font-size: 11px;
+  color: var(--podcast-text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.3;
+}
+
+/* ============================================
+   SEEKABLE PROGRESS BAR
+   ============================================ */
+
+.podcast-progress-wrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.podcast-time {
+  font-size: 11px;
+  color: var(--podcast-text-muted);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  flex-shrink: 0;
+  min-width: 36px;
+  text-align: center;
+}
+
+.podcast-progress {
+  flex: 1;
+  height: 4px;
+  background: var(--podcast-border);
+  border-radius: 2px;
+  cursor: pointer;
+  position: relative;
+  min-width: 60px;
+}
+
+.podcast-progress:hover {
+  height: 6px;
+}
+
+.podcast-progress-fill {
+  height: 100%;
+  background: var(--podcast-accent);
+  border-radius: 2px;
+  width: 0%;
+  position: relative;
+  transition: none;
+}
+
+.podcast-progress:hover .podcast-progress-thumb {
+  opacity: 1;
+  transform: scale(1) translateY(-50%);
+}
+
+.podcast-progress-thumb {
+  position: absolute;
+  right: -5px;
+  top: 50%;
+  transform: scale(0) translateY(-50%);
+  transform-origin: center;
+  width: 10px;
+  height: 10px;
+  background: var(--podcast-accent);
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.15s, transform 0.15s;
+}
+
+/* ============================================
+   VOLUME CONTROL
+   ============================================ */
+
+.podcast-volume-wrap {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.podcast-volume-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 70px;
+  height: 4px;
+  background: var(--podcast-border);
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+}
+
+.podcast-volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  background: var(--podcast-accent);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.podcast-volume-slider::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  background: var(--podcast-accent);
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+}
+
+/* ============================================
+   RIGHT-SIDE ACTIONS (PLAYLIST + MINIMIZE)
+   ============================================ */
+
+.podcast-actions {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+/* ============================================
+   PLAYLIST POPUP
+   ============================================ */
+
+.podcast-playlist {
+  position: fixed;
+  bottom: var(--podcast-bar-height);
+  left: 0;
+  right: 0;
+  max-height: 0;
+  overflow: hidden;
+  background: var(--podcast-bg);
+  border-top: 1px solid var(--podcast-border);
+  z-index: 499;
+  transition: max-height 0.3s var(--podcast-easing);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+.podcast-playlist.open {
+  max-height: 320px;
+  overflow-y: auto;
+}
+
+.podcast-playlist-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px 8px;
+  position: sticky;
+  top: 0;
+  background: var(--podcast-bg);
+  z-index: 1;
+}
+
+.podcast-playlist-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--podcast-text);
+}
+
+.podcast-playlist-items {
+  padding: 0 8px 8px;
+}
+
+.podcast-playlist-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.15s var(--podcast-easing);
+}
+
+.podcast-playlist-item:hover {
+  background: var(--podcast-bg-secondary);
+}
+
+.podcast-playlist-item.active {
+  background: var(--podcast-bg-secondary);
+}
+
+.podcast-playlist-item-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  background: var(--podcast-bg-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--podcast-text-muted);
+}
+
+.podcast-playlist-item.active .podcast-playlist-item-icon {
+  background: var(--podcast-accent);
+  color: white;
+}
+
+.podcast-playlist-item-icon svg {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
+}
+
+.podcast-playlist-item-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.podcast-playlist-item-title {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--podcast-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.podcast-playlist-item.active .podcast-playlist-item-title {
+  color: var(--podcast-accent);
+}
+
+.podcast-playlist-item-desc {
+  font-size: 11px;
+  color: var(--podcast-text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.podcast-playlist-item-duration {
+  font-size: 11px;
+  color: var(--podcast-text-muted);
+  flex-shrink: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ============================================
+   MINIMIZED STATE - CIRCULAR PILL
+   ============================================ */
+
+.podcast-pill {
+  position: fixed;
+  bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+  right: 20px;
+  z-index: 500;
+  display: none;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px 8px 8px;
+  background: var(--podcast-bg);
+  border: 1px solid var(--podcast-border);
+  border-radius: 24px;
+  cursor: pointer;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
+  transition: all 0.2s var(--podcast-easing);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.podcast-pill:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.16);
+  transform: translateY(-2px);
+}
+
+.podcast-pill.visible {
+  display: flex;
+}
+
+.podcast-pill-play {
+  width: 32px;
+  height: 32px;
+  background: var(--podcast-accent);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  flex-shrink: 0;
+}
+
+.podcast-pill-play svg {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
+}
+
+.podcast-pill-title {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--podcast-text);
+  max-width: 120px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 768px) {
+  .podcast-volume-wrap {
+    display: none;
+  }
+
+  .podcast-track-info {
+    max-width: 140px;
+  }
+
+  /* Offset pill to avoid MJLM toggle overlap */
+  .podcast-pill {
+    right: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  .podcast-bar {
+    gap: 8px;
+    padding: 0 10px;
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  .podcast-btn-prev,
+  .podcast-btn-next {
+    display: none;
+  }
+
+  .podcast-time {
+    display: none;
+  }
+
+  .podcast-track-info {
+    max-width: 100px;
+  }
+
+  .podcast-pill {
+    right: 80px;
+    bottom: 20px;
+  }
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .podcast-bar,
+  .podcast-playlist,
+  .podcast-pill,
+  .podcast-btn,
+  .podcast-progress-thumb {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* ============================================
+   SCROLLBAR FOR PLAYLIST
+   ============================================ */
+
+.podcast-playlist::-webkit-scrollbar {
+  width: 6px;
+}
+
+.podcast-playlist::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.podcast-playlist::-webkit-scrollbar-thumb {
+  background: var(--podcast-border);
+  border-radius: 3px;
+}
+
+.podcast-playlist::-webkit-scrollbar-thumb:hover {
+  background: var(--podcast-text-muted);
+}

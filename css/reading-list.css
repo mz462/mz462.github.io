@@ -1,0 +1,81 @@
+/* Reading List - Sticky Note Style */
+.reading-list {
+  position: fixed;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 100;
+  background: #fff9c4;
+  border: 1px solid #e8d96c;
+  border-radius: 4px;
+  padding: 12px 14px;
+  width: 180px;
+  box-shadow: 2px 3px 8px rgba(0, 0, 0, 0.1);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.dark .reading-list {
+  background: #3d3a2e;
+  border-color: #4a4639;
+}
+
+.reading-list-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #3d3520;
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px dashed #d4c46c;
+}
+
+.dark .reading-list-title {
+  color: #e8dfc0;
+  border-bottom-color: #5a5443;
+}
+
+.reading-list-items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 13px;
+}
+
+.reading-list-items li {
+  margin: 6px 0;
+  line-height: 1.45;
+}
+
+.reading-list-items a {
+  color: #4a3d24;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.dark .reading-list-items a {
+  color: #d8cda6;
+}
+
+.reading-list-items a:hover {
+  color: #c4841d;
+  text-decoration: underline;
+}
+
+.dark .reading-list-items a:hover {
+  color: #e5a83b;
+}
+
+.reading-list-items a:focus-visible {
+  outline: 2px solid #c4841d;
+  outline-offset: 2px;
+}
+
+.dark .reading-list-items a:focus-visible {
+  outline-color: #e5a83b;
+}
+
+/* Hide on smaller screens to avoid overlap */
+@media (max-width: 1200px) {
+  .reading-list {
+    display: none;
+  }
+}
