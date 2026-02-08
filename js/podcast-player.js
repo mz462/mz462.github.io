@@ -10,26 +10,31 @@
   // PLAYLIST (placeholder R2 URLs)
   // ============================================
 
+  var R2_BASE = "https://pub-64eca94564a64eef9d486ccb65cea4a4.r2.dev";
+
   var PLAYLIST = [
     {
       id: "2026-02-08",
       title: "AI Pulse - Feb 8, 2026",
       description: "AI Pulse daily briefing",
-      src: "https://pub-64eca94564a64eef9d486ccb65cea4a4.r2.dev/episodes/2026-02-08/ai-pulse-2026-02-08.mp3",
+      src: R2_BASE + "/episodes/2026-02-08/ai-pulse-2026-02-08.mp3",
+      transcript: R2_BASE + "/episodes/2026-02-08/ai-pulse-2026-02-08.srt",
       duration: "--:--",
     },
     {
       id: "2026-02-07",
       title: "AI Pulse - Feb 7, 2026",
       description: "AI Pulse daily briefing",
-      src: "https://pub-64eca94564a64eef9d486ccb65cea4a4.r2.dev/episodes/2026-02-07/ai-pulse-2026-02-07.mp3",
+      src: R2_BASE + "/episodes/2026-02-07/ai-pulse-2026-02-07.mp3",
+      transcript: R2_BASE + "/episodes/2026-02-07/ai-pulse-2026-02-07.srt",
       duration: "--:--",
     },
     {
       id: "2026-02-06",
       title: "AI Pulse - Feb 6, 2026",
       description: "AI Pulse daily briefing",
-      src: "https://pub-64eca94564a64eef9d486ccb65cea4a4.r2.dev/episodes/2026-02-06/ai-pulse-2026-02-06.mp3",
+      src: R2_BASE + "/episodes/2026-02-06/ai-pulse-2026-02-06.mp3",
+      transcript: R2_BASE + "/episodes/2026-02-06/ai-pulse-2026-02-06.srt",
       duration: "--:--",
     },
   ];
@@ -49,6 +54,7 @@
     minimize: '<svg viewBox="0 0 24 24"><path d="M19 13H5v-2h14v2z"/></svg>',
     expand: '<svg viewBox="0 0 24 24"><path d="M4 8h4V4H4v4zm6 12h4v-4h-4v4zm-6 0h4v-4H4v4zm0-6h4v-4H4v4zm6 0h4v-4h-4v4zm6-10v4h4V4h-4zm-6 4h4V4h-4v4zm6 6h4v-4h-4v4zm0 6h4v-4h-4v4z"/></svg>',
     musicNote: '<svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>',
+    transcript: '<svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM4 12h4v2H4v-2zm10 6H4v-2h10v2zm6 0h-4v-2h4v2zm0-4H10v-2h10v2z"/></svg>',
   };
 
   // ============================================
@@ -64,6 +70,64 @@
   var volume = 0.8;
   var isMuted = false;
   var rafId = null;
+  var isTranscriptOpen = false;
+  var transcriptCues = [];       // [{start, end, text}]
+  var activeCueIndex = -1;
+  var transcriptAutoScroll = true;
+  var transcriptScrollTimer = null;
+  var transcriptGeneration = 0;
+
+  // ============================================
+  // SRT PARSER
+  // ============================================
+
+  function parseSRTTimestamp(ts) {
+    // "HH:MM:SS,mmm" or "HH:MM:SS.mmm"
+    var parts = ts.replace(",", ".").split(":");
+    var h = parseFloat(parts[0]) || 0;
+    var m = parseFloat(parts[1]) || 0;
+    var s = parseFloat(parts[2]) || 0;
+    return h * 3600 + m * 60 + s;
+  }
+
+  function parseSRT(text) {
+    var cues = [];
+    var blocks = text.trim().replace(/\r\n/g, "\n").split(/\n\n+/);
+    for (var i = 0; i < blocks.length; i++) {
+      var lines = blocks[i].trim().split("\n");
+      // Find the timestamp line (contains " --> ")
+      for (var j = 0; j < lines.length; j++) {
+        if (lines[j].indexOf(" --> ") !== -1) {
+          var times = lines[j].split(" --> ");
+          var start = parseSRTTimestamp(times[0].trim());
+          var end = parseSRTTimestamp(times[1].trim());
+          var textLines = lines.slice(j + 1);
+          if (textLines.length > 0) {
+            cues.push({ start: start, end: end, text: textLines.join(" ").replace(/<[^>]+>/g, "") });
+          }
+          break;
+        }
+      }
+    }
+    return cues;
+  }
+
+  function fetchTranscript(url, callback) {
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", url);
+    xhr.onload = function () {
+      if (xhr.status === 200) {
+        callback(parseSRT(xhr.responseText));
+      } else {
+        callback(null);
+      }
+    };
+    xhr.onerror = function () {
+      console.warn("Podcast: Failed to fetch transcript (network error)", url);
+      callback(null);
+    };
+    xhr.send();
+  }
 
   // ============================================
   // PERSISTENCE
@@ -80,6 +144,7 @@
         if (typeof s.volume === "number") volume = s.volume;
         if (typeof s.isMinimized === "boolean") isMinimized = s.isMinimized;
         if (typeof s.isMuted === "boolean") isMuted = s.isMuted;
+        if (typeof s.isTranscriptOpen === "boolean") isTranscriptOpen = s.isTranscriptOpen;
         // currentTime restored after audio loads
         return s;
       }
@@ -99,6 +164,7 @@
           volume: volume,
           isMinimized: isMinimized,
           isMuted: isMuted,
+          isTranscriptOpen: isTranscriptOpen,
         })
       );
     } catch (e) {
@@ -121,38 +187,52 @@
     bar.className = "podcast-bar" + (isMinimized ? " hidden" : "");
     bar.id = "podcast-bar";
     bar.innerHTML =
-      '<div class="podcast-controls">' +
-        '<button class="podcast-btn podcast-btn-prev" title="Previous">' + ICONS.prev + "</button>" +
-        '<button class="podcast-btn podcast-btn-play" title="Play">' + ICONS.play + "</button>" +
-        '<button class="podcast-btn podcast-btn-next" title="Next">' + ICONS.next + "</button>" +
-      "</div>" +
-      '<div class="podcast-track-info">' +
-        '<div class="podcast-track-title" id="podcast-title">' + escapeHtml(PLAYLIST[currentIndex].title) + "</div>" +
-        '<div class="podcast-track-desc" id="podcast-desc">' + escapeHtml(PLAYLIST[currentIndex].description) + "</div>" +
-      "</div>" +
-      '<div class="podcast-progress-wrap">' +
-        '<span class="podcast-time" id="podcast-current">0:00</span>' +
-        '<div class="podcast-progress" id="podcast-progress">' +
-          '<div class="podcast-progress-fill" id="podcast-fill">' +
-            '<div class="podcast-progress-thumb"></div>' +
-          "</div>" +
+      '<div class="podcast-bar-main">' +
+        '<div class="podcast-controls">' +
+          '<button class="podcast-btn podcast-btn-prev" title="Previous">' + ICONS.prev + "</button>" +
+          '<button class="podcast-btn podcast-btn-play" title="Play">' + ICONS.play + "</button>" +
+          '<button class="podcast-btn podcast-btn-next" title="Next">' + ICONS.next + "</button>" +
         "</div>" +
-        '<span class="podcast-time" id="podcast-duration">' + PLAYLIST[currentIndex].duration + "</span>" +
+        '<div class="podcast-track-info">' +
+          '<div class="podcast-track-title" id="podcast-title">' + escapeHtml(PLAYLIST[currentIndex].title) + "</div>" +
+          '<div class="podcast-track-desc" id="podcast-desc">' + escapeHtml(PLAYLIST[currentIndex].description) + "</div>" +
+        "</div>" +
+        '<div class="podcast-progress-wrap">' +
+          '<span class="podcast-time" id="podcast-current">0:00</span>' +
+          '<div class="podcast-progress" id="podcast-progress">' +
+            '<div class="podcast-progress-fill" id="podcast-fill">' +
+              '<div class="podcast-progress-thumb"></div>' +
+            "</div>" +
+          "</div>" +
+          '<span class="podcast-time" id="podcast-duration">' + PLAYLIST[currentIndex].duration + "</span>" +
+        "</div>" +
+        '<div class="podcast-volume-wrap">' +
+          '<button class="podcast-btn podcast-btn-volume" title="Volume">' + (isMuted ? ICONS.muted : ICONS.volume) + "</button>" +
+          '<input type="range" class="podcast-volume-slider" id="podcast-volume" min="0" max="1" step="0.01" value="' + (isMuted ? 0 : volume) + '">' +
+        "</div>" +
+        '<div class="podcast-actions">' +
+          '<button class="podcast-btn podcast-btn-transcript" title="Transcript" style="display:none">' + ICONS.transcript + "</button>" +
+          '<button class="podcast-btn podcast-btn-playlist" title="Playlist">' + ICONS.playlist + "</button>" +
+          '<button class="podcast-btn podcast-btn-minimize" title="Minimize">' + ICONS.minimize + "</button>" +
+        "</div>" +
       "</div>" +
-      '<div class="podcast-volume-wrap">' +
-        '<button class="podcast-btn podcast-btn-volume" title="Volume">' + (isMuted ? ICONS.muted : ICONS.volume) + "</button>" +
-        '<input type="range" class="podcast-volume-slider" id="podcast-volume" min="0" max="1" step="0.01" value="' + (isMuted ? 0 : volume) + '">' +
-      "</div>" +
-      '<div class="podcast-actions">' +
-        '<button class="podcast-btn podcast-btn-playlist" title="Playlist">' + ICONS.playlist + "</button>" +
-        '<button class="podcast-btn podcast-btn-minimize" title="Minimize">' + ICONS.minimize + "</button>" +
-      "</div>";
+      '<div class="podcast-subtitle" id="podcast-subtitle"></div>';
 
     // Playlist popup
     var playlist = document.createElement("div");
     playlist.className = "podcast-playlist";
     playlist.id = "podcast-playlist";
     playlist.innerHTML = buildPlaylistHTML();
+
+    // Transcript panel
+    var transcriptPanel = document.createElement("div");
+    transcriptPanel.className = "podcast-transcript";
+    transcriptPanel.id = "podcast-transcript";
+    transcriptPanel.innerHTML =
+      '<div class="podcast-transcript-header">' +
+        '<span class="podcast-transcript-title">Transcript</span>' +
+      "</div>" +
+      '<div class="podcast-transcript-cues" id="podcast-transcript-cues"></div>';
 
     // Minimized pill
     var pill = document.createElement("div");
@@ -163,6 +243,7 @@
       '<span class="podcast-pill-title" id="podcast-pill-title">' + escapeHtml(PLAYLIST[currentIndex].title) + "</span>";
 
     document.body.appendChild(playlist);
+    document.body.appendChild(transcriptPanel);
     document.body.appendChild(bar);
     document.body.appendChild(pill);
 
@@ -170,7 +251,7 @@
       document.body.classList.add("podcast-active");
     }
 
-    bindEvents(bar, playlist, pill);
+    bindEvents(bar, playlist, transcriptPanel, pill);
     loadTrack(currentIndex, false);
   }
 
@@ -205,7 +286,7 @@
   // EVENT BINDING
   // ============================================
 
-  function bindEvents(bar, playlist, pill) {
+  function bindEvents(bar, playlist, transcriptPanel, pill) {
     // Play/Pause
     bar.querySelector(".podcast-btn-play").addEventListener("click", togglePlay);
 
@@ -247,8 +328,13 @@
       saveState();
     });
 
-    // Playlist toggle
+    // Playlist toggle (mutual exclusion with transcript)
     bar.querySelector(".podcast-btn-playlist").addEventListener("click", function () {
+      if (isTranscriptOpen) {
+        isTranscriptOpen = false;
+        transcriptPanel.classList.remove("open");
+        bar.querySelector(".podcast-btn-transcript").classList.remove("active");
+      }
       isPlaylistOpen = !isPlaylistOpen;
       playlist.classList.toggle("open", isPlaylistOpen);
     });
@@ -264,6 +350,46 @@
       }
     });
 
+    // Transcript toggle (mutual exclusion with playlist)
+    bar.querySelector(".podcast-btn-transcript").addEventListener("click", function () {
+      if (isPlaylistOpen) {
+        isPlaylistOpen = false;
+        playlist.classList.remove("open");
+      }
+      isTranscriptOpen = !isTranscriptOpen;
+      transcriptPanel.classList.toggle("open", isTranscriptOpen);
+      bar.querySelector(".podcast-btn-transcript").classList.toggle("active", isTranscriptOpen);
+      if (isTranscriptOpen) {
+        transcriptAutoScroll = true;
+        scrollToActiveCue();
+      }
+      saveState();
+    });
+
+    // Click-to-seek on transcript cues
+    transcriptPanel.addEventListener("click", function (e) {
+      var cueEl = e.target.closest(".podcast-transcript-cue");
+      if (cueEl && audio.duration) {
+        var idx = parseInt(cueEl.getAttribute("data-index"), 10);
+        if (idx >= 0 && idx < transcriptCues.length) {
+          audio.currentTime = transcriptCues[idx].start;
+          updateProgress();
+          saveState();
+          if (!isPlaying) togglePlay();
+        }
+      }
+    });
+
+    // Manual scroll override for transcript auto-scroll
+    var cuesContainer = transcriptPanel.querySelector("#podcast-transcript-cues");
+    cuesContainer.addEventListener("scroll", function () {
+      transcriptAutoScroll = false;
+      clearTimeout(transcriptScrollTimer);
+      transcriptScrollTimer = setTimeout(function () {
+        transcriptAutoScroll = true;
+      }, 5000);
+    }, { passive: true });
+
     // Minimize
     bar.querySelector(".podcast-btn-minimize").addEventListener("click", function () {
       isMinimized = true;
@@ -271,7 +397,13 @@
       pill.classList.add("visible");
       playlist.classList.remove("open");
       isPlaylistOpen = false;
+      if (isTranscriptOpen) {
+        isTranscriptOpen = false;
+        transcriptPanel.classList.remove("open");
+        bar.querySelector(".podcast-btn-transcript").classList.remove("active");
+      }
       document.body.classList.remove("podcast-active");
+      document.body.classList.remove("podcast-subtitle-active");
       saveState();
     });
 
@@ -281,6 +413,9 @@
       bar.classList.remove("hidden");
       pill.classList.remove("visible");
       document.body.classList.add("podcast-active");
+      if (bar.classList.contains("has-subtitle")) {
+        document.body.classList.add("podcast-subtitle-active");
+      }
       saveState();
     });
 
@@ -323,6 +458,60 @@
     currentIndex = index;
     var track = PLAYLIST[currentIndex];
     audio.src = track.src;
+
+    // Reset transcript state
+    transcriptCues = [];
+    activeCueIndex = -1;
+    clearTimeout(transcriptScrollTimer);
+    transcriptAutoScroll = true;
+    transcriptGeneration++;
+    renderTranscriptCues();
+    var subtitleEl = document.getElementById("podcast-subtitle");
+    var barEl = document.getElementById("podcast-bar");
+    if (subtitleEl) subtitleEl.textContent = "";
+    if (barEl) barEl.classList.remove("has-subtitle");
+    document.body.classList.remove("podcast-subtitle-active");
+    updatePanelPositions();
+
+    // Show/hide transcript button based on whether transcript exists
+    var transcriptBtn = document.querySelector(".podcast-btn-transcript");
+    if (transcriptBtn) {
+      transcriptBtn.style.display = track.transcript ? "" : "none";
+    }
+    // If no transcript, close panel
+    if (!track.transcript && isTranscriptOpen) {
+      isTranscriptOpen = false;
+      var tp = document.getElementById("podcast-transcript");
+      if (tp) tp.classList.remove("open");
+      if (transcriptBtn) transcriptBtn.classList.remove("active");
+    }
+
+    // Load transcript if available
+    if (track.transcript) {
+      var gen = transcriptGeneration;
+      fetchTranscript(track.transcript, function (cues) {
+        if (gen !== transcriptGeneration) return; // Stale fetch
+        if (cues) {
+          transcriptCues = cues;
+          renderTranscriptCues();
+          // Restore panel open state
+          if (isTranscriptOpen) {
+            var tp = document.getElementById("podcast-transcript");
+            if (tp) tp.classList.add("open");
+            if (transcriptBtn) transcriptBtn.classList.add("active");
+          }
+        } else if (!cues) {
+          console.warn("Podcast: Failed to load transcript", track.transcript);
+          if (transcriptBtn) transcriptBtn.style.display = "none";
+          if (isTranscriptOpen) {
+            isTranscriptOpen = false;
+            var tp = document.getElementById("podcast-transcript");
+            if (tp) tp.classList.remove("open");
+            if (transcriptBtn) transcriptBtn.classList.remove("active");
+          }
+        }
+      });
+    }
 
     // Restore saved position
     var saved = loadState();
@@ -368,6 +557,7 @@
     } else {
       audio.play().then(function () {
         isPlaying = true;
+        updatePlayButton();
         startProgressLoop();
         updateMediaSession();
       }).catch(function (err) {
@@ -391,7 +581,7 @@
     var pillTitle = document.getElementById("podcast-pill-title");
 
     if (titleEl) titleEl.textContent = track.title;
-    if (descEl) descEl.textContent = track.description;
+    if (descEl) descEl.textContent = track.description; // will be overridden by active cue
     if (durationEl) durationEl.textContent = track.duration;
     if (pillTitle) pillTitle.textContent = track.title;
   }
@@ -424,9 +614,95 @@
     cancelAnimationFrame(rafId);
     function loop() {
       updateProgress();
+      updateActiveCue();
       rafId = requestAnimationFrame(loop);
     }
     rafId = requestAnimationFrame(loop);
+  }
+
+  function updateActiveCue() {
+    if (!transcriptCues.length) return;
+    var t = audio.currentTime;
+    var newIndex = -1;
+    for (var i = 0; i < transcriptCues.length; i++) {
+      if (t >= transcriptCues[i].start && t < transcriptCues[i].end) {
+        newIndex = i;
+        break;
+      }
+    }
+    if (newIndex === activeCueIndex) return;
+    activeCueIndex = newIndex;
+
+    // Update subtitle row (row 2 of bar)
+    var subtitleEl = document.getElementById("podcast-subtitle");
+    var bar = document.getElementById("podcast-bar");
+    if (subtitleEl && bar) {
+      if (newIndex >= 0) {
+        subtitleEl.textContent = transcriptCues[newIndex].text;
+        bar.classList.add("has-subtitle");
+        document.body.classList.add("podcast-subtitle-active");
+      } else {
+        subtitleEl.textContent = "";
+        bar.classList.remove("has-subtitle");
+        document.body.classList.remove("podcast-subtitle-active");
+      }
+      updatePanelPositions();
+    }
+
+    // Update panel highlight
+    var cuesContainer = document.getElementById("podcast-transcript-cues");
+    if (!cuesContainer) return;
+    var prev = cuesContainer.querySelector(".podcast-transcript-cue.active");
+    if (prev) prev.classList.remove("active");
+    if (newIndex >= 0) {
+      var activeEl = cuesContainer.querySelector('[data-index="' + newIndex + '"]');
+      if (activeEl) {
+        activeEl.classList.add("active");
+        if (isTranscriptOpen && transcriptAutoScroll) {
+          scrollToActiveCue();
+        }
+      }
+    }
+  }
+
+  function scrollToActiveCue() {
+    var cuesContainer = document.getElementById("podcast-transcript-cues");
+    if (!cuesContainer || activeCueIndex < 0) return;
+    var activeEl = cuesContainer.querySelector(".podcast-transcript-cue.active");
+    if (!activeEl) return;
+    var containerRect = cuesContainer.getBoundingClientRect();
+    var elRect = activeEl.getBoundingClientRect();
+    var targetScroll = cuesContainer.scrollTop + (elRect.top - containerRect.top) - containerRect.height / 2 + elRect.height / 2;
+    cuesContainer.scrollTop = targetScroll;
+  }
+
+  function updatePanelPositions() {
+    var bar = document.getElementById("podcast-bar");
+    if (!bar) return;
+    var barHeight = bar.offsetHeight;
+    var playlist = document.getElementById("podcast-playlist");
+    var transcript = document.getElementById("podcast-transcript");
+    if (playlist) playlist.style.bottom = barHeight + "px";
+    if (transcript) transcript.style.bottom = barHeight + "px";
+  }
+
+  function renderTranscriptCues() {
+    var cuesContainer = document.getElementById("podcast-transcript-cues");
+    if (!cuesContainer) return;
+    if (!transcriptCues.length) {
+      cuesContainer.innerHTML = '<div class="podcast-transcript-empty">No transcript available</div>';
+      return;
+    }
+    var html = "";
+    for (var i = 0; i < transcriptCues.length; i++) {
+      var cue = transcriptCues[i];
+      html +=
+        '<div class="podcast-transcript-cue" data-index="' + i + '">' +
+          '<span class="podcast-transcript-time">' + formatTime(cue.start) + "</span>" +
+          '<span class="podcast-transcript-text">' + escapeHtml(cue.text) + "</span>" +
+        "</div>";
+    }
+    cuesContainer.innerHTML = html;
   }
 
   function updatePlaylistHighlight() {
