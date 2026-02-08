@@ -12,6 +12,20 @@
 
   var PLAYLIST = [
     {
+      id: "2026-02-08",
+      title: "AI Pulse - Feb 8, 2026",
+      description: "AI Pulse daily briefing",
+      src: "https://pub-64eca94564a64eef9d486ccb65cea4a4.r2.dev/episodes/2026-02-08/ai-pulse-2026-02-08.mp3",
+      duration: "--:--",
+    },
+    {
+      id: "2026-02-07",
+      title: "AI Pulse - Feb 7, 2026",
+      description: "AI Pulse daily briefing",
+      src: "https://pub-64eca94564a64eef9d486ccb65cea4a4.r2.dev/episodes/2026-02-07/ai-pulse-2026-02-07.mp3",
+      duration: "--:--",
+    },
+    {
       id: "2026-02-06",
       title: "AI Pulse - Feb 6, 2026",
       description: "AI Pulse daily briefing",
