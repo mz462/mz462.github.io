@@ -14,6 +14,14 @@
 
   var PLAYLIST = [
     {
+      id: "2026-02-09",
+      title: "AI Pulse - Feb 9, 2026",
+      description: "AI Pulse daily briefing",
+      src: R2_BASE + "/episodes/2026-02-09/ai-pulse-2026-02-09.mp3",
+      transcript: R2_BASE + "/episodes/2026-02-09/ai-pulse-2026-02-09.srt",
+      duration: "--:--",
+    },
+    {
       id: "2026-02-08",
       title: "AI Pulse - Feb 8, 2026",
       description: "AI Pulse daily briefing",
