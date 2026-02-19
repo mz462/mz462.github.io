@@ -217,14 +217,19 @@ Maybe it’s my network. Or maybe AI is democratizing operational knowledge in r
 <link rel="stylesheet" href="/css/podcast-player.css?v=4">
 <script src="/js/podcast-player.js?v=4" defer></script>
 
-<link rel="stylesheet" href="/css/reading-list.css?v=1">
+<link rel="stylesheet" href="/css/reading-list.css?v=2">
 <aside class="reading-list" role="complementary" aria-label="Reading list">
-  <div class="reading-list-title">Reading List</div>
-  <ul class="reading-list-items">
-    <li><a href="https://karpathy.bearblog.dev/year-in-review-2025/" target="_blank" rel="noopener noreferrer">Karpathy: Year in Review 2025</a></li>
-    <li><a href="https://www.producttalk.org/claude-code-what-it-is-and-how-its-different/" target="_blank" rel="noopener noreferrer">Product Talk: Claude Code</a></li>
-    <li><a href="https://www.arxiv.org/abs/2512.07796" target="_blank" rel="noopener noreferrer">arXiv: 2512.07796</a></li>
-  </ul>
+  <button class="reading-list-toggle" aria-expanded="false" onclick="var el=this.parentElement;el.classList.toggle('expanded');this.setAttribute('aria-expanded',el.classList.contains('expanded'))">
+    <span class="reading-list-icon"></span>
+  </button>
+  <div class="reading-list-panel">
+    <div class="reading-list-title">Reading List</div>
+    <ul class="reading-list-items">
+      <li><a href="https://karpathy.bearblog.dev/year-in-review-2025/" target="_blank" rel="noopener noreferrer">Karpathy: Year in Review 2025</a></li>
+      <li><a href="https://www.producttalk.org/claude-code-what-it-is-and-how-its-different/" target="_blank" rel="noopener noreferrer">Product Talk: Claude Code</a></li>
+      <li><a href="https://www.arxiv.org/abs/2512.07796" target="_blank" rel="noopener noreferrer">arXiv: 2512.07796</a></li>
+    </ul>
+  </div>
 </aside>
 </body>
 

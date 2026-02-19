@@ -1,23 +1,133 @@
-/* Reading List - Flat Monochrome Panel */
+/* Reading List - Collapsible Sidebar Widget */
 .reading-list {
   position: fixed;
-  left: 20px;
+  left: 0;
   top: 50%;
   transform: translateY(-50%);
   z-index: 100;
-  background: var(--theme, #FDFBF7);
-  border: 1px solid var(--border, #E0DCD6);
-  border-radius: 0;
-  padding: 12px 14px;
-  width: 180px;
+  display: flex;
+  align-items: flex-start;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-.dark .reading-list {
+/* Toggle tab - always visible on the left edge */
+.reading-list-toggle {
+  background: var(--theme, #FDFBF7);
+  border: 1px solid var(--border, #E0DCD6);
+  border-left: none;
+  border-radius: 0 4px 4px 0;
+  padding: 10px 6px;
+  cursor: pointer;
+  color: var(--secondary, #6B6B6B);
+  transition: color 0.2s ease, background 0.2s ease;
+  flex-shrink: 0;
+}
+
+.reading-list-toggle:hover {
+  color: var(--primary, #1A1A1A);
+  background: var(--border, #E0DCD6);
+}
+
+.dark .reading-list-toggle {
+  background: var(--theme, #121212);
+  border-color: var(--border, #2A2A2A);
+  color: var(--secondary, #8A8A8A);
+}
+
+.dark .reading-list-toggle:hover {
+  color: var(--primary, #E8E6E3);
+  background: var(--border, #2A2A2A);
+}
+
+/* Bookmark icon via CSS */
+.reading-list-icon {
+  display: block;
+  width: 14px;
+  height: 18px;
+  border: 2px solid currentColor;
+  border-bottom: none;
+  position: relative;
+}
+
+.reading-list-icon::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: -2px;
+  right: -2px;
+  height: 8px;
+  border-left: 2px solid currentColor;
+  border-right: 2px solid currentColor;
+  clip-path: polygon(0 0, 50% 70%, 100% 0, 100% 100%, 0 100%);
+  background: currentColor;
+  clip-path: polygon(0 0, 50% 60%, 100% 0);
+}
+
+/* Switch to X icon when expanded */
+.reading-list.expanded .reading-list-icon {
+  width: 14px;
+  height: 14px;
+  border: none;
+  position: relative;
+}
+
+.reading-list.expanded .reading-list-icon::before,
+.reading-list.expanded .reading-list-icon::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 14px;
+  height: 2px;
+  background: currentColor;
+  border: none;
+  clip-path: none;
+}
+
+.reading-list.expanded .reading-list-icon::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.reading-list.expanded .reading-list-icon::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+  bottom: auto;
+  left: 50%;
+  right: auto;
+}
+
+/* Panel - slides out to the right of the toggle */
+.reading-list-panel {
+  background: var(--theme, #FDFBF7);
+  border: 1px solid var(--border, #E0DCD6);
+  border-left: none;
+  border-radius: 0 4px 4px 0;
+  padding: 12px 14px;
+  width: 200px;
+  max-height: 80vh;
+  overflow-y: auto;
+  transform: translateX(-100%);
+  opacity: 0;
+  visibility: hidden;
+  transition: transform 0.2s ease, opacity 0.2s ease, visibility 0.2s ease;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.dark .reading-list-panel {
   background: var(--theme, #121212);
   border-color: var(--border, #2A2A2A);
 }
 
+/* Expanded state - panel visible */
+.reading-list.expanded .reading-list-panel {
+  transform: translateX(0);
+  opacity: 1;
+  visibility: visible;
+  left: 28px; /* right edge of toggle */
+}
+
+/* Title */
 .reading-list-title {
   font-size: 13px;
   font-weight: 600;
@@ -32,6 +142,7 @@
   border-bottom-color: var(--border, #2A2A2A);
 }
 
+/* List items */
 .reading-list-items {
   list-style: none;
   margin: 0;
@@ -71,8 +182,8 @@
   outline-color: var(--primary, #E8E6E3);
 }
 
-/* Hide on smaller screens to avoid overlap */
-@media (max-width: 1200px) {
+/* Hide on very small screens (mobile) */
+@media (max-width: 768px) {
   .reading-list {
     display: none;
   }
